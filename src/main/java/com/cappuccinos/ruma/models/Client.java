@@ -2,7 +2,9 @@ package com.cappuccinos.ruma.models;
 
 import jakarta.persistence.*;
 import lombok.*;
+
 @Entity(name = "clients")
+@Table(name = "clients")
 @Getter
 @Setter
 @AllArgsConstructor
