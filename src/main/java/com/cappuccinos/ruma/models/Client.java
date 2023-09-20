@@ -1,6 +1,7 @@
 package com.cappuccinos.ruma.models;
 
 import com.cappuccinos.ruma.dtos.ClientDTO;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -21,6 +22,7 @@ public class Client {
     private String email;
     private String password;
     @OneToOne(mappedBy = "owner", cascade = CascadeType.ALL)
+    @JsonManagedReference
     private ShoppingBag shoppingBag;
 
     public Client(ClientDTO data) {
@@ -28,5 +30,7 @@ public class Client {
         this.lastName = data.lastName();
         this.email = data.email();
         this.password = data.password();
+        this.shoppingBag = new ShoppingBag();
+        shoppingBag.setOwner(this);
     }
 }

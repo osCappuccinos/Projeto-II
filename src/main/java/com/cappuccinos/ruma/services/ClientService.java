@@ -2,7 +2,6 @@ package com.cappuccinos.ruma.services;
 
 import com.cappuccinos.ruma.dtos.ClientDTO;
 import com.cappuccinos.ruma.models.Client;
-import com.cappuccinos.ruma.models.ShoppingBag;
 import com.cappuccinos.ruma.repositories.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
