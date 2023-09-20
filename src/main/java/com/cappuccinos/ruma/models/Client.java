@@ -1,5 +1,6 @@
 package com.cappuccinos.ruma.models;
 
+import com.cappuccinos.ruma.dtos.ClientDTO;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -21,4 +22,11 @@ public class Client {
     private String password;
     @OneToOne(mappedBy = "owner", cascade = CascadeType.ALL)
     private ShoppingBag shoppingBag;
+
+    public Client(ClientDTO data) {
+        this.firstName = data.firstName();
+        this.lastName = data.lastName();
+        this.email = data.email();
+        this.password = data.password();
+    }
 }
