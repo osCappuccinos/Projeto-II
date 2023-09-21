@@ -1,5 +1,6 @@
 package com.cappuccinos.ruma.models;
 
+import com.cappuccinos.ruma.dtos.ProductDTO;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -16,9 +17,16 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String Name;
+    private String name;
     private BigDecimal value;
+    @Enumerated(EnumType.STRING)
     @ManyToOne
     @JoinColumn(name = "store_id")
     private Store store;
+
+    public Product(ProductDTO data) {
+        this.name = data.name();
+        this.value = data.value();
+        this.store = data.store();
+    }
 }
