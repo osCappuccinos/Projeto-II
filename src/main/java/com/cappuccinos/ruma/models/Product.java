@@ -27,6 +27,5 @@ public class Product {
     public Product(ProductDTO data) {
         this.name = data.name();
         this.value = data.value();
-        this.store = data.store();
     }
 }
