@@ -1,6 +1,7 @@
 package com.cappuccinos.ruma.services;
 
 import com.cappuccinos.ruma.dtos.StoreDTO;
+import com.cappuccinos.ruma.models.Product;
 import com.cappuccinos.ruma.models.Store;
 import com.cappuccinos.ruma.repositories.StoreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,5 +35,10 @@ public class StoreService {
 
     public List<Store> getAllStores() {
         return this.repository.findAll();
+    }
+
+    public List<Product> getAllProductsByStore(String storeName) throws Exception {
+        Store store = this.findStoreByName(storeName);
+        return store.getProducts();
     }
 }
