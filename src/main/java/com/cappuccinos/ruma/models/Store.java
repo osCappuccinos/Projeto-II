@@ -1,5 +1,6 @@
 package com.cappuccinos.ruma.models;
 
+import com.cappuccinos.ruma.dtos.StoreDTO;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -15,11 +16,18 @@ import java.util.List;
 public class Store {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    protected Long id;
-    protected String name;
+    private Long id;
+    private String name;
     @Column(unique = true)
-    protected String email;
-    protected String password;
+    private String email;
+    private String password;
     @OneToMany(mappedBy = "store")
     private List<Product> products;
+
+    public Store(StoreDTO data) {
+        this.name = data.name();
+        this.email = data.email();
+        this.password = data.password();
+        this.products = data.products();
+    }
 }
