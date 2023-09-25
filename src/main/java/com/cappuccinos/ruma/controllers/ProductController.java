@@ -19,7 +19,7 @@ public class ProductController {
     private ProductService productService;
 
     @PostMapping("/new-product")
-    private ResponseEntity<Product> createNewProduct(@RequestBody ProductDTO data) {
+    private ResponseEntity<Product> createNewProduct(@RequestBody ProductDTO data) throws Exception {
         Product newProduct = productService.createNewProduct(data);
         return new ResponseEntity<>(newProduct, HttpStatus.ACCEPTED);
     }

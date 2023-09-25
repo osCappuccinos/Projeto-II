@@ -1,6 +1,7 @@
 package com.cappuccinos.ruma.models;
 
 import com.cappuccinos.ruma.dtos.StoreDTO;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -22,6 +23,7 @@ public class Store {
     private String email;
     private String password;
     @OneToMany(mappedBy = "store")
+    @JsonManagedReference
     private List<Product> products;
 
     public Store(StoreDTO data) {

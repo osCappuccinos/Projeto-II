@@ -1,6 +1,7 @@
 package com.cappuccinos.ruma.models;
 
 import com.cappuccinos.ruma.dtos.ProductDTO;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -22,6 +23,7 @@ public class Product {
     @Enumerated(EnumType.STRING)
     @ManyToOne
     @JoinColumn(name = "store_id")
+    @JsonBackReference
     private Store store;
 
     public Product(ProductDTO data) {
