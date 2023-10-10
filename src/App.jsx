@@ -1,13 +1,13 @@
 import { useState } from 'react'
 import './App.css'
-import Produtos from './pages/Products'
+import Products from './pages/Products'
 
 function App() {
 
   return (
     <div className="container">
       <div className='card-grid'>
-        <Produtos></Produtos>
+        <Products></Products>
       </div>
     </div>
   )
