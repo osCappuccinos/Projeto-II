@@ -1,8 +1,10 @@
 import React from 'react';
 import Card from '../components/card/card';
 import "./Products.css"
+import { createUser } from '../service/firebaseController';
 
 function Products() {
+    createUser("0", "lucas", "l@a.com", "123", "oi");
     return (
         <div className='produtos-container'>
             <h1 className='produtos-title'>Produtos</h1>
