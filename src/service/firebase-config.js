@@ -1,8 +1,8 @@
 import { initializeApp } from "firebase/app";
 import { getDatabase } from "firebase/database"
-import { getAnalytics } from "firebase/analytics";
+//import { getAnalytics } from "firebase/analytics";
 
-const firebaseConfig = {
+let  firebaseConfig = {
   apiKey: "AIzaSyCJZPiAZSUSYrDzA2y-bv2gAevWpFDp4WQ",
   authDomain: "projeto-ruma.firebaseapp.com",
   projectId: "projeto-ruma",
@@ -12,8 +12,17 @@ const firebaseConfig = {
   measurementId: "G-785L9D56EK"
 };
 
+/**
+if (location.hostname === 'localhost') {
+  firebaseConfig = {
+    databaseURL: 'http://localhost:9000?ns=projeto-ruma'
+  }
+}
+*/
+
+
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+// const analytics = getAnalytics(app);
 
 export const db = getDatabase();
