@@ -5,6 +5,6 @@ import { createProduct, readProduct } from './firebaseController.js';
     logCallback({error, data})
   }  );
 
-  readProductProduct('product456', (error, data) => {
+  readProduct('product456', (error, data) => {
     logCallback({error, data})
   }  );

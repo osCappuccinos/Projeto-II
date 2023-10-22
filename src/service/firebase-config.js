@@ -25,4 +25,4 @@ if (location.hostname === 'localhost') {
 const app = initializeApp(firebaseConfig);
 // const analytics = getAnalytics(app);
 
-export const db = getDatabase();
+export const db = getDatabase(app);
