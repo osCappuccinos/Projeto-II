@@ -1,5 +1,6 @@
 import App from "./App";
 import Products from "./pages/Products";
+import ProductDetails from "./pages/ProductDetails";
 
 export const routes = [
     {
@@ -7,9 +8,13 @@ export const routes = [
       element: <App />, 
       children: [
          {
-            path: '/',
+            path: '/produtos',
             element: <Products />
+         },
+         {
+            path: '/produtos/:id',
+            element: <ProductDetails />
          },
       ]
    },
-]
+];
