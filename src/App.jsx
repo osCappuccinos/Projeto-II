@@ -1,15 +1,13 @@
-import { useState } from 'react'
 import './App.css'
-import Produtos from './pages/Products'
 import { Outlet } from 'react-router-dom'
+import Navbar from './components/menu/Navbar'
 
 function App() {
 
   return (
     <div className="container">
-      <div className='card-grid'>
-        <Outlet />
-      </div>
+      <Outlet />
+      <Navbar />
     </div>
   )
 }
