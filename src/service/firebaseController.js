@@ -170,13 +170,15 @@ export function deleteProduct(productId) {
 
 // PRODUCTS review
 // CREATE a product review
-export function createProductReview(productId, reviewId, reviewerName, reviewContent) {
-  const reviewRef = ref(db, `products/${productId}/reviews/${reviewId}`);
+export function createProductReview(productId, reviewId, reviewerName, reviewContent, rating) {
+  const reviewRef = ref(db, `products/${productId}/ratings/${reviewId}`);
   set(reviewRef, {
     name: reviewerName,
-    content: reviewContent
+    content: reviewContent,
+    rating: rating
   });
 }
+
 
 // READ all product reviews
 export function readAllProductReviews(productId) {
@@ -188,35 +190,37 @@ export function readAllProductReviews(productId) {
 }
 
 // READ a product review
-export function readProductReview(productId, reviewId) {
-  const reviewRef = ref(db, `products/${productId}/reviews/${reviewId}`);
+export function readProductReview(productId, reviewId, callback) {
+  const reviewRef = ref(db, `products/${productId}/ratings/${reviewId}`);
   get(reviewRef).then((snapshot) => {
     if (snapshot.exists()) {
-      const review = snapshot.val();
-      // Handle the review
+      const reviewData = snapshot.val();
+      callback(null, reviewData);
     } else {
-      console.log("Review not found");
+      callback("Review not found");
     }
   }).catch((error) => {
-    console.error(error);
+    callback(error);
   });
 }
 
+
 // UPDATE a product review
-export function updateProductReview(productId, reviewId, updatedReviewerName, updatedReviewContent) {
-  const reviewRef = ref(db, `products/${productId}/reviews/${reviewId}`);
+export function updateProductReview(productId, reviewId, updatedReviewerName, updatedReviewContent, updatedRating) {
+  const reviewRef = ref(db, `products/${productId}/ratings/${reviewId}`);
   update(reviewRef, {
     name: updatedReviewerName,
-    content: updatedReviewContent
+    content: updatedReviewContent,
+    rating: updatedRating
   });
 }
+
 
 // DELETE a product review
 export function deleteProductReview(productId, reviewId) {
-  const reviewRef = ref(db, `products/${productId}/reviews/${reviewId}`);
+  const reviewRef = ref(db, `products/${productId}/ratings/${reviewId}`);
   remove(reviewRef);
 }
-
 
 
 // INVENTORIES
