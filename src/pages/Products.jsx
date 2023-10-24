@@ -1,11 +1,13 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import Card from '../components/card/card';
-import "./Products.css"
+import { readProduct } from '../service/firebaseController';
+import "./Products.css";
 import {CreateClient, createClient, createGlobalOptions} from 'contentful'
 
 function Products() {
-    const [produtos, setProdutos] = useState([])
-    
+    const [content, setContent] = useState([])
+    const [products, setProducts] = useState([]);
+
     const client = createClient({space: "kw4ib93qcl5n", accessToken: "PW2eCE2_FsOgzJCcDQjltadtHM4sBq2vbqvCzEQWjrg"})
 
     useEffect(() => {
@@ -13,7 +15,7 @@ function Products() {
             try {
                 await client.getEntries().then((entries) => {
                     console.log(entries)
-                    setProdutos(entries)
+                    setContent(entries)
                 })
             } catch(error){
                 console.log("error")
@@ -23,13 +25,19 @@ function Products() {
     }, []
     )
 
+    useEffect(() => {
+        readProduct('product456', (error, data) => {
+            setProducts(data);
+        });
+    })
+
     return (
         <div className='produtos-container'>
             <h1 className='produtos-title'>Produtos</h1>
 
             
             <div className="card-grid" >
-                {produtos?.items?.map((post) => 
+                {content?.items?.map((post) => 
                     <div className="card-holder" key={post.sys.id}>
                         <Card
                             price={post.fields.preco} 
@@ -38,6 +46,9 @@ function Products() {
                         />
                     </div>
                 )}
+            <Card 
+                title = {products.productName}
+                id = {products.productId} />
             </div>
             
 

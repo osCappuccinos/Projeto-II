@@ -1,0 +1,50 @@
+{
+  "rules": {
+    "clients": {
+      "$client_id": {
+        ".read": "auth != null && auth.uid == $client_id",
+        ".write": "auth != null && auth.uid == $client_id"
+      }
+    },
+    "products": {
+      ".read": "auth != null",
+      ".write": "auth != null"
+    },
+    "orders": {
+      "$order_id": {
+        ".read": "auth != null",
+        ".write": "auth != null"
+      }
+    },
+    "stores": {
+      "$store_id": {
+        ".read": "auth != null",
+        ".write": "auth != null"
+      }
+    },
+    "reviews": {
+      "$review_id": {
+        ".read": "auth != null",
+        ".write": "auth != null"
+      }
+    },
+    "inventory": {
+      "$product_id": {
+        ".read": "auth != null",
+        ".write": "auth != null"
+      }
+    },
+    "delivery": {
+      "$order_id": {
+        ".read": "auth != null",
+        ".write": "auth != null"
+      }
+    }
+  }
+}
+
+
+//     Clients can read and write their own data (e.g., their own shopping bags and favorites).
+// Products, orders, stores, reviews, inventory, and delivery are readable and writable by authenticated users.
+// For clients' data, use $client_id to represent a specific client's unique identifier. Only that client can read and write their data.
+// For orders, stores, reviews, inventory, and delivery, $order_id, $store_id, $review_id, $product_id, and $order_id represent unique identifiers for specific items, and they can be read and written by authenticated users.
