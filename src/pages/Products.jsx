@@ -42,7 +42,6 @@ function Products() {
                         <Card
                             price={post.fields.preco} 
                             title={post.fields.nome} 
-                            image={post.fields.imagem.fields.file.url} 
                         />
                     </div>
                 )}

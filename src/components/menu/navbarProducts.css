@@ -1,0 +1,23 @@
+
+
+.navbarProducts{
+    background-color: #333;
+    overflow: hidden;
+    width: 100%;
+    margin: auto;
+}
+
+.navbarProducts ul{
+    margin:auto;
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+    justify-content: space-around;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.navbarProducts ul li {
+    width:fit-content;
+    margin: 10px;
+}
