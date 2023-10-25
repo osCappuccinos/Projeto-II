@@ -2,29 +2,19 @@ import React, { useEffect, useState } from 'react';
 import CardProduct from '../components/cardProduct/cardProduct';
 import CardStore from '../components/cardStore/cardStore';
 import { readProduct } from '../service/firebaseController';
+import contentfulConfig from '../service/contentful/contentful-config';
 import "./Products.css";
-import {CreateClient, createClient, createGlobalOptions} from 'contentful'
 
 function Products() {
     const [content, setContent] = useState([])
+    const { getProductsContent } = contentfulConfig();
+
     const [products, setProducts] = useState([]);
 
-    const client = createClient({space: "kw4ib93qcl5n", accessToken: "PW2eCE2_FsOgzJCcDQjltadtHM4sBq2vbqvCzEQWjrg"})
 
     useEffect(() => {
-        const getAllEntries = async () => {
-            try {
-                await client.getEntries().then((entries) => {
-                    console.log(entries)
-                    setContent(entries)
-                })
-            } catch(error){
-                console.log("error")
-            }
-        }
-        getAllEntries()
-    }, []
-    )
+        getProductsContent().then((response) => setContent(response));
+    });
 
     useEffect(() => {
         readProduct('product456', (error, data) => {
@@ -67,12 +57,14 @@ function Products() {
             <div className="all-container">
                 <h1 className="title">Produtos</h1>
                 <div className="card-grid">
-                    {content?.items?.map((post) => 
-                        <CardProduct
-                            price={post.fields.preco} 
-                            title={post.fields.nome} 
-                        />
-                    )}
+                { content.map((product, index) => (
+                <CardProduct 
+                    key={index}
+                    title={product.name}
+                    price={product.price}
+                    image={product.images[0].file.url}
+                />
+            )) }
                 </div>
             </div>
             
