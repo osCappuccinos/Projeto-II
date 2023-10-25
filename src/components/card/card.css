@@ -10,21 +10,20 @@
 }
 
 .card img{
-    border-radius: 8px 8px 0 0;
+    border-radius: 5px 5px 0 0;
     width: 30vh;
     height: 30vh;
 }
 
-.card-grid {
+/*.card-grid {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
     gap: 20px;
-    padding: 0 20px; 
-    max-width: 1500px; /* define um limite máximo de largura */
-    margin: 0 auto; /* centraliza horizontalmente o card-container */
+    width: 100%; 
+    margin: 0 auto; 
     margin-bottom: 50px;
-}
+}*/
 
 .card h2{
     font-size: 2vh;

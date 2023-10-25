@@ -32,22 +32,22 @@ function Products() {
     })
 
     return (
-        <div className='produtos-container'>
-            <h1 className='produtos-title'>Produtos</h1>
-
-            
-            <div className="card-grid" >
-                {content?.items?.map((post) => 
-                    <div className="card-holder" key={post.sys.id}>
+        <div className="bodyContainer">
+            <div className="destaque"></div>
+            <div className="produtos-container">
+                <h1 className="produtos-title">Novas tendências na Ruma</h1>
+                <h1 className="produtos-title">Produtos</h1>
+                <div className="card-grid">
+                    {content?.items?.map((post) => 
                         <Card
                             price={post.fields.preco} 
                             title={post.fields.nome} 
                         />
-                    </div>
-                )}
-            <Card 
-                title = {products.productName}
-                id = {products.productId} />
+                    )}
+                    <Card 
+                        title = {products.productName}
+                        id = {products.productId} />
+                </div>
             </div>
             
 

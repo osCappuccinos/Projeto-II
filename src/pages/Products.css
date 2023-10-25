@@ -3,16 +3,32 @@
     justify-content: center;
 }
 
+.bodyContainer{
+  display: flex;
+  flex-direction: column;
+  gap: 2.6em;
+}
+
+.destaque {
+  margin: auto;
+  margin-top: 2.6em;
+  width: 80vw;
+  height: 30vh;
+  background-color: aliceblue;
+  border-radius: 5px;
+}
+
 .produtos-container {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items:flex-start;
+    width: 80vw;
+    margin:auto;
+    gap: 2.6em;
   }
   
   .produtos-title {
     font-size: 4vh; 
-    margin-bottom: 2.6em; 
-    margin-top: 2.6em;
 }
   
   .card-grid {
@@ -20,6 +36,8 @@
     flex-wrap: wrap;
     justify-content: center;
     gap: 20px;
+    width:100%;
+    padding:0;
   }
 
  /* @media (max-width:600px){

@@ -6,6 +6,7 @@
 .navbar ul{
     margin-left: 200px;
     margin-right: 200px;
+    padding: 0;
     display: flex;
     flex-direction: row;
     list-style-type: none;
