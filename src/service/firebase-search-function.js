@@ -1,4 +1,5 @@
-import { ref, onValue, db } from 'firebase/database';
+import { ref, onValue } from 'firebase/database';
+import { db } from './firebase-config';
 
 export function searchProductsByName(searchTerm, callback) {
     const productsRef = ref(db, 'products');
