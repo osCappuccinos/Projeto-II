@@ -8,7 +8,7 @@ const contentfulConfig = () => {
         host: "cdn.contentful.com"
     });
 
-    const getProductsContent = async () => {
+    const getAllProductsContent = async () => {
         try {
             const entries = await client.getEntries({
                 content_type: "product",
@@ -17,9 +17,9 @@ const contentfulConfig = () => {
             });
 
             const sanitizedEntries = entries.items.map((item) => {
-                const imagesArry = item.fields.images
+                const imagesArray = item.fields.images
 
-                const images = imagesArry.map((item) => {
+                const images = imagesArray.map((item) => {
                     return item.fields
                 });
 
@@ -35,7 +35,58 @@ const contentfulConfig = () => {
         }
     }
 
-    return { getProductsContent };
+    const getStoreProductsContent = async (slug) => {
+        try {
+            const entries = await client.getEntries({
+                content_type: "store",
+                select: "fields",
+                order: "fields.name",
+                "fields.slug": slug
+            });
+
+            const storeProducts = entries.items.flatMap(entry => entry.fields.storeProducts );
+            const products = storeProducts.map((item) => {
+
+                const imagesArray = item.fields.images
+                const images = imagesArray.map((item) => {
+                    return item.fields
+                });
+
+                return {
+                    ...item.fields,
+                    images
+                };
+            });
+
+            return products;
+        } catch (error) {
+            console.error(`Error getting store: ${error}`);
+        }
+    };
+
+    const getStoreContent = async (slug) => {
+        try {
+            const entries = await client.getEntries({
+                content_type: "store",
+                select: "fields",
+                order: "fields.name",
+                "fields.slug": slug
+            });
+
+            const sanitizedEntries = entries.items.map((item) => {
+                return {
+                    ...item.fields,
+                };
+            });
+
+            return sanitizedEntries;
+        } catch(error) {
+            console.log(`Error getting store: ${error}`)
+        }
+    }
+
+
+    return { getAllProductsContent, getStoreProductsContent, getStoreContent };
 }
 
 export default contentfulConfig;

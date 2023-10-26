@@ -1,25 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import CardProduct from '../components/cardProduct/cardProduct';
 import CardStore from '../components/cardStore/cardStore';
-import { readProduct } from '../service/firebaseController';
+import { readProduct, createProduct } from '../service/firebaseController';
 import contentfulConfig from '../service/contentful/contentful-config';
 import "./Products.css";
 
 function Products() {
-    const [content, setContent] = useState([])
-    const { getProductsContent } = contentfulConfig();
-
     const [products, setProducts] = useState([]);
 
-
     useEffect(() => {
-        getProductsContent().then((response) => setContent(response));
-    });
-
-    useEffect(() => {
-        readProduct('product456', (error, data) => {
+        readProduct('10', (error, data) => {
             setProducts(data);
         });
+    });
+
+    createProduct("10", "accessory", (data) => {
+        console.log(data)
     })
 
     return (
@@ -59,6 +55,7 @@ function Products() {
                 <div className="card-grid">
                 { content.map((product, index) => (
                 <CardProduct 
+                    id={products.id}
                     key={index}
                     title={product.name}
                     price={product.price}

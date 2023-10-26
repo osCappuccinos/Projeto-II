@@ -116,13 +116,12 @@ export function deleteFavoriteProduct(clientId, productId) {
 
 // PRODUCTS
 // create a product
-export function createProduct(productId, name, price, category, callback) {
+export function createProduct(productId, category, callback) {
     const reference = ref(db, 'products/' + productId);
     set(reference, 
         {
-            productName: name,
-            productPrice: price,
-            productCategory: category
+            id: productId,
+            productCategory: category,
         }
     );
 }
