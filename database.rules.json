@@ -7,7 +7,7 @@
       }
     },
     "products": {
-      ".read": "auth != null",
+      ".read": "true",
       ".write": "auth != null"
     },
     "orders": {
@@ -42,9 +42,3 @@
     }
   }
 }
-
-
-//     Clients can read and write their own data (e.g., their own shopping bags and favorites).
-// Products, orders, stores, reviews, inventory, and delivery are readable and writable by authenticated users.
-// For clients' data, use $client_id to represent a specific client's unique identifier. Only that client can read and write their data.
-// For orders, stores, reviews, inventory, and delivery, $order_id, $store_id, $review_id, $product_id, and $order_id represent unique identifiers for specific items, and they can be read and written by authenticated users.
