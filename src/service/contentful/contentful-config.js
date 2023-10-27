@@ -85,8 +85,39 @@ const contentfulConfig = () => {
         }
     }
 
+    const getProductsContentByCategory = async (category) => {
 
-    return { getAllProductsContent, getStoreProductsContent, getStoreContent };
+        try {
+            const entries = await client.getEntries({
+                content_type: "product",
+                select: "fields",
+                order: "fields.name"
+            });
+
+
+            const filteredData = entries.items.filter(products => products.fields.category === category);
+
+            const sanitizedFilteredData = filteredData.map((item) => {
+                const imagesArray = item.fields.images
+
+                const images = imagesArray.map((item) => {
+                    return item.fields
+                });
+
+                return {
+                    ...item.fields,
+                    images
+                };
+            });
+
+            return sanitizedFilteredData;
+        } catch(error) {
+            console.log(`Error getting products: ${error}`)
+        }
+    }
+
+
+    return { getAllProductsContent, getStoreProductsContent, getStoreContent, getProductsContentByCategory };
 }
 
 export default contentfulConfig;
