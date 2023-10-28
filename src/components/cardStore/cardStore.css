@@ -1,0 +1,33 @@
+.imagesGrid{
+    display:flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.img{
+    width: 8.3vh;
+    height: auto;
+    margin-top:12px;
+    border-radius: 5px;
+}
+
+.cardStore{
+    border-radius: 12px;
+    box-shadow: rgba(100,100,111,0.2) 0px 7px 29px 0px;
+    width: 30vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin:10px;
+}
+
+.cardStore h2{
+    font-size:1.3vw;
+    margin:5px;
+}
+
+.cardStore h3{
+    font-size:0.8vw;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
