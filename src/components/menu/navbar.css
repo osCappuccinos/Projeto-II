@@ -1,7 +1,27 @@
 .navbar{
     background-color: #CFCFCF;
-    ;
     overflow: hidden;
+}
+
+.search-bar{
+    width: 40vw;
+    height: 5vh;
+    background-color: #FFFFFF;
+    margin-left: 10px;
+    margin-right:10px;
+}
+
+.orders-and-cart{
+    display: flex;
+    flex-direction: row;
+    width:fit-content;
+    align-items: center;
+}
+
+.profile-pic {
+    width: 3vw;
+    height: 5vh;
+    background: #FFF;
 }
 
 .navbar ul{
@@ -12,11 +32,12 @@
     flex-direction: row;
     list-style-type: none;
     justify-content: space-between;
+    align-items: center;
 
 }
 
-.navbar ul li {
+.navbar ul button {
+    font-size:1.5vh;
     width: fit-content;
     margin-left: 10px;
-    margin-right: 10px;
 }

@@ -6,8 +6,12 @@ const Navbar = () => {
     <nav className="navbar">
       <ul>
         <li><a href="/">Home</a></li>
-        <li><a href="/">Meus pedidos</a></li>
-        <li><a href="/">Minha sacola</a></li>
+        <div className="search-bar"></div>
+        <div className="orders-and-cart">
+          <div className="profile-pic"></div>
+          <button>Meus pedidos</button>
+          <button>Sacola</button>
+        </div>
       </ul>
     </nav>
  );
