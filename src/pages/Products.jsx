@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import Card from '../components/card/card';
+import CardProduct from '../components/cardProduct/cardProduct';
 import CardStore from '../components/cardStore/cardStore';
 import { readProduct } from '../service/firebaseController';
 import "./Products.css";
@@ -68,7 +68,7 @@ function Products() {
                 <h1 className="title">Produtos</h1>
                 <div className="card-grid">
                     {content?.items?.map((post) => 
-                        <Card
+                        <CardProduct
                             price={post.fields.preco} 
                             title={post.fields.nome} 
                         />

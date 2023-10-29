@@ -1,6 +1,6 @@
-import "./card.css"
+import "./cardProduct.css"
 
-function Card(props) {
+function CardProduct(props) {
     const uri = '/produtos/'+props.title
     return (
         <div className="card">
@@ -12,4 +12,4 @@ function Card(props) {
     );
 }
 
-export default Card;
+export default CardProduct;
