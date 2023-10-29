@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { fetchTopRatedProducts } from '../../service/firebaseController';  // adjust path
+import { fetchTopRatedProducts } from '../../service/firebaseController'; // adjust path
+import contentfulConfig from '../../service/contentful/contentful-config'; // adjust path
+import Card from '../card/card';
+
+const { getAllProductsContent } = contentfulConfig();
 
 function TopRatedProducts() {
   const [products, setProducts] = useState([]);
