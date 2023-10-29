@@ -5,19 +5,27 @@
     overflow: hidden;
     width: 100%;
     margin: auto;
+    display: flex;
+    flex-direction: row;
 }
 
 .navbarProducts ul{
+    margin-left:0;
+    padding:0;
+    width:75vw;
     margin:auto;
     display: flex;
     flex-direction: row;
     list-style-type: none;
-    justify-content: space-around;
-    margin-left: 10px;
-    margin-right: 10px;
+    align-items: center;
+    justify-content: space-between;
+
 }
 
 .navbarProducts ul li {
+    padding:0;
+    margin-left:0px;
     width:fit-content;
-    margin: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }

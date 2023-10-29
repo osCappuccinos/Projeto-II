@@ -73,9 +73,6 @@ function Products() {
                             title={post.fields.nome} 
                         />
                     )}
-                    <Card 
-                        title = {products.productName}
-                        id = {products.productId} />
                 </div>
             </div>
             
