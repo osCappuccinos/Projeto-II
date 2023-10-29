@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getDatabase } from "firebase/database"
-//import { getAnalytics } from "firebase/analytics";
+import { getAnalytics } from "firebase/analytics";
 
 let  firebaseConfig = {
   apiKey: "AIzaSyCJZPiAZSUSYrDzA2y-bv2gAevWpFDp4WQ",
@@ -23,6 +23,5 @@ if (location.hostname === 'localhost') {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-// const analytics = getAnalytics(app);
-
+export const analytics = getAnalytics(app);
 export const db = getDatabase(app);
