@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import { db } from "./firebase-config";
-import { ref, set, onValue, get, update, remove, child, push } from "firebase/database";
+import { ref, set, onValue, get, update, remove, orderByChild } from "firebase/database";
 // import { getAuth } from "firebase/auth";
 
 export function createUser(userId, name, email, password, callback) {
@@ -121,8 +121,12 @@ export function createProduct(productId, category, callback) {
     const reference = ref(db, 'products/' + productId);
     set(reference, 
         {
-            id: productId,
+            id: productId,  
+            productName: name,
+            productPrice: price,
             productCategory: category,
+            averageRating: 0,
+            ratingCount: 0
         }
     );
 }
@@ -168,14 +172,41 @@ export function deleteProduct(productId) {
 }
 
 
+
+// update the average rating and rating count after a review is added or updated
+export function updateProductAverageRating(productId, newRating, previousRating = null) {
+  const productRef = ref(db, 'products/' + productId);
+  get(productRef).then((snapshot) => {
+      if (snapshot.exists()) {
+          const productData = snapshot.val();
+          let totalRating = productData.averageRating * productData.ratingCount;
+          
+          // If previousRating exists, it's an update. Adjust total rating by removing previous and adding new.
+          if(previousRating) {
+              totalRating = totalRating - previousRating + newRating;
+          } else { // Else, it's a new review. Simply add the new rating.
+              totalRating += newRating;
+              productData.ratingCount += 1;
+          }
+          
+          const averageRating = totalRating / productData.ratingCount;
+          update(productRef, { averageRating: averageRating, ratingCount: productData.ratingCount });
+      }
+  });
+}
+
+
+
 // PRODUCTS review
 // CREATE a product review
 export function createProductReview(productId, reviewId, reviewerName, reviewContent, rating) {
   const reviewRef = ref(db, `products/${productId}/ratings/${reviewId}`);
   set(reviewRef, {
-    name: reviewerName,
-    content: reviewContent,
-    rating: rating
+      name: reviewerName,
+      content: reviewContent,
+      rating: rating
+  }).then(() => {
+      updateProductAverageRating(productId, rating);
   });
 }
 
@@ -208,10 +239,17 @@ export function readProductReview(productId, reviewId, callback) {
 // UPDATE a product review
 export function updateProductReview(productId, reviewId, updatedReviewerName, updatedReviewContent, updatedRating) {
   const reviewRef = ref(db, `products/${productId}/ratings/${reviewId}`);
-  update(reviewRef, {
-    name: updatedReviewerName,
-    content: updatedReviewContent,
-    rating: updatedRating
+  get(reviewRef).then((snapshot) => {
+      if (snapshot.exists()) {
+          const previousRating = snapshot.val().rating;
+          update(reviewRef, {
+              name: updatedReviewerName,
+              content: updatedReviewContent,
+              rating: updatedRating
+          }).then(() => {
+              updateProductAverageRating(productId, updatedRating, previousRating);
+          });
+      }
   });
 }
 
@@ -221,6 +259,28 @@ export function deleteProductReview(productId, reviewId) {
   const reviewRef = ref(db, `products/${productId}/ratings/${reviewId}`);
   remove(reviewRef);
 }
+
+
+
+// Fetch Popular Products
+
+export function fetchTopRatedProducts(limit = 5, callback) {
+  const productsRef = ref(db, 'products');
+  const query = orderByChild(productsRef, 'averageRating').limitToLast(limit);
+  
+  get(query).then(snapshot => {
+    if (snapshot.exists()) {
+      const topRatedProducts = snapshot.val();
+      callback(null, topRatedProducts);
+    } else {
+      callback("Nenhum produto achado");
+    }
+  }).catch(error => {
+    callback(error);
+  });
+}
+
+
 
 
 // INVENTORIES
