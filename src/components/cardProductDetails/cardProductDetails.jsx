@@ -1,4 +1,5 @@
 import "./cardProductDetails.css"
+import Comment from "../comment/comment"
 
 function CardProductDetails(props) {
     return (
@@ -17,12 +18,12 @@ function CardProductDetails(props) {
                 </div>
                 <div className="textual-info">
                     <div className="info-block">
-                        <h2>Bolsa Clutch azul</h2>
-                        <p>Vendido por Loja Iracema</p>
+                        <h2>{props.productName}</h2>
+                        <p>Vendido por {props.storeName}</p>
                         <p>8 avaliações</p>
                     </div>
                     <div className="info-block">
-                        <h1>R$80,75</h1>
+                        <h1>R${props.price}</h1>
                         <p>Ou 5x de 17,00 sem juros</p>
                     </div>
                     <div className="info-block">
@@ -49,6 +50,34 @@ function CardProductDetails(props) {
                         </div>
                     </div>
                 </div>
+            </div>
+            <div className="ratings-comments">
+                {/* <div className="ratingsDiv"></div> */}
+                <div className="commentsDiv">
+                    <Comment
+                        userPhoto="https://static.vecteezy.com/system/resources/thumbnails/005/544/770/small/profile-icon-design-free-vector.jpg"
+                        userName="Jadson"
+                        message="Amei demais, coube super bem e a cor é linda!"
+                    />
+                    <Comment
+                        userPhoto="https://static.vecteezy.com/system/resources/thumbnails/005/544/770/small/profile-icon-design-free-vector.jpg"
+                        userName="Jadson"
+                        message="Amei demais, coube super bem e a cor é linda!"
+                    />
+                    <Comment
+                        userPhoto="https://static.vecteezy.com/system/resources/thumbnails/005/544/770/small/profile-icon-design-free-vector.jpg"
+                        userName="Jadson"
+                        message="Amei demais, coube super bem e a cor é linda!"
+                    />
+                    <Comment
+                        userPhoto="https://static.vecteezy.com/system/resources/thumbnails/005/544/770/small/profile-icon-design-free-vector.jpg"
+                        userName="Jadson"
+                        message="Amei demais, coube super bem e a cor é linda!"
+                    />
+                    
+                    
+                </div>
+                
             </div>
         </div>
     );
