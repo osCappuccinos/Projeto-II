@@ -58,21 +58,25 @@ function CardProductDetails(props) {
                         userPhoto="https://static.vecteezy.com/system/resources/thumbnails/005/544/770/small/profile-icon-design-free-vector.jpg"
                         userName="Jadson"
                         message="Amei demais, coube super bem e a cor é linda!"
+                        rating="4"
                     />
                     <Comment
                         userPhoto="https://static.vecteezy.com/system/resources/thumbnails/005/544/770/small/profile-icon-design-free-vector.jpg"
                         userName="Jadson"
                         message="Amei demais, coube super bem e a cor é linda!"
+                        rating="4"
                     />
                     <Comment
                         userPhoto="https://static.vecteezy.com/system/resources/thumbnails/005/544/770/small/profile-icon-design-free-vector.jpg"
                         userName="Jadson"
                         message="Amei demais, coube super bem e a cor é linda!"
+                        rating="4"
                     />
                     <Comment
                         userPhoto="https://static.vecteezy.com/system/resources/thumbnails/005/544/770/small/profile-icon-design-free-vector.jpg"
                         userName="Jadson"
                         message="Amei demais, coube super bem e a cor é linda!"
+                        rating="4"
                     />
                     
                     

@@ -5,7 +5,7 @@
     justify-content: flex-start;
     align-items: center;
     border-radius: 12px;
-    box-shadow: rgba(100,100,111,0.2) 0px 7px 29px 0px;
+    border: 1px solid #DFDFDF;
     width: 75vw;
     height: 130vh;
     margin:40px;
