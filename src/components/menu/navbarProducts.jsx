@@ -8,7 +8,7 @@ const NavbarProducts = () => {
         <li><a href="/produtos">Todos os departamentos</a></li>
         <li><a href="/produtos">Moda feminina</a></li>
         <li><a href="/produtos">Moda masculina</a></li>
-        <li><a href="/produtos">Minha infantil</a></li>
+        <li><a href="/produtos">Moda infantil</a></li>
         <li><a href="/produtos">Moda para todes</a></li>
         <li><a href="/produtos">Acessórios</a></li>
         <li><a href="/produtos">Calçados</a></li>

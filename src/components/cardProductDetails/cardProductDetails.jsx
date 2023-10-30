@@ -1,7 +1,24 @@
 import "./cardProductDetails.css"
+import React, { useEffect, useState } from 'react';
 import Comment from "../comment/comment"
+import Select from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import InputLabel from '@mui/material/InputLabel';
 
 function CardProductDetails(props) {
+
+    const [size, setSize] = useState([]);
+    const [color, setColor] = useState([]);
+
+    const handleChangeSize = (event) => {
+      setSize(event.target.value);
+    }
+
+    const handleChangeColor = (event) => {
+        setColor(event.target.value);
+    }
+
     return (
         <div className="product-details-container">
             <div className="product-info">
@@ -29,15 +46,29 @@ function CardProductDetails(props) {
                     <div className="info-block">
                         <p>Escolha a cor:</p>
                         <div className="cor">
-                            <div className="circle"></div>
-                            <div className="circle"></div>
-                            <div className="circle"></div>
+                            <FormControl size="small" autoWidth={true}>
+                                <Select
+                                    id="simple-select"
+                                    value={color}
+                                    onChange={handleChangeColor}>
+                                    <MenuItem value={10}>Azul</MenuItem>
+                                    <MenuItem value={20}>Branco</MenuItem>
+                                </Select>
+                            </FormControl>
                         </div>
                         <p>Escolha o tamanho:</p>
                         <div className="tamanho">
-                            <div className="circle"></div>
-                            <div className="circle"></div>
-                            <div className="circle"></div>
+                            <FormControl size="small" autoWidth={true}>
+                                    <Select
+                                        id="simple-select"
+                                        value={size}
+                                        onChange={handleChangeSize}
+                                    >
+                                        <MenuItem value={10}>P</MenuItem>
+                                        <MenuItem value={20}>M</MenuItem>
+                                        <MenuItem value={30}>G</MenuItem>
+                                    </Select>
+                            </FormControl>
                         </div>
                     </div>
                     <button className="addCart">Adicionar à sacola</button>
