@@ -5,6 +5,7 @@ import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
+import Ratings from "../ratings/ratings";
 
 function CardProductDetails(props) {
 
@@ -84,6 +85,17 @@ function CardProductDetails(props) {
             </div>
             <div className="ratings-comments">
                 {/* <div className="ratingsDiv"></div> */}
+                <div className="ratingsDiv">
+                    <Ratings
+                        ratingsCount="8"
+                        averageRating="4.5"
+                        fiveStarCount="7"
+                        fourStarCount="1"
+                        threeStarCount="0"
+                        twoStarCount="0"
+                        oneStarCount="0"
+                    />
+                </div>
                 <div className="commentsDiv">
                     <Comment
                         userPhoto="https://static.vecteezy.com/system/resources/thumbnails/005/544/770/small/profile-icon-design-free-vector.jpg"

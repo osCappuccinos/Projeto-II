@@ -1,0 +1,49 @@
+.ratingsContainer{
+    display:flex;
+    flex-direction: column;
+    align-items: left;
+    text-align: left;
+}
+
+.ratingsContainer h3{
+    margin:5px;
+    margin-bottom:10px;
+}
+
+.ratingsContainer h4{
+    margin:5px;
+}
+
+.ratingsContainer p{
+    margin:0;
+    font-Size: 0.8em;
+}
+
+
+.ratingsTop{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap:10px;
+}
+
+.ratingsBottom{
+    display: flex;
+    flex-direction: column;
+}
+
+.ratingsRow{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap:10px;
+}
+
+.star{
+    color: #FAAF00 !important;
+}
+
+.boxProgress{
+    height:10px;
+    width:9.3vw;
+}
