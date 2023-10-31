@@ -28,7 +28,7 @@ function ShoppingBagProductDetails(props) {
                 <h4>{props.name}</h4>
                 <p>Quantidade: {count}</p>
             </div>
-            <h4>R${props.price}</h4>
+            <h4>R${parseFloat(props.price)*parseFloat(count)}</h4>
             {/* botão - e + da quantidade */}
             <div className="plusMinusContainer">
                 <button onClick={decrementCount}>-</button>
