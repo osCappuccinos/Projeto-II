@@ -11,7 +11,7 @@ function Ratings(props) {
     const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
         height: 12,
         width:200,
-        borderRadius: 5,
+        borderRadius: 20,
         [`&.${linearProgressClasses.colorPrimary}`]: {
           backgroundColor: theme.palette.grey[theme.palette.mode === 'light' ? 200 : 800],
         },

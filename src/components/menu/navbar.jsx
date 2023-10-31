@@ -1,7 +1,9 @@
-import React from 'react';
 import './navbar.css'
+import React, { useEffect, useState } from 'react';
+import ShoppingBagDropdown from '../shoppingBagDropdown/shoppingBagDropdown';
 
 const Navbar = () => {
+  const [openCartDropdown, setOpenCartDropdown] = useState(false)
  return (
     <nav className="navbar">
       <ul>
@@ -10,7 +12,13 @@ const Navbar = () => {
         <div className="orders-and-cart">
           <div className="profile-pic"></div>
           <button>Meus pedidos</button>
-          <button>Sacola</button>
+          <button onClick={() => setOpenCartDropdown((prev) => !prev)}>Minha sacola</button>
+          {
+            openCartDropdown && <ShoppingBagDropdown
+            itemsCount = "4"
+            cartTotal = "323"
+          />
+          }
         </div>
       </ul>
     </nav>

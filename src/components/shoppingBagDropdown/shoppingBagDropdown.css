@@ -1,0 +1,36 @@
+.dropdownContainer{
+    position:absolute;
+    display:flex;
+    flex-direction: column;
+    top:3.5rem;
+    right:5rem;
+    width:450px;
+    background-color: #FFF;
+    border-radius: 12px;
+    box-shadow: rgba(100,100,111,0.2) 0px 7px 29px 0px;
+}
+
+.summary{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-left:15px;
+    margin-right:15px;
+}
+
+.goToCart{
+    width:95% !important;
+    margin:auto !important;
+    margin-top:10px !important;
+    margin-bottom:10px !important;
+}
+
+.total{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 15px;
+    margin-right: 15px;
+}
