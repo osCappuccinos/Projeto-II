@@ -1,0 +1,10 @@
+h1{
+    font-size:2em;
+}
+
+.priceContainer{
+    display: flex;
+    flex-direction: row !important;
+    align-items: center;
+    gap:15px;
+}

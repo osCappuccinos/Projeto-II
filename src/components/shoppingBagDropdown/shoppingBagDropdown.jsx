@@ -27,24 +27,6 @@ function ShoppingBagDropdown(props) {
                 name="Bolsa Clutch Azul"
                 image={'https://photos.enjoei.com.br/clutch-michael-kors-couro-92532468/1200xN/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy82NDY4MzcvNWViODY4ZGIwYmI0MDE5YmRkZDk2NGEzYzJlYTRkMTcuanBn'}
             />
-            <ShoppingBagProductDetails
-                itemsCount = {props.itemsCount}
-                price="80.75"
-                name="Bolsa Clutch Azul"
-                image={'https://photos.enjoei.com.br/clutch-michael-kors-couro-92532468/1200xN/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy82NDY4MzcvNWViODY4ZGIwYmI0MDE5YmRkZDk2NGEzYzJlYTRkMTcuanBn'}
-            />
-            <ShoppingBagProductDetails
-                itemsCount = {props.itemsCount}
-                price="80.75"
-                name="Bolsa Clutch Azul"
-                image={'https://photos.enjoei.com.br/clutch-michael-kors-couro-92532468/1200xN/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy82NDY4MzcvNWViODY4ZGIwYmI0MDE5YmRkZDk2NGEzYzJlYTRkMTcuanBn'}
-            />
-            <ShoppingBagProductDetails
-                itemsCount = {props.itemsCount}
-                price="80.75"
-                name="Bolsa Clutch Azul"
-                image={'https://photos.enjoei.com.br/clutch-michael-kors-couro-92532468/1200xN/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy82NDY4MzcvNWViODY4ZGIwYmI0MDE5YmRkZDk2NGEzYzJlYTRkMTcuanBn'}
-            />
             <div className="total">
                 <h4>Total</h4>
                 <h4>R${props.cartTotal}</h4>

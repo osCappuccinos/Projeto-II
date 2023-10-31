@@ -1,0 +1,10 @@
+.shipping{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap:20px;
+}
+
+input{
+    height:35px;
+}

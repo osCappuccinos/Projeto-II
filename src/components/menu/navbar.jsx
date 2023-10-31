@@ -15,8 +15,8 @@ const Navbar = () => {
           <button onClick={() => setOpenCartDropdown((prev) => !prev)}>Minha sacola</button>
           {
             openCartDropdown && <ShoppingBagDropdown
-            itemsCount = "4"
-            cartTotal = "323"
+            itemsCount = "1"
+            cartTotal = "80.75"
           />
           }
         </div>

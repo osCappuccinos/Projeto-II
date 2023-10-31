@@ -6,6 +6,8 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
 import Ratings from "../ratings/ratings";
+import ShippingInfo from "../shippingInfo/shippingInfo";
+import ProductPrice from "../productPrice/productPrice";
 
 function CardProductDetails(props) {
 
@@ -40,10 +42,10 @@ function CardProductDetails(props) {
                         <p>Vendido por {props.storeName}</p>
                         <p>8 avaliações</p>
                     </div>
-                    <div className="info-block">
-                        <h1>R${props.price}</h1>
-                        <p>Ou 5x de 17,00 sem juros</p>
-                    </div>
+                    <ProductPrice
+                        price="80.75"
+                        installments="5"
+                    />
                     <div className="info-block">
                         <p>Escolha a cor:</p>
                         <div className="cor">
@@ -73,14 +75,15 @@ function CardProductDetails(props) {
                         </div>
                     </div>
                     <button className="addCart">Adicionar à sacola</button>
-                    <div className="info-block">
+                    <ShippingInfo></ShippingInfo>
+                    {/* <div className="info-block">
                         <p>Calcular frete e prazo</p>
                         <div className="shipping">
-                            <input type="text" />
+                            <input placeholder="Digite seu CEP" type="text" />
                             <button>Confirmar</button>
                             <p>Não sei meu CEP</p>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
             </div>
             <div className="ratings-comments">
