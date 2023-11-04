@@ -12,27 +12,44 @@ function TopRatedProducts() {
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                fetchTopRatedProducts(5, async (err, topRatedProducts) => {
-                    if (err) throw new Error(err);
-
-                    const allProducts = await getAllProductsContent();
-                    
-                    const combinedProducts = topRatedProducts.map(product => {
-                        const matchedProduct = allProducts.find(p => p.id === product.id);
-                        return {
-                            id: product.id,
-                            name: matchedProduct.name,
-                            image: matchedProduct.images[0].file.url,
-                            price: matchedProduct.price,
-                            productName: product.productName // This is assuming you want to pass the productName from Firebase as well
-                        };
+                // Convert callback pattern to a promise
+                const topRatedProducts = await new Promise((resolve, reject) => {
+                    fetchTopRatedProducts(5, (err, data) => {
+                        if (err) {
+                            reject(err);
+                        } else {
+                            resolve(data);
+                        }
                     });
-
-                    setProducts(combinedProducts);
-                   // console.log(combinedProducts)
                 });
+            console.log('linha 25')
+
+                const allProducts = await getAllProductsContent();
+                console.log('linha 28')
+                const topRatedProductsArray = Object.values(topRatedProducts || {});
+                
+                const combinedProducts = topRatedProductsArray.map(product => {
+                    const matchedProduct = allProducts.find(p => p.id === product.id);
+                    if (!matchedProduct) {
+                        console.error(`Product with ID ${product.id} not found.`);
+                        return null;
+                    }
+                    return {
+                        id: product.id,
+                        name: matchedProduct.name,
+                        image: matchedProduct.images[0]?.file.url, // Use optional chaining in case images array is empty
+                        price: matchedProduct.price,
+                        productName: product.productName 
+                    };
+                }).filter(Boolean); // Remove any null values from the array
+        
+
+                setProducts(combinedProducts);
+                console.log('Top Rated Products:', topRatedProductsArray);
+console.log('All Products:', allProducts);
             } catch (err) {
                 setError(err.message);
+                console.error(err.message);
             }
         };
 
