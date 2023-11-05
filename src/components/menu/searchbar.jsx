@@ -21,25 +21,27 @@ function SearchBar() {
     <div>
       <input
         type="text"
-        placeholder="Search for a product..."
+        placeholder="Busque um produto..."
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
       />
       <button onClick={handleSearch}>Search</button>
 
       <div>
-        <h2>Search Results:</h2>
-        {hasSearched && searchResults.length === 0 ? ( // Check if a search has been performed and no results found
-          <p>No products found for the given search term.</p>
-        ) : (
-          <ul>
-            {searchResults.map((product, index) => (
-              <li key={index}>{product.name}</li>
-            ))}
-          </ul>
-        )}
-      </div>
+      <h2>Search Results:</h2>
+      {hasSearched && searchResults.length === 0 ? (
+        <p>No products found for the given search term.</p>
+      ) : (
+        <ul>
+          {searchResults.map((product, index) => (
+            <li key={index}>
+              {product.name} - Vendido por: {product.storeName}
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
+  </div>
   );
 }
 
