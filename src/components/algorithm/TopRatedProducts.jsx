@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { fetchTopRatedProducts } from '../../service/firebaseController'; // Ajuste o caminho conforme necessário
 import contentfulConfig from '../../service/contentful/contentful-config'; // Ajuste o caminho conforme necessário
-import Card from '../card/card';
+import TopCard from './TopCard';
+import './TopRatedProducts.css';
 
 const { getAllProductsContent } = contentfulConfig();
 
@@ -60,16 +61,15 @@ function TopRatedProducts() {
 
     return (
         <div>
-            <h2>Produtos Mais Bem Avaliados</h2>
+            <h2>Produtos mais bem avaliados</h2>
             <div className="productRow">
                 {products.map(product => (
-                    <Card 
+                    <TopCard 
                         key={product.id} 
                         id={product.id} 
                         title={product.name} 
                         image={product.image}
                         price={product.price}
-                        rating={product.averageRating} // Exiba a avaliação média
                     />
                 ))}
             </div>

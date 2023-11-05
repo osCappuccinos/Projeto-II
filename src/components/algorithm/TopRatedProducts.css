@@ -1,0 +1,13 @@
+
+.productRow {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Ajuste o espaço entre os cards conforme necessário */
+    justify-content: center; /* Centraliza os cards horizontalmente */
+    align-items: flex-start; /* Alinha os cards no topo */
+}
+
+.TopCard {
+    flex: 0 1 200px; /* Ajuste a largura base dos cards conforme necessário */
+    /* Outros estilos para o seu card aqui */
+}
