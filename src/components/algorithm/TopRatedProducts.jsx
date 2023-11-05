@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { fetchTopRatedProducts } from '../../service/firebaseController'; // adjust path
-import contentfulConfig from '../../service/contentful/contentful-config'; // adjust path
+import { fetchTopRatedProducts } from '../../service/firebaseController'; // Ajuste o caminho conforme necessário
+import contentfulConfig from '../../service/contentful/contentful-config'; // Ajuste o caminho conforme necessário
 import Card from '../card/card';
 
 const { getAllProductsContent } = contentfulConfig();
@@ -12,7 +12,7 @@ function TopRatedProducts() {
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                // Convert callback pattern to a promise
+                // Converta o padrão de callback para uma promessa
                 const topRatedProducts = await new Promise((resolve, reject) => {
                     fetchTopRatedProducts(5, (err, data) => {
                         if (err) {
@@ -22,56 +22,59 @@ function TopRatedProducts() {
                         }
                     });
                 });
-            console.log('linha 25')
 
                 const allProducts = await getAllProductsContent();
-                console.log('linha 28')
                 const topRatedProductsArray = Object.values(topRatedProducts || {});
                 
+                // Combine os produtos do Firebase com os do Contentful
                 const combinedProducts = topRatedProductsArray.map(product => {
                     const matchedProduct = allProducts.find(p => p.id === product.id);
                     if (!matchedProduct) {
-                        console.error(`Product with ID ${product.id} not found.`);
+                        console.error(`Produto com ID ${product.id} não encontrado.`);
                         return null;
                     }
                     return {
                         id: product.id,
                         name: matchedProduct.name,
-                        image: matchedProduct.images[0]?.file.url, // Use optional chaining in case images array is empty
+                        image: matchedProduct.images && matchedProduct.images[0]?.file.url, // Use encadeamento opcional
                         price: matchedProduct.price,
-                        productName: product.productName 
+                        averageRating: product.averageRating // Adicione a avaliação média
                     };
-                }).filter(Boolean); // Remove any null values from the array
-        
+                }).filter(Boolean); // Remova quaisquer valores nulos do array
 
                 setProducts(combinedProducts);
-                console.log('Top Rated Products:', topRatedProductsArray);
-console.log('All Products:', allProducts);
+                console.log(combinedProducts)
             } catch (err) {
                 setError(err.message);
                 console.error(err.message);
             }
         };
 
+        
         fetchProducts();
     }, []);
 
-  if (error) {
-    return <div>Error: {error}</div>;
-  }
+    if (error) {
+        return <div>Error: {error}</div>;
+    }
 
-  return (
-    <div>
-      <h2>Top Rated Products</h2>
-      <ul>
-        {products.map(product => (
-          <li key={product.id}>
-            {product.productName} - Rating: {product.averageRating}
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
+    return (
+        <div>
+            <h2>Produtos Mais Bem Avaliados</h2>
+            <div className="productRow">
+                {products.map(product => (
+                    <Card 
+                        key={product.id} 
+                        id={product.id} 
+                        title={product.name} 
+                        image={product.image}
+                        price={product.price}
+                        rating={product.averageRating} // Exiba a avaliação média
+                    />
+                ))}
+            </div>
+        </div>
+    );
 }
 
 export default TopRatedProducts;
