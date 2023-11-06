@@ -128,11 +128,11 @@ export function createProduct(productId, category, callback) {
 }
 
 // READ all products
-export function readAllProducts() {
+export function readAllProducts(callback) {
   const productsRef = ref(db, 'products');
   onValue(productsRef, (snapshot) => {
     const products = snapshot.val();
-    // Handle the list of products
+    callback(products)
   });
 }
 
@@ -327,7 +327,7 @@ export function createStore(storeId, storeName, storeData) {
 }
 
 // READ all stores
-export function readAllStores() {
+export function readAllStores2() {
   const storesRef = ref(db, 'stores');
   onValue(storesRef, (snapshot) => {
     const stores = snapshot.val();

@@ -1,8 +1,37 @@
+import { async } from "@firebase/util";
 import contentfulConfig from "./contentfulConfiguration";
 
 const contentfulController = () => {
 
     const { client } = contentfulConfig();
+
+    const getProductContent = async (productId) => {
+        try {
+            const entries = await client.getEntries({
+                content_type: "product",
+                select: "fields",
+                order: "fields.name",
+                "fields.id": productId
+            });
+
+            const sanitizedEntries = entries.items.map((item) => {
+                const imagesArray = item.fields.images
+
+                const images = imagesArray.map((item) => {
+                    return item.fields
+                });
+
+                return {
+                    ...item.fields,
+                    images
+                };
+            });
+
+            return sanitizedEntries;
+        } catch (error) {
+            console.log(`Error getting product: ${error}`)
+        }
+    }
 
     const getAllProductsContent = async () => {
         try {
@@ -112,7 +141,7 @@ const contentfulController = () => {
         }
     }
 
-    return { getAllProductsContent, getStoreProductsContent, getStoreContent, getProductsContentByCategory };
+    return { getProductContent, getAllProductsContent, getStoreProductsContent, getStoreContent, getProductsContentByCategory };
 };
 
 export default contentfulController;

@@ -1,20 +1,36 @@
 import React, { useEffect, useState } from 'react';
 import CardProduct from '../components/cardProduct/cardProduct';
 import CardStore from '../components/cardStore/cardStore';
-import { readProduct, createProduct, readAllStoreProducts, readStore } from '../service/firebase/firebaseController';
+import { readProduct, createProduct, readAllStoreProducts, readStore, readAllProducts } from '../service/firebase/firebaseController';
 import contentfulConfig from '../service/contentful/contentfulConfiguration';
 import "./Products.css";
 
 function Products() {
-    const [store, setStore] = useState([]);
+    const [store1, setStore1] = useState([]);
+    const [store2, setStore2] = useState([]);
+    const [store3, setStore3] = useState([]);
+    const [store4, setStore4] = useState([]);
+    const [products, setProducts] = useState([]);
+
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
 
     useEffect(() => {
         const fetchData = async () => {
+            readAllProducts((products) => {
+                setProducts(products)
+            })
           try {
-            const response = await readStore("areia-moda").then((response => setStore(response)));
-            setData(response);
+            const response1 = await readStore("areia-moda").then((response => setStore1(response)));
+            const response2 = await readStore("charm-chic").then((response => setStore2(response)));
+            const response3 = await readStore("estilo-fino").then((response => setStore3(response)));
+            const response4 = await readStore("loja-iracema").then((response => setStore4(response)));
+
+            setData(response1);
+            setData(response2);
+            setData(response3);
+            setData(response4);
+
           } catch (error) {
             setError(error);
           } finally {
@@ -23,7 +39,9 @@ function Products() {
         };
       
         fetchData();
-      }, [readStore]);
+      }, [readStore, readAllProducts]);
+
+      const productArray = Object.values(products)
 
     return (
         <div className="bodyContainer">
@@ -35,9 +53,20 @@ function Products() {
                         isLoading? (
                             <p></p>
                         ) : (
+                            <div className="card-grid">
                             <CardStore 
-                                store = { store }
+                                store = { store1 }
                             />
+                            <CardStore 
+                                store = { store2 }
+                            />
+                            <CardStore 
+                                store = { store3 }
+                            />
+                            <CardStore 
+                                store = { store4 }
+                            />
+                            </div>
                         )
                     }
                 </div>
@@ -45,15 +74,15 @@ function Products() {
             <div className="all-container">
                 <h1 className="title">Produtos</h1>
                 <div className="card-grid">
-                { content.map((product, index) => (
-                <CardProduct 
-                    id={products.id}
-                    key={index}
-                    title={product.name}
-                    price={product.price}
-                    image={product.images[0].file.url}
-                />
-            )) }
+                    {
+                        productArray
+                            .slice(0, 8)
+                            .map((product) => (
+                                <CardProduct
+                                    product = { product }
+                                />
+                        ))
+                    }
                 </div>
             </div>
             
