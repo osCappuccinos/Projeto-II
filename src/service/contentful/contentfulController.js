@@ -1,12 +1,8 @@
-import { createClient } from "contentful";
+import contentfulConfig from "./contentfulConfiguration";
 
-const contentfulConfig = () => {
+const contentfulController = () => {
 
-    const client = createClient({
-        space: "kw4ib93qcl5n",
-        accessToken: "PW2eCE2_FsOgzJCcDQjltadtHM4sBq2vbqvCzEQWjrg",
-        host: "cdn.contentful.com"
-    });
+    const { client } = contentfulConfig();
 
     const getAllProductsContent = async () => {
         try {
@@ -116,8 +112,7 @@ const contentfulConfig = () => {
         }
     }
 
-
     return { getAllProductsContent, getStoreProductsContent, getStoreContent, getProductsContentByCategory };
-}
+};
 
-export default contentfulConfig;
+export default contentfulController;

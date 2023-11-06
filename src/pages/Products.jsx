@@ -1,22 +1,29 @@
 import React, { useEffect, useState } from 'react';
 import CardProduct from '../components/cardProduct/cardProduct';
 import CardStore from '../components/cardStore/cardStore';
-import { readProduct, createProduct } from '../service/firebaseController';
-import contentfulConfig from '../service/contentful/contentful-config';
+import { readProduct, createProduct, readAllStoreProducts, readStore } from '../service/firebase/firebaseController';
+import contentfulConfig from '../service/contentful/contentfulConfiguration';
 import "./Products.css";
 
 function Products() {
-    const [products, setProducts] = useState([]);
+    const [store, setStore] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
-        readProduct('10', (error, data) => {
-            setProducts(data);
-        });
-    });
-
-    createProduct("10", "accessory", (data) => {
-        console.log(data)
-    })
+        const fetchData = async () => {
+          try {
+            const response = await readStore("areia-moda").then((response => setStore(response)));
+            setData(response);
+          } catch (error) {
+            setError(error);
+          } finally {
+            setIsLoading(false);
+          }
+        };
+      
+        fetchData();
+      }, [readStore]);
 
     return (
         <div className="bodyContainer">
@@ -24,30 +31,15 @@ function Products() {
             <div className="all-container">
                 <h1 className="title">Novas tendências na Ruma</h1>
                 <div className="card-grid">
-                    <CardStore 
-                        image1="https://photos.enjoei.com.br/public/240x240/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy8yOTM2NjE4OC81NWY5YTNmMjA5YzA1MzNmOWY2OWNhNTkwMTE3ZTkwMS5qcGc"
-                        image2="https://photos.enjoei.com.br/public/240x240/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy81ODQ4NjI2LzdkYjZhZTRjNzRkYTdiMDBhYzg3MGYzODhmNzc3YWY5LmpwZw"
-                        image3="https://photos.enjoei.com.br/public/240x240/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy82NDY4MzcvNWViODY4ZGIwYmI0MDE5YmRkZDk2NGEzYzJlYTRkMTcuanBn"
-                        storeName="Bags&Co"
-                    />
-                    <CardStore 
-                        image1="https://photos.enjoei.com.br/public/240x240/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy8yOTM2NjE4OC81NWY5YTNmMjA5YzA1MzNmOWY2OWNhNTkwMTE3ZTkwMS5qcGc"
-                        image2="https://photos.enjoei.com.br/public/240x240/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy81ODQ4NjI2LzdkYjZhZTRjNzRkYTdiMDBhYzg3MGYzODhmNzc3YWY5LmpwZw"
-                        image3="https://photos.enjoei.com.br/public/240x240/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy82NDY4MzcvNWViODY4ZGIwYmI0MDE5YmRkZDk2NGEzYzJlYTRkMTcuanBn"
-                        storeName="Bags&Co"
-                    />
-                    <CardStore 
-                        image1="https://photos.enjoei.com.br/public/240x240/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy8yOTM2NjE4OC81NWY5YTNmMjA5YzA1MzNmOWY2OWNhNTkwMTE3ZTkwMS5qcGc"
-                        image2="https://photos.enjoei.com.br/public/240x240/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy81ODQ4NjI2LzdkYjZhZTRjNzRkYTdiMDBhYzg3MGYzODhmNzc3YWY5LmpwZw"
-                        image3="https://photos.enjoei.com.br/public/240x240/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy82NDY4MzcvNWViODY4ZGIwYmI0MDE5YmRkZDk2NGEzYzJlYTRkMTcuanBn"
-                        storeName="Bags&Co"
-                    />
-                    <CardStore 
-                        image1="https://photos.enjoei.com.br/public/240x240/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy8yOTM2NjE4OC81NWY5YTNmMjA5YzA1MzNmOWY2OWNhNTkwMTE3ZTkwMS5qcGc"
-                        image2="https://photos.enjoei.com.br/public/240x240/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy81ODQ4NjI2LzdkYjZhZTRjNzRkYTdiMDBhYzg3MGYzODhmNzc3YWY5LmpwZw"
-                        image3="https://photos.enjoei.com.br/public/240x240/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy82NDY4MzcvNWViODY4ZGIwYmI0MDE5YmRkZDk2NGEzYzJlYTRkMTcuanBn"
-                        storeName="Bags&Co"
-                    />
+                    {
+                        isLoading? (
+                            <p></p>
+                        ) : (
+                            <CardStore 
+                                store = { store }
+                            />
+                        )
+                    }
                 </div>
             </div>
             <div className="all-container">

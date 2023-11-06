@@ -1,3 +1,4 @@
+import { useCallback } from "react";
 import { db } from "./firebase-config";
 import { ref, set, onValue, get, update, remove, child, push } from "firebase/database";
 // import { getAuth } from "firebase/auth";
@@ -335,18 +336,21 @@ export function readAllStores() {
 }
 
 // READ a store
-export function readStore(storeId) {
+export const readStore = async (storeId) => {
   const storeRef = ref(db, `stores/${storeId}`);
-  get(storeRef).then((snapshot) => {
-    if (snapshot.exists()) {
-      const store = snapshot.val();
-      // Handle the store data
-    } else {
-      console.log("Store not found");
-    }
-  }).catch((error) => {
-    console.error(error);
-  });
+  const response = await get (storeRef)
+    .then((snapshot) => {
+      if(snapshot.exists()) {
+        return snapshot.val()
+      } else {
+        console.log(`Store not found`);
+        return;
+      }
+    })
+    .catch((error) => {
+      console.log(`Error to get store: ${error}`);
+    })
+    return response;
 }
 
 // UPDATE a store
@@ -370,13 +374,25 @@ export function createStoreProduct(storeId, productId, productData) {
 }
 
 // read all store products
-export function readAllStoreProducts(storeId) {
+export function readAllStoreProducts2(storeId, callback) {
   const productsRef = ref(db, `stores/${storeId}/products`);
   onValue(productsRef, (snapshot) => {
     const products = snapshot.val();
-    // Handle the list of store products
+    callback(null, products);
   });
 }
+
+export const readAllStoreProducts = async (storeId) => {
+  const productsRef = ref(db, `stores/${storeId}/products`);
+  const response = await get(productsRef)
+    .then((snapshot) => {
+    return snapshot.val()
+  })
+    .catch((error) => {
+      console.log(`Error to get products: ${error}`)
+    })
+  return response;
+};
 
 // read a store product
 export function readStoreProduct(storeId, productId) {
