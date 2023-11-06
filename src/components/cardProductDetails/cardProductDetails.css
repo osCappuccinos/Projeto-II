@@ -7,7 +7,6 @@
     border-radius: 12px;
     border: 1px solid #DFDFDF;
     width: 65vw;
-    max-width: 70vw;
     height:fit-content;
     margin:40px;
 }
@@ -141,7 +140,7 @@ input{
 
 @media only screen and (max-width: 900px) {
     .product-details-container{
-        width:100vw;
+        width:95%;
         margin-left:0;
         margin-right:0;
     }
@@ -163,6 +162,7 @@ input{
         align-items: flex-end;
         justify-content: left;
         flex-wrap: wrap;
+        width:100%;
     }
     .info-block h1,h2{
         text-align: left;
@@ -170,7 +170,7 @@ input{
         font-size:1.3em;
     }
     .addCart{
-        width:90%;
+        width:100%;
     }
     .cor{
         margin:0;
