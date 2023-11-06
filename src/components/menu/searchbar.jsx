@@ -1,10 +1,11 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { searchProductsByName } from '../../service/firebase-search-function';
+import './navbar.css'; // Certifique-se de que o caminho para o arquivo CSS está correto
 
 function SearchBar() {
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState([]);
-  const [hasSearched, setHasSearched] = useState(false); // A flag to know if the user has performed a search
+  const [hasSearched, setHasSearched] = useState(false);
 
   const handleKeyPress = (event) => {
     if (event.key === 'Enter') {
@@ -13,41 +14,47 @@ function SearchBar() {
   };
 
   const handleSearch = () => {
+    if (searchTerm.trim() === '') {
+      setSearchResults([]);
+      setHasSearched(false);
+      return;
+    }
     searchProductsByName(searchTerm, (error, results) => {
       if (error) {
         console.error("Error fetching search results:", error);
         return;
       }
       setSearchResults(results);
-      setHasSearched(true); // set this flag to true once a search is performed
+      setHasSearched(true);
     });
   };
 
   return (
-    <div class="search-bar">
+    <div className="search-bar">
       <input
         type="text"
         placeholder="Busque um produto..."
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
-        onKeyPress={handleKeyPress} // Adicionado manipulador de evento onKeyPress
+        onKeyPress={handleKeyPress}
       />
-      <button onClick={handleSearch}>Search</button>
+      <button onClick={handleSearch}>Buscar</button>
 
-      <div>
-        <h2>Search Results:</h2>
-        {hasSearched && searchResults.length === 0 ? (
-          <p>No products found for the given search term.</p>
-        ) : (
-          <ul>
-            {searchResults.map((product, index) => (
-              <li key={index}>
+      {hasSearched && (
+        <div className="search-results-dropdown">
+          {searchResults.length > 0 ? (
+            searchResults.map((product, index) => (
+              <div key={index} className="search-result-item">
                 {product.name} - Vendido por: {product.storeName}
-              </li>
-            ))}
-          </ul>
-        )}
-      </div>
+              </div>
+            ))
+          ) : (
+            <div className="search-no-results">
+              Nenhum produto encontrado.
+            </div>
+          )}
+        </div>
+      )}
     </div>
   );
 }

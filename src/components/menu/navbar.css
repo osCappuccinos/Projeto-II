@@ -14,13 +14,42 @@
     background-color: #CFCFCF;
 }
 .search-bar input[type="text"] {
-    width: 70%; /* Make the input take the full width of its parent */
-    height: 100%; /* Make the input take the full height of its parent */
-    padding: 10px; /* Add some padding inside the input */
-    font-size: 1em; /* Adjust font size as needed */
-    border: 1px solid #ccc; /* Optional: adds a border */
-    box-sizing: border-box; /* Ensures padding doesn't affect the final size */
+    width: 70%; 
+    height: 100%; 
+    padding: 10px;
+    font-size: 1em; 
+    border: 1px solid #ccc; 
+    box-sizing: border-box;
 }
+
+/* Estilo para o menu dropdown de resultados da busca */
+.search-results-dropdown {
+    position: absolute;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    width: 25%; 
+    max-height: 300px; 
+    overflow-y: auto;
+    z-index: 100; 
+  }
+  
+  .search-result-item {
+    padding: 10px;
+    border-bottom: 1px solid #CFCFCF;
+    cursor: pointer;
+  }
+  
+  .search-result-item:hover {
+    background-color: #CFCFCF;
+  }
+  
+  .search-no-results {
+    padding: 10px;
+    text-align: center;
+  }
+  
 
 .orders-and-cart{
     display: flex;
