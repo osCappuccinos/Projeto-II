@@ -63,7 +63,9 @@ function SearchBar() {
           {searchResults.length > 0 ? (
             searchResults.map((product, index) => (
               <div key={index} className="search-result-item">
+                <a href={`/product/${product.id}`}>
                 {product.name} - Vendido por: {product.storeName}
+                </a>
               </div>
             ))
           ) : (
