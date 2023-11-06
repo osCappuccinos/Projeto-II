@@ -1,11 +1,29 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { searchProductsByName } from '../../service/firebase-search-function';
 import './navbar.css'; // Certifique-se de que o caminho para o arquivo CSS está correto
 
 function SearchBar() {
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState([]);
-  const [hasSearched, setHasSearched] = useState(false);
+  const [isDropdownVisible, setIsDropdownVisible] = useState(false);
+  const dropdownRef = useRef(null); // Ref para o dropdown
+
+  useEffect(() => {
+    // Função para verificar se o clique foi fora do dropdown
+    function handleClickOutside(event) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsDropdownVisible(false); // Esconde o dropdown
+      }
+    }
+
+    // Adiciona o ouvinte de evento quando o componente é montado
+    document.addEventListener("mousedown", handleClickOutside);
+
+    // Limpa o evento quando o componente é desmontado
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [dropdownRef]);
 
   const handleKeyPress = (event) => {
     if (event.key === 'Enter') {
@@ -16,7 +34,7 @@ function SearchBar() {
   const handleSearch = () => {
     if (searchTerm.trim() === '') {
       setSearchResults([]);
-      setHasSearched(false);
+      setIsDropdownVisible(false);
       return;
     }
     searchProductsByName(searchTerm, (error, results) => {
@@ -25,7 +43,7 @@ function SearchBar() {
         return;
       }
       setSearchResults(results);
-      setHasSearched(true);
+      setIsDropdownVisible(true); // Mostra o dropdown com os resultados
     });
   };
 
@@ -40,8 +58,8 @@ function SearchBar() {
       />
       <button onClick={handleSearch}>Buscar</button>
 
-      {hasSearched && (
-        <div className="search-results-dropdown">
+      {isDropdownVisible && (
+        <div className="search-results-dropdown" ref={dropdownRef}>
           {searchResults.length > 0 ? (
             searchResults.map((product, index) => (
               <div key={index} className="search-result-item">
