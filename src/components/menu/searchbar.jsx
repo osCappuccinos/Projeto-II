@@ -24,7 +24,7 @@ function SearchBar() {
   };
 
   return (
-    <div>
+    <div class="search-bar">
       <input
         type="text"
         placeholder="Busque um produto..."
