@@ -8,10 +8,18 @@
     justify-content: center;
 }
 
-.search-bar{
+.search-bar{    
     width: 30vw;
     height: 4vh;
-    background-color: #FFFFFF;
+    background-color: #CFCFCF;
+}
+.search-bar input[type="text"] {
+    width: 60%; /* Make the input take the full width of its parent */
+    height: 100%; /* Make the input take the full height of its parent */
+    padding: 10px; /* Add some padding inside the input */
+    font-size: 1em; /* Adjust font size as needed */
+    border: 1px solid #ccc; /* Optional: adds a border */
+    box-sizing: border-box; /* Ensures padding doesn't affect the final size */
 }
 
 .orders-and-cart{
