@@ -6,6 +6,12 @@ function SearchBar() {
   const [searchResults, setSearchResults] = useState([]);
   const [hasSearched, setHasSearched] = useState(false); // A flag to know if the user has performed a search
 
+  const handleKeyPress = (event) => {
+    if (event.key === 'Enter') {
+      handleSearch();
+    }
+  };
+
   const handleSearch = () => {
     searchProductsByName(searchTerm, (error, results) => {
       if (error) {
@@ -24,24 +30,25 @@ function SearchBar() {
         placeholder="Busque um produto..."
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
+        onKeyPress={handleKeyPress} // Adicionado manipulador de evento onKeyPress
       />
       <button onClick={handleSearch}>Search</button>
 
       <div>
-      <h2>Search Results:</h2>
-      {hasSearched && searchResults.length === 0 ? (
-        <p>No products found for the given search term.</p>
-      ) : (
-        <ul>
-          {searchResults.map((product, index) => (
-            <li key={index}>
-              {product.name} - Vendido por: {product.storeName}
-            </li>
-          ))}
-        </ul>
-      )}
+        <h2>Search Results:</h2>
+        {hasSearched && searchResults.length === 0 ? (
+          <p>No products found for the given search term.</p>
+        ) : (
+          <ul>
+            {searchResults.map((product, index) => (
+              <li key={index}>
+                {product.name} - Vendido por: {product.storeName}
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
     </div>
-  </div>
   );
 }
 
