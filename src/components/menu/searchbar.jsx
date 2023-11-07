@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { searchProductsByName } from '../../service/firebase-search-function';
+import { searchProductsByName } from '../../service/firebase/firebase-search-function';
 import './navbar.css'; // Certifique-se de que o caminho para o arquivo CSS está correto
 
 function SearchBar() {
@@ -63,7 +63,7 @@ function SearchBar() {
           {searchResults.length > 0 ? (
             searchResults.map((product, index) => (
               <div key={index} className="search-result-item">
-                <a href={`/product/${product.id}`}>
+                <a href={`/produtos/${product.id}`}>
                 {product.name} - Vendido por: {product.storeName}
                 </a>
               </div>
