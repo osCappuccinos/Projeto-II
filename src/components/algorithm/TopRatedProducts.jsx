@@ -3,6 +3,7 @@ import { fetchTopRatedProducts } from '../../service/firebase/firebaseController
 import contentfulController from '../../service/contentful/contentfulController'; // Ajuste o caminho conforme necessário
 import TopCard from './TopCard';
 import './TopRatedProducts.css';
+import CardProduct from '../cardProduct/cardProduct';
 
 const { getAllProductsContent } = contentfulController();
 
@@ -63,12 +64,8 @@ function TopRatedProducts() {
         <div>
             <div className="productRow">
                 {products.map(product => (
-                    <TopCard 
-                        key={product.id} 
-                        id={product.id} 
-                        title={product.name} 
-                        image={product.image}
-                        price={product.price}
+                    <CardProduct
+                        product = { product }
                     />
                 ))}
             </div>
