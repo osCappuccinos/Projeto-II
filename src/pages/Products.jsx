@@ -3,6 +3,7 @@ import CardProduct from '../components/cardProduct/cardProduct';
 import CardStore from '../components/cardStore/cardStore';
 import { readProduct, createProduct, readAllStoreProducts, readStore, readAllProducts } from '../service/firebase/firebaseController';
 import contentfulConfig from '../service/contentful/contentfulConfiguration';
+import TopRatedProducts from '../components/algorithm/TopRatedProducts'
 import "./Products.css";
 
 function Products() {
@@ -74,15 +75,7 @@ function Products() {
             <div className="all-container">
                 <h1 className="title">Produtos</h1>
                 <div className="card-grid">
-                    {
-                        productArray
-                            .slice(0, 8)
-                            .map((product) => (
-                                <CardProduct
-                                    product = { product }
-                                />
-                        ))
-                    }
+                    <TopRatedProducts />
                 </div>
             </div>
             

@@ -61,7 +61,6 @@ function TopRatedProducts() {
 
     return (
         <div>
-            <h2>Produtos mais bem avaliados</h2>
             <div className="productRow">
                 {products.map(product => (
                     <TopCard 
