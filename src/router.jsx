@@ -8,7 +8,7 @@ export const routes = [
       element: <App />, 
       children: [
          {
-            path: '/produtos',
+            path: '/',
             element: <Products />
          },
          {

@@ -1,14 +1,33 @@
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import Comment from "../components/comment/comment";
 import CardProductDetails from "../components/cardProductDetails/cardProductDetails";
+import contentfulController from '../service/contentful/contentfulController';
 import "./ProductDetails.css";
 
 const ProductDetails = (props) => {
+    const { id } = useParams();
+    const { getProductContent } = contentfulController();
+
+    const [content, setContent] = useState([]);
+
+    useEffect(() => {
+        async function fetchData() {
+          try {
+            const response = await getProductContent(id);
+            setContent(response);
+          } catch (error) {
+            console.error('Error fetching data:', error);
+          }
+        }
+    
+        fetchData();
+      }, [getProductContent]);
+
     return (
         <div className="info-container">
             <CardProductDetails
-                productName="Bolsa Clutch Azul"
-                storeName="Loja Iracema"
-                price="80,75"
+                content = { content.length > 0 ? content : [] }
             />
             
         </div>

@@ -22,28 +22,39 @@ function CardProductDetails(props) {
         setColor(event.target.value);
     }
 
+    const name = props.content.length > 0 ? props.content[0].name : [];
+    const price = props.content.length > 0 ? props.content[0].price : [];
+    const images = props.content.length > 0 ? props.content[0].images : [];
+    const colors = props.content.length > 0 ? props.content[0].color : [];
+    const sizes = props.content.length > 0 ? props.content[0].Sizes : [];
+    const firstProductImages = props.content.length > 0 ? props.content[0].images[0].file.url : '';
+
+    //console.log(props.content)
+
+
     return (
         <div className="product-details-container">
             <div className="product-info">
                 <div className="photos">
                     <div className="small-photos">
-                        <img src="https://photos.enjoei.com.br/clutch-michael-kors-couro-92532468/828xN/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy82NDY4MzcvNTQ5YWY4NWNhN2E0NjhmN2U0OWZlYjExZDAzMTVmZGQuanBn"/>
-                        <img src="https://photos.enjoei.com.br/clutch-michael-kors-couro-92532468/828xN/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy82NDY4MzcvYWE3Nzk3MzkxMzc5ZGEwMzFhZTM5ZDI5NmNmMTM3ZGQuanBn"/>
-                        <img src="https://photos.enjoei.com.br/clutch-michael-kors-couro-92532468/828xN/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy82NDY4MzcvNzU1OTgyN2JkM2JmZmI0OThmMjIyNGVkOTFiZDhjZTMuanBn"/>
-                        <img src="https://photos.enjoei.com.br/clutch-michael-kors-couro-92532468/828xN/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy82NDY4MzcvMGQ1MmQxYmI2NWVhNDFiYTk5YjdmNmE1MTgxMjVlYTcuanBn"/>
+                        {
+                            images.slice(1).map((image, index) => (
+                                <img key={index} src={image.file.url} alt={`Product Image ${index}`} />
+                            ))
+                        }
                     </div>
                     <div className="big-photo">
-                        <img src="https://photos.enjoei.com.br/clutch-michael-kors-couro-92532468/1200xN/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy82NDY4MzcvNWViODY4ZGIwYmI0MDE5YmRkZDk2NGEzYzJlYTRkMTcuanBn"/>
+                        <img src={firstProductImages}/>
                     </div>
                 </div>
                 <div className="textual-info">
                     <div className="info-block">
-                        <h2>{props.productName}</h2>
-                        <p>Vendido por {props.storeName}</p>
+                        <h2>{name}</h2>
+                        <p>Vendido por {props.content.store}</p>
                         <p>8 avaliações</p>
                     </div>
                     <ProductPrice
-                        price="80.75"
+                        price={price}
                         installments="5"
                     />
                     <div className="info-block">
@@ -54,8 +65,11 @@ function CardProductDetails(props) {
                                     id="simple-select"
                                     value={color}
                                     onChange={handleChangeColor}>
-                                    <MenuItem value={10}>Azul</MenuItem>
-                                    <MenuItem value={20}>Branco</MenuItem>
+                                    {
+                                        colors.map((color, index) => (
+                                            <MenuItem value={index}>{color}</MenuItem>
+                                        ))
+                                    }                                    
                                 </Select>
                             </FormControl>
                         </div>
@@ -65,11 +79,12 @@ function CardProductDetails(props) {
                                     <Select
                                         id="simple-select"
                                         value={size}
-                                        onChange={handleChangeSize}
-                                    >
-                                        <MenuItem value={10}>P</MenuItem>
-                                        <MenuItem value={20}>M</MenuItem>
-                                        <MenuItem value={30}>G</MenuItem>
+                                        onChange={handleChangeSize}>
+                                        {
+                                            sizes.map((size, index) => (
+                                                <MenuItem value={index}>{size}</MenuItem>
+                                            ))
+                                        }
                                     </Select>
                             </FormControl>
                         </div>
