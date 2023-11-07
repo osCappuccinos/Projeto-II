@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { fetchTopRatedProducts } from '../../service/firebaseController'; // Ajuste o caminho conforme necessário
-import contentfulConfig from '../../service/contentful/contentful-config'; // Ajuste o caminho conforme necessário
+import { fetchTopRatedProducts } from '../../service/firebase/firebaseController'; // Ajuste o caminho conforme necessário
+import contentfulController from '../../service/contentful/contentfulController'; // Ajuste o caminho conforme necessário
 import TopCard from './TopCard';
 import './TopRatedProducts.css';
 
-const { getAllProductsContent } = contentfulConfig();
+const { getAllProductsContent } = contentfulController();
 
 function TopRatedProducts() {
   const [products, setProducts] = useState([]);
