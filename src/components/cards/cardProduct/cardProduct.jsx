@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import contentfulController from '../../service/contentful/contentfulController';
+import contentfulController from '../../../service/contentful/contentfulController';
 import "./cardProduct.css"
 
 function CardProduct(props) {

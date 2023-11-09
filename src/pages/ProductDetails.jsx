@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Comment from "../components/comment/comment";
-import CardProductDetails from "../components/cardProductDetails/cardProductDetails";
+import CardProductDetails from "../components/cards/cardProductDetails/cardProductDetails";
 import contentfulController from '../service/contentful/contentfulController';
 import "./ProductDetails.css";
 

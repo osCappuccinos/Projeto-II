@@ -1,0 +1,43 @@
+/* Default styles for all screen sizes */
+.basic-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .section-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #555;
+  }
+  
+  .sub-section-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #777;
+  }
+  
+  @media screen and (max-width: 767px) {
+    .basic-title {
+      font-size: 20px;
+    }
+    .section-title {
+      font-size: 18px;
+    }
+    .sub-section-title {
+      font-size: 16px;
+    }
+  }
+  
+  @media screen and (min-width: 768px) and (max-width: 1023px) {
+    .basic-title {
+      font-size: 22px;
+    }
+    .section-title {
+      font-size: 20px;
+    }
+    .sub-section-title {
+      font-size: 18px;
+    }
+  }
+  

@@ -3,7 +3,7 @@ import { fetchTopRatedProducts } from '../../service/firebase/firebaseController
 import contentfulController from '../../service/contentful/contentfulController'; // Ajuste o caminho conforme necessário
 import TopCard from './TopCard';
 import './TopRatedProducts.css';
-import CardProduct from '../cardProduct/cardProduct';
+import CardProduct from '../cards/cardProduct/cardProduct';
 
 const { getAllProductsContent } = contentfulController();
 

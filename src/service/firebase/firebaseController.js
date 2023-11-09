@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import { db } from "./firebase-config";
-import { ref, set, onValue, get, update, remove, orderByChild, limitToLast, query } from "firebase/database";
+import { getDatabase, ref, set, onValue, get, update, remove, orderByChild, limitToLast, query, child } from "firebase/database";
 // import { getAuth } from "firebase/auth";
 
 export function createUser(userId, name, email, password, callback) {
@@ -131,15 +131,21 @@ export function createProduct(productId, category, callback) {
     );
 }
 
-// READ all products
-export function readAllProducts(callback) {
-  const productsRef = ref(db, 'products');
-  onValue(productsRef, (snapshot) => {
-    const products = snapshot.val();
-    callback(products)
+export const readAllProducts = async () => {
+  const dbRef = ref(getDatabase());
+  const response = get(child(dbRef, `products`)).then((snapshot) => {
+    if (snapshot.exists()) {
+      return snapshot.val();
+    } else {
+      console.log("No data available");
+      return;
+    }
+  }).catch((error) => {
+    console.error(error);
   });
-}
 
+  return response;
+}
 
 // READ a product
 export function readProduct(productId, callback) {
@@ -387,12 +393,20 @@ export function createStore(storeId, storeName, storeData) {
 }
 
 // READ all stores
-export function readAllStores2() {
-  const storesRef = ref(db, 'stores');
-  onValue(storesRef, (snapshot) => {
-    const stores = snapshot.val();
-    // Handle the list of stores
+export const readAllStores = async () => {
+  const dbRef = ref(getDatabase());
+  const response = get(child(dbRef, `stores`)).then((snapshot) => {
+    if (snapshot.exists()) {
+      return snapshot.val();
+    } else {
+      console.log("No data available");
+      return;
+    }
+  }).catch((error) => {
+    console.error(error);
   });
+
+  return response;
 }
 
 // READ a store

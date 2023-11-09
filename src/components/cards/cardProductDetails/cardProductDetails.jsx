@@ -1,13 +1,13 @@
 import "./cardProductDetails.css"
 import React, { useEffect, useState } from 'react';
-import Comment from "../comment/comment"
+import Comment from "../../comment/comment"
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
-import Ratings from "../ratings/ratings";
-import ShippingInfo from "../shippingInfo/shippingInfo";
-import ProductPrice from "../productPrice/productPrice";
+import Ratings from "../../ratings/ratings";
+import ShippingInfo from "../../shippingInfo/shippingInfo";
+import ProductPrice from "../../productPrice/productPrice";
 
 function CardProductDetails(props) {
 
