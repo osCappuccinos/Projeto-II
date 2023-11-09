@@ -1,6 +1,8 @@
+import { child, get, getDatabase, limitToLast, onValue, orderByChild, query, ref, remove, set, update } from "firebase/database";
 import { useCallback } from "react";
+
 import { db } from "./firebase-config";
-import { getDatabase, ref, set, onValue, get, update, remove, orderByChild, limitToLast, query, child } from "firebase/database";
+
 // import { getAuth } from "firebase/auth";
 
 export function createUser(userId, name, email, password, callback) {
@@ -266,28 +268,24 @@ export function deleteProductReview(productId, reviewId) {
   remove(reviewRef);
 }
 
-
-
 // Fetch Popular Products
-
-export function fetchTopRatedProducts(limit = 5, callback) {
+export const fetchTopRatedProducts = async (limit) => {
   const productsRef = ref(db, 'products');
   const topRatedQuery = query(productsRef, orderByChild('averageRating'), limitToLast(limit));
-  
-  get(topRatedQuery).then(snapshot => {
+  const response = get(topRatedQuery).then(snapshot => {
     if (snapshot.exists()) {
-      const topRatedProducts = snapshot.val();
-      callback(null, topRatedProducts);
+      return snapshot.val();
     } else {
-      callback("Nenhum produto achado");
+      console.log("No data available");
+      return
     }
-  }).catch(error => {
-    callback(error);
+  }).catch((error) => {
+    console.error(error);
+    return error;
   });
+
+  return response;
 }
-
-
-
 
 // INVENTORIES
 // create product inventory
