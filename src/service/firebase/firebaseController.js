@@ -150,21 +150,20 @@ export const readAllProducts = async () => {
 }
 
 // READ a product
-export function readProduct(productId, callback) {
-    const productRef = ref(db, 'products/' + productId);
-    get(productRef)
-      .then((snapshot) => {
-        if (snapshot.exists()) {
-          const productData = snapshot.val();
-          callback(null, productData);
-        } else {
-          callback("Product not found");
-        }
-      })
-      .catch((error) => {
-        callback(error);
-      });
-  }
+export const readProduct = async (productId) => {
+  const dbRef = ref(getDatabase());
+  const response = get(child(dbRef, 'products/' + productId)).then((snapshot) => {
+    if (snapshot.exists()) {
+      return snapshot.val();
+    } else {
+      callback("No data available");
+    }
+  }).catch((error) => {
+    console.log(error);
+  });
+
+  return response;
+}
 
 
 // UPDATE a product

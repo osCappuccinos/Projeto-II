@@ -27,6 +27,7 @@ function Products() {
         } catch (error) {
             console.error("Error fetching stores:", error);
             setError(error.message);
+            SetStatus(FETCH_STATUS.ERROR);
         }
     };
 

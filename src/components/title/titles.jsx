@@ -13,4 +13,8 @@ const H3 = ({ text }) => (
   <h3 className="h3">{text}</h3>
 );
 
-export { H1, H2, H3 };
+const H4 = ({ text }) => (
+  <p className="h4">{text}</p>
+);
+
+export { H1, H2, H3, H4 };
