@@ -1,23 +1,24 @@
 import React, { useEffect, useState } from 'react';
-import Ratings from "../components/ratings/ratings";
 import { useParams } from 'react-router-dom';
 
 import Comment from "../components/comment/comment"
-import ProductPrice from "../components/productPrice/productPrice";
-import ShippingInfo from "../components/shippingInfo/shippingInfo";
-import contentfulController from '../service/contentful/contentfulController';
-import { FETCH_STATUS } from '../service/fetchStatus';
-import { readProduct } from "../service/firebase/firebaseController";
 import { ImagesGallery } from '../components/imageGallery/imagesGallery';
-import { H2 } from '../components/title/titles'
+import ProductPrice from "../components/productPrice/productPrice";
+import Ratings from "../components/ratings/ratings";
 import ColorSelector from '../components/selectors/colorSelector';
 import SizeSelector from '../components/selectors/sizeSelector';
+import ShippingInfo from "../components/shippingInfo/shippingInfo";
+import { H2 } from '../components/title/titles'
+import contentfulController from '../service/contentful/contentfulController';
+import { FETCH_STATUS } from '../service/fetchStatus';
+import useFirebaseProducts from '../service/firebase/useFirebaseProducts';
 
 import "./ProductDetails.css";
 
 function ProductDetails() {
   const { id } = useParams();
   const { getProductContent } = contentfulController();
+  const { readProduct } = useFirebaseProducts();
 
   const [content, setContent] = useState([]);
   const [product, setProduct] = useState([]);

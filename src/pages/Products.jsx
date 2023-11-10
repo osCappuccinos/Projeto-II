@@ -5,11 +5,13 @@ import { Banner } from '../components/banner/banner';
 import { CardStoreGroup } from '../components/cards/cardStore/cardStoreGroup';
 import { H1 } from '../components/title/titles';
 import { FETCH_STATUS } from '../service/fetchStatus';
-import { readAllStores } from '../service/firebase/firebaseController';
+import useFirebaseStores from '../service/firebase/useFirebaseStores';
 
 import './Products.css';
 
 function Products() {
+    const { readAllStores } = useFirebaseStores();
+
     const [stores, setStores] = useState(null);
     const [status, SetStatus] = useState(FETCH_STATUS.IDLE);
     const [error, setError] = useState(null);
@@ -44,7 +46,7 @@ function Products() {
             <div className="bodyContainer">
                 <Banner />
                 <H1 text="Novas tendências na Ruma" />
-                <CardStoreGroup stores={ stores } />
+                <CardStoreGroup stores={stores} />
                 <div className="all-container">
                     <H1 text="Produtos" />
                     <TopRatedProducts />

@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
 
 import { FETCH_STATUS } from '../../service/fetchStatus';
-import { fetchTopRatedProducts } from '../../service/firebase/firebaseController';
+import useFirebaseRecommendations from '../../service/firebase/useFirebaseRecommendations';
 import { CardProductGroup } from '../cards/cardProduct/cardProductGroup';
 
 import './TopRatedProducts.css';
 
 function TopRatedProducts() {
+    const { fetchTopRatedProducts } = useFirebaseRecommendations();
+
     const [products, setProducts] = useState([]);
     const [status, SetStatus] = useState(FETCH_STATUS.IDLE);
     const [error, setError] = useState(null);
