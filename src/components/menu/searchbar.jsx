@@ -1,50 +1,60 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { searchProductsByName } from '../../service/firebase/firebase-search-function';
-import './navbar.css'; // Certifique-se de que o caminho para o arquivo CSS está correto
+import { debounce } from 'lodash';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
+
+import useFirebaseSearch from '../../service/firebase/useFirebaseSearch';
+
+// Assuming lodash is installed
+import './navbar.css';
 
 function SearchBar() {
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   const [isDropdownVisible, setIsDropdownVisible] = useState(false);
-  const dropdownRef = useRef(null); // Ref para o dropdown
+  const dropdownRef = useRef(null);
 
-  useEffect(() => {
-    // Função para verificar se o clique foi fora do dropdown
-    function handleClickOutside(event) {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-        setIsDropdownVisible(false); // Esconde o dropdown
-      }
-    }
+  const { searchProductsByName } = useFirebaseSearch();
 
-    // Adiciona o ouvinte de evento quando o componente é montado
-    document.addEventListener("mousedown", handleClickOutside);
-
-    // Limpa o evento quando o componente é desmontado
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [dropdownRef]);
-
-  const handleKeyPress = (event) => {
-    if (event.key === 'Enter') {
-      handleSearch();
-    }
-  };
-
-  const handleSearch = () => {
-    if (searchTerm.trim() === '') {
-      setSearchResults([]);
-      setIsDropdownVisible(false);
-      return;
-    }
-    searchProductsByName(searchTerm, (error, results) => {
-      if (error) {
-        console.error("Error fetching search results:", error);
+  const debouncedSearch = useCallback(
+    debounce(async (query) => {
+      if (query.trim() === '') {
+        setSearchResults([]);
+        setIsDropdownVisible(false);
         return;
       }
-      setSearchResults(results);
-      setIsDropdownVisible(true); // Mostra o dropdown com os resultados
-    });
+
+      try {
+        const results = await searchProductsByName(query);
+        setSearchResults(results);
+        setIsDropdownVisible(results.length > 0);
+      } catch (error) {
+        console.error('Error fetching search results:', error);
+      }
+    }, 300),
+    []
+  ); // Debounce search input
+
+  useEffect(() => {
+    if (searchTerm) {
+      debouncedSearch(searchTerm);
+    } else {
+      setSearchResults([]);
+      setIsDropdownVisible(false);
+    }
+  }, [searchTerm, debouncedSearch]); // Trigger search on searchTerm change
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsDropdownVisible(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  const handleSearchClick = () => {
+    debouncedSearch(searchTerm);
   };
 
   return (
@@ -54,24 +64,22 @@ function SearchBar() {
         placeholder="Busque um produto..."
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
-        onKeyPress={handleKeyPress}
+        aria-label="Search Products"
       />
-      <button onClick={handleSearch}>Buscar</button>
+      <button onClick={handleSearchClick}>Buscar</button>
 
       {isDropdownVisible && (
         <div className="search-results-dropdown" ref={dropdownRef}>
           {searchResults.length > 0 ? (
-            searchResults.map((product, index) => (
-              <div key={index} className="search-result-item">
+            searchResults.map((product) => (
+              <div key={product.id} className="search-result-item">
                 <a href={`/produtos/${product.id}`}>
-                {product.name} - Vendido por: {product.storeName}
+                  {product.name} - Vendido por: {product.storeName}
                 </a>
               </div>
             ))
           ) : (
-            <div className="search-no-results">
-              Nenhum produto encontrado.
-            </div>
+            <div className="search-no-results">Nenhum produto encontrado.</div>
           )}
         </div>
       )}
