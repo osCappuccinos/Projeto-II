@@ -2,6 +2,11 @@
     text-align: left;
 }
 
+.smaller-container button{
+    margin:auto;
+    width: 100%;
+}
+
 .css-ahj2mt-MuiTypography-root {
     font-weight: 400;
     font-size: 0.8em !important;
