@@ -18,7 +18,7 @@ const Checkout_1 = (props) => {
                 />
                 <ShippingInfo/>
                 <ProductPrice 
-                    className="total"
+                    className="total-details"
                     price="80.75"
                     installments="5"
                 />
