@@ -1,87 +1,139 @@
-import { child, get, getDatabase, limitToLast, onValue, orderByChild, query, ref, remove, set, update } from "firebase/database";
-import { useCallback } from "react";
+import { child, get, getDatabase, ref, remove, set, update } from "firebase/database";
+import { useEffect } from "react";
 
-// PRODUCTS review
-// CREATE a product review
-export function createProductReview(productId, reviewId, reviewerName, reviewContent, rating) {
-    const reviewRef = ref(db, `products/${productId}/ratings/${reviewId}`);
-    set(reviewRef, {
-        name: reviewerName,
-        content: reviewContent,
-        rating: rating
-    }).then(() => {
-        updateProductAverageRating(productId, rating);
+import { db } from "./firebase-config";
+
+const useFirebaseReviews = () => {
+  const createProductReview = async (productId, clientId, comment, rating, storeId) => {
+    const reviewRef = ref(db, `reviews/${productId}/${clientId}`);
+
+    const data = {
+      productId: productId,
+      clientId: clientId,
+      comment: comment,
+      rating: rating,
+      storeId: storeId,
+    }
+
+    const response = set(reviewRef, data).then(() => {
+      return data;
+    }).catch((error) => {
+      console.log(error);
+      throw error;
     });
+
+    return response;
   }
-  
-  
-  // READ all product reviews
-  export function readAllProductReviews(productId) {
-    const reviewsRef = ref(db, `products/${productId}/reviews`);
-    onValue(reviewsRef, (snapshot) => {
-      const reviews = snapshot.val();
-      // Handle the list of reviews
-    });
-  }
-  
-  // READ a product review
-  export function readProductReview(productId, reviewId, callback) {
-    const reviewRef = ref(db, `products/${productId}/ratings/${reviewId}`);
-    get(reviewRef).then((snapshot) => {
+
+  const readAllReviews = async () => {
+    const dbRef = ref(getDatabase());
+    const response = get(child(dbRef, `reviews`)).then((snapshot) => {
       if (snapshot.exists()) {
-        const reviewData = snapshot.val();
-        callback(null, reviewData);
+        return snapshot.val();
       } else {
-        callback("Review not found");
+        console.log("No data available");
+        return;
       }
     }).catch((error) => {
-      callback(error);
+      console.error(error);
+      return error;
     });
-  }
-  
-  
-  // UPDATE a product review
-  export function updateProductReview(productId, reviewId, updatedReviewerName, updatedReviewContent, updatedRating) {
-    const reviewRef = ref(db, `products/${productId}/ratings/${reviewId}`);
-    get(reviewRef).then((snapshot) => {
-        if (snapshot.exists()) {
-            const previousRating = snapshot.val().rating;
-            update(reviewRef, {
-                name: updatedReviewerName,
-                content: updatedReviewContent,
-                rating: updatedRating
-            }).then(() => {
-                updateProductAverageRating(productId, updatedRating, previousRating);
-            });
-        }
-    });
-  }
-  
-  
-  // DELETE a product review
-  export function deleteProductReview(productId, reviewId) {
-    const reviewRef = ref(db, `products/${productId}/ratings/${reviewId}`);
-    remove(reviewRef);
+
+    return response;
   }
 
-  // update the average rating and rating count after a review is added or updated
-export function updateProductAverageRating(productId, newRating, previousRating = null) {
-    const productRef = ref(db, 'products/' + productId);
-    get(productRef).then((snapshot) => {
-        if (snapshot.exists()) {
-            const productData = snapshot.val();
-            let totalRating = productData.averageRating * productData.ratingCount;
-            
-            // If previousRating exists, it's an update. Adjust total rating by removing previous and adding new.
-            if(previousRating) {
-                totalRating = totalRating - previousRating + newRating;
-            } else { // Else, it's a new review. Simply add the new rating.
-                totalRating += newRating;
-                productData.ratingCount += 1;
-            }
-            
-            const averageRating = totalRating / productData.ratingCount;
-            update(productRef, { averageRating: averageRating, ratingCount: productData.ratingCount });
-        }
+  const readAllProductReviews = (productId) => {
+    const dbRef = ref(getDatabase());
+    const response = get(child(dbRef, `reviews/${productId}`)).then((snapshot) => {
+      if (snapshot.exists()) {
+        return snapshot.val();
+      } else {
+        console.log("No data available");
+        return;
+      }
+    }).catch((error) => {
+      console.error(error);
+      return error;
     });
+
+    return response;
   }
+
+  const readStoreReviews = async (storeId) => {
+    const dbRef = ref(getDatabase());
+  
+    try {
+      const snapshot = await get(child(dbRef, `stores/${storeId}`));
+  
+      if (snapshot.exists()) {
+        const data = snapshot.val();
+        return { totalAverageRating: data.totalAverageRating, totalRatingCount: data.totalRatingCount };
+      } else {
+        console.log("No data available");
+        return null;
+      }
+    } catch (error) {
+      console.error(error);
+      return error;
+    }
+  };
+
+  const updateAllProductRatings = async () => {
+    const ratingsData = await readAllReviews();
+  
+    for (const productId in ratingsData) {
+      if (ratingsData.hasOwnProperty(productId)) {
+        const productRatingsObject = ratingsData[productId];
+        const productRatingCount = Object.keys(productRatingsObject).length;
+  
+        if (productRatingCount === 0) continue;
+  
+        const productAverageRating = Object.values(productRatingsObject).reduce((sum, review) => sum + review.rating, 0) / productRatingCount;
+  
+        const productStarCounts = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 };
+  
+        for (const review of Object.values(productRatingsObject)) {
+          productStarCounts[review.rating]++;
+        }
+  
+        const ratingMap = { 1: 'one', 2: 'two', 3: 'three', 4: 'four', 5: 'five' };
+  
+        const stringKeyProductStarCounts = Object.fromEntries(
+          Object.entries(productStarCounts).map(([numericKey, count]) => [ratingMap[numericKey], count])
+        );
+  
+        const productRef = ref(db, `products/${productId}`);
+        const productData = {
+          averageRating: Number(productAverageRating.toFixed(2)),
+          ratingCount: productRatingCount,
+          ratings: stringKeyProductStarCounts,
+        };
+  
+        update(productRef, productData).catch((error) => {
+          console.log('Error updating product data:', error);
+          throw error;
+        });
+  
+        const storeId = Object.values(productRatingsObject)[0].storeId;
+        const storeRef = ref(db, `stores/${storeId}`);
+        const storeData = {
+          totalAverageRating: Number(productAverageRating.toFixed(2)),
+          totalRatingCount: productRatingCount,
+        };
+  
+        update(storeRef, storeData).catch((error) => {
+          console.log('Error updating store data:', error);
+          throw error;
+        });
+      }
+    }
+  };
+
+  useEffect(() => {
+    updateAllProductRatings();
+  }, [createProductReview]);
+
+  return { createProductReview, readAllReviews, readStoreReviews, readAllProductReviews }
+}
+
+export default useFirebaseReviews;

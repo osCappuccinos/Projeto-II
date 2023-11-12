@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-import Comment from "../components/comment/comment"
+import { CommentGroup } from '../components/comment/commentGroup';
 import { ImagesGallery } from '../components/imageGallery/imagesGallery';
 import ProductPrice from "../components/productPrice/productPrice";
 import Ratings from "../components/ratings/ratings";
@@ -12,6 +12,7 @@ import { H2 } from '../components/title/titles'
 import contentfulController from '../service/contentful/contentfulController';
 import { FETCH_STATUS } from '../service/fetchStatus';
 import useFirebaseProducts from '../service/firebase/useFirebaseProducts';
+import useFirebaseReviews from '../service/firebase/useFirebaseReviews';
 
 import "./ProductDetails.css";
 
@@ -19,15 +20,20 @@ function ProductDetails() {
   const { id } = useParams();
   const { getProductContent } = contentfulController();
   const { readProduct } = useFirebaseProducts();
+  const { createProductReview, readAllProductReviews } = useFirebaseReviews();
 
   const [content, setContent] = useState([]);
   const [product, setProduct] = useState([]);
+  const [reviews, setReviews] = useState([]);
   const [status, SetStatus] = useState(FETCH_STATUS.IDLE);
   const [error, setError] = useState(null);
 
   const [size, setSize] = useState([]);
   const [color, setColor] = useState([]);
   const [selectedImage, setSelectedImage] = useState(null);
+  const [showReviewForm, setShowReviewForm] = useState(false);
+  const [rating, setRating] = useState(0); 
+  const [comment, setComment] = useState('');
 
   const fetchData = async () => {
     try {
@@ -35,6 +41,9 @@ function ProductDetails() {
 
       const contentResponse = await getProductContent(id);
       const productResponse = await readProduct(id);
+      const reviewsResponse = await readAllProductReviews(id);
+
+      setReviews(reviewsResponse);
 
       if (contentResponse[0].id === productResponse.id) {
         setContent(contentResponse[0]);
@@ -65,6 +74,44 @@ function ProductDetails() {
     setSelectedImage(image);
   };
 
+  const handleReviewButtonClick = () => {
+    setShowReviewForm(true);
+  };
+
+  const handleRatingChange = (event) => {
+    // Ensure rating is within the range 1-5
+    const newRating = Math.min(Math.max(parseInt(event.target.value, 10), 1), 5);
+    setRating(newRating);
+  };
+
+  const handleCommentChange = (event) => {
+    setComment(event.target.value);
+  };
+
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+
+    try {
+      // Handle form submission logic, e.g., send the review to the server
+      await createProductReview(id, 2, comment, rating, product.storeId);
+
+      // Update reviews state with the new review
+      const updatedReviews = await readAllProductReviews(id);
+      setReviews(updatedReviews);
+
+      // Update product state with the new ratings
+      const updatedProduct = await readProduct(id);
+      setProduct(updatedProduct);
+
+      // Reset form state
+      setShowReviewForm(false);
+      setRating(0);
+      setComment('');
+    } catch (error) {
+      console.error('Error submitting review:', error);
+      // Handle error, e.g., show an error message to the user
+    }
+  };
 
   if (status === FETCH_STATUS.LOADING) {
     return <div></div>
@@ -97,19 +144,37 @@ function ProductDetails() {
 
         <div className="ratings-comments">
           <div className="ratingsDiv">
-            <Ratings
+            {
+              product.ratings ? <Ratings
               ratingCount={product.ratingCount}
               averageRating={product.averageRating}
               ratings={product.ratings}
-            />
+            /> : ""
+            }
           </div>
           <div className="commentsDiv">
-            <Comment
-              userPhoto="https://static.vecteezy.com/system/resources/thumbnails/005/544/770/small/profile-icon-design-free-vector.jpg"
-              userName="Jadson"
-              message="Amei demais, coube super bem e a cor é linda!"
-              rating="4"
-            />
+            {
+              reviews? <CommentGroup reviews={reviews} /> : ""
+            }
+            <button className="addCart" onClick={handleReviewButtonClick}>
+              Escreva uma avaliação
+            </button>
+
+            {showReviewForm && (
+              <form onSubmit={handleFormSubmit}>
+                <label>
+                  Rating:
+                  <input type="number" value={rating} onChange={handleRatingChange} min="1" max="5" />
+                </label>
+                <br />
+                <label>
+                  Comment:
+                  <textarea value={comment} onChange={handleCommentChange} />
+                </label>
+                <br />
+                <button type="submit">Submit Review</button>
+              </form>
+            )}
           </div>
         </div>
       </div>

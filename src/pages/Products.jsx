@@ -13,23 +13,23 @@ function Products() {
     const { readAllStores } = useFirebaseStores();
 
     const [stores, setStores] = useState(null);
-    const [status, SetStatus] = useState(FETCH_STATUS.IDLE);
+    const [status, setStatus] = useState(FETCH_STATUS.IDLE);
     const [error, setError] = useState(null);
 
     const fetchData = async () => {
         try {
-            SetStatus(FETCH_STATUS.LOADING);
+            setStatus(FETCH_STATUS.LOADING);
 
             const response = await readAllStores();
 
             if (response) {
                 setStores(response);
-                SetStatus(FETCH_STATUS.SUCCESS);
+                setStatus(FETCH_STATUS.SUCCESS);
             }
         } catch (error) {
             console.error("Error fetching stores:", error);
             setError(error.message);
-            SetStatus(FETCH_STATUS.ERROR);
+            setStatus(FETCH_STATUS.ERROR);
         }
     };
 

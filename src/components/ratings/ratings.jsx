@@ -1,10 +1,11 @@
-import "./ratings.css"
-import { Rating } from "@mui/material";
 import StarIcon from '@mui/icons-material/Star';
-import React from 'react';
+import { Rating } from "@mui/material";
 import Box from '@mui/material/Box';
-import { styled } from '@mui/material/styles';
 import LinearProgress, { linearProgressClasses } from '@mui/material/LinearProgress';
+import { styled } from '@mui/material/styles';
+import React from 'react';
+
+import "./ratings.css"
 
 function Ratings({ ratingCount, averageRating, ratings }) {
 
@@ -26,7 +27,7 @@ function Ratings({ ratingCount, averageRating, ratings }) {
             <h3>Avaliações de clientes</h3>
             <div className="ratingsTop">
                 <h3>{averageRating}</h3>
-                <Rating justifyContent="left" className="ratings" name="read-only" value={averageRating} readOnly precision={0.5}/>
+                <Rating className="ratings" name="read-only" value={averageRating} readOnly precision={0.5}/>
                 <p>{ratingCount} avaliações</p>
             </div>
             <div className="ratingsBottom">

@@ -1,18 +1,17 @@
-import "./comment.css"
 import { Rating } from "@mui/material";
-import Box from '@mui/material/Box';
-import Stack from '@mui/material/Stack';
 
-function Comment(props) {
+import "./comment.css"
+
+function Comment({ review }) {
     return (
         <div className="commentCard">
             <div className="commentTop">
-                <img src={props.userPhoto} alt="" />
-                <h3>{props.userName}</h3>
-                <Rating justifyContent="left" className="ratings" name="read-only" value={props.rating} readOnly precision={0.5}/>             
+                <img src={"https://static.vecteezy.com/system/resources/thumbnails/005/544/770/small/profile-icon-design-free-vector.jpg"} alt="" />
+                <h3>{review.clientId}</h3>
+                <Rating className="ratings" name="read-only" value={review.rating} readOnly precision={0.5}/>             
             </div>
             <div className="commentBottom">
-                <p>{props.message}</p>
+                <p>{review.comment}</p>
             </div>
         </div>
     );
