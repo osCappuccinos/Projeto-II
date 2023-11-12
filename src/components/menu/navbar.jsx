@@ -1,7 +1,9 @@
-import './navbar.css'
 import React, { useEffect, useState } from 'react';
-import ShoppingBagDropdown from '../shoppingBagDropdown/shoppingBagDropdown';
+
+import ShoppingBagDropdown from '../shoppingBag/shoppingBagDropdown/shoppingBagDropdown';
 import SearchBar from "./searchbar";
+
+import './navbar.css'
 
 const Navbar = () => {
   const [openCartDropdown, setOpenCartDropdown] = useState(false)

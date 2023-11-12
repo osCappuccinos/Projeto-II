@@ -11,6 +11,7 @@ import ShippingInfo from "../components/shippingInfo/shippingInfo";
 import { H2 } from '../components/title/titles'
 import contentfulController from '../service/contentful/contentfulController';
 import { FETCH_STATUS } from '../service/fetchStatus';
+import useFirebaseBags from '../service/firebase/useFirebaseBags';
 import useFirebaseProducts from '../service/firebase/useFirebaseProducts';
 import useFirebaseReviews from '../service/firebase/useFirebaseReviews';
 
@@ -20,6 +21,7 @@ function ProductDetails() {
   const { id } = useParams();
   const { getProductContent } = contentfulController();
   const { readProduct } = useFirebaseProducts();
+  const { createProductInBag } = useFirebaseBags();
   const { createProductReview, readAllProductReviews } = useFirebaseReviews();
 
   const [content, setContent] = useState([]);
@@ -74,6 +76,10 @@ function ProductDetails() {
     setSelectedImage(image);
   };
 
+  const addProductToBag = () => {
+    const response = createProductInBag(0, product.id, 1);
+  } 
+  
   const handleReviewButtonClick = () => {
     setShowReviewForm(true);
   };
@@ -137,7 +143,7 @@ function ProductDetails() {
               <ColorSelector options={content.color} selectedOption={color} handleOptionSelected={handleColorSelected} />
               <SizeSelector options={content.sizes} selectedOption={size} handleOptionSelected={handleChangeSize} />
             </div>
-            <button className="addCart">Adicionar à sacola</button>
+            <button className="addCart" onClick={addProductToBag}>Adicionar à sacola</button>
             <ShippingInfo />
           </div>
         </div>

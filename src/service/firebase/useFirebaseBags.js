@@ -1,14 +1,14 @@
 import { child, get, getDatabase, ref, remove, set, update } from "firebase/database";
+
 import { db } from "./firebase-config";
 
 const useFirebaseBags = () => {
     const createProductInBag = async (clientId, productId, quantity) => {
         const bagRef = ref(db, `clients/${clientId}/bag/${productId}`);
 
-        data = {
+        const data = {
             productId: productId,
             quantity: quantity,
-            timestamp: new Date.getTime(),
         };
 
         const response = set(bagRef, data).then(() => {
@@ -41,10 +41,9 @@ const useFirebaseBags = () => {
     const updateProductQuantityInBag = async (clientId, productId, quantity) => {
         const productRef = ref(db, `clients/${clientId}/bag/${productId}`);
 
-        data = {
+        const data = {
             productId: productId,
             quantity: quantity,
-            timestamp: new Date.getTime(),
         }
 
         const response = update(productRef, data).then(() => {
