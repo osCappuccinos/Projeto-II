@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import "./Checkout_1.css"
+import "./Checkout1.css"
 import ShoppingBagProductDetails from '../../components/shoppingBagProductDetails/shoppingBagProductDetails';
 import ShippingInfoCheckout from '../../components/shippingInfoCheckout/shippingInfoCheckout';
 import ProductPriceCheckout from '../../components/productPriceCheckout/productPriceCheckout';
 
-const Checkout_1 = (props) => {
+const Checkout1 = (props) => {
 
     return (
         <div className="container">
@@ -23,7 +23,7 @@ const Checkout_1 = (props) => {
                         price="80.75"
                         installments="5"
                     />
-                    <button>Continuar pedido</button>
+                    <button><a href='/checkout2/'>Continuar pedido</a></button>
                 </div>
                 <p className="keep-buying">Continuar comprando</p>
 
@@ -32,4 +32,4 @@ const Checkout_1 = (props) => {
     );
 }
 
-export default Checkout_1;
+export default Checkout1;
