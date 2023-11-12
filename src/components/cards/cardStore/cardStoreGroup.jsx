@@ -1,5 +1,7 @@
 import React from 'react';
+
 import CardStore from './cardStore';
+
 import '../cards.css'
 
 const CardStoreGroup = ({ stores }) => (
