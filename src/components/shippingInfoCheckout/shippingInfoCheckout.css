@@ -1,0 +1,28 @@
+.info-block-checkout{
+    display: flex;
+    flex-direction: column;
+    justify-content: right;
+    align-items: right;
+    margin-top:40px;
+}
+
+.info-block-checkout p{
+    text-align: right;
+}
+
+.shipping-checkout{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: right;
+    gap:20px;
+    flex-wrap: wrap;
+}
+
+.shipping-checkout button{
+    width:20%;
+}
+
+input{
+    height:35px;
+}

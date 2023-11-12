@@ -1,0 +1,24 @@
+h1{
+    font-size:2em;
+}
+
+.info-block-checkout{
+    text-align: right;
+}
+
+.priceContainer-checkout{
+    display: flex;
+    flex-direction: row !important;
+    align-items: center;
+    justify-content: right;
+    gap:15px;
+}
+
+.priceContainer-checkout h2{
+    margin: 0;
+    font-size: 1.2em;;
+}
+
+.priceContainer-checkout p{
+    margin: 0;
+}
