@@ -1,5 +1,6 @@
 import React from 'react';
 import './navbarProducts.css'
+import SocialMediaIcons from '../icons/socialmediaicons';
 
 const NavbarProducts = () => {
  return (
