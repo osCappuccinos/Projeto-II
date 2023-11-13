@@ -1,0 +1,52 @@
+.store-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  .rating-container {
+    display: flex;
+    align-items: center; 
+    justify-content: center; 
+    margin-top: 8px; 
+  }
+  
+  .title-h4 {
+    margin-left: 4px; 
+  }
+  
+  .category-chip {
+    margin-left: 20px; 
+  }
+  
+  .store-header {
+    position: relative; /* Necessário para posicionar o avatar sobre o banner */
+    text-align: center; /* Centraliza o texto */
+  }
+  
+  .store-banner {
+    width: 100%; /* Ocupa a largura total */
+    border: 1px solid #ccc; /* Cor da moldura - substitua pelo valor desejado */
+    height: 200px; /* Altura do banner - ajuste conforme necessário */
+    background-image: url('https://images.ctfassets.net/kw4ib93qcl5n/1lwkkFZBQQc6h4gDIqgmZI/10c66258106c768ea83b212ec086acb5/banner01.png.da.imagem/aqui.jpg'); /* URL do banner */
+    background-size: cover; /* Garante que a imagem cubra todo o espaço */
+    background-position: center; /* Centraliza a imagem */
+  }
+  
+  .store-avatar {
+    width: 100px; /* Tamanho do avatar */
+    height: 100px;
+    border-radius: 50%; /* Torna o avatar circular */
+    border: 3px solid #fff; /* Cor da borda do avatar - substitua pelo valor desejado */
+    background-color: #ccc; /* Cor de fundo do avatar - substitua pelo valor desejado */
+    position: absolute;
+    top: 150px; /* Ajuste a posição vertical conforme necessário */
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%); /* Centraliza o avatar horizontalmente */
+    z-index: 10; /* Garante que o avatar fique acima do banner */
+  }
+  
+  /* Estilos adicionais para os elementos restantes */
+  

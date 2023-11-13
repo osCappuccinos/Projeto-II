@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
-
+import StarRateIcon from '@mui/icons-material/StarRate';
 import contentfulController from '../../service/contentful/contentfulController'
 import { FETCH_STATUS } from '../../service/fetchStatus';
 import useFirebaseReviews from '../../service/firebase/useFirebaseReviews';
 import { H2, H4 } from '../title/titles'
+import SocialMediaIcons from '../icons/socialmediaicons';
+import Chip from '@mui/material/Chip';
+
 
 const StoreHeader = ({ store }) => {
     const { readStoreReviews } = useFirebaseReviews();
