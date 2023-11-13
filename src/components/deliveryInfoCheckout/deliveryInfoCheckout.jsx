@@ -1,17 +1,19 @@
-import "./deliveryInfoCheckout.css"
-import Accordion from '@mui/material/Accordion';
-import AccordionSummary from '@mui/material/AccordionSummary';
-import AccordionDetails from '@mui/material/AccordionDetails';
-import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import Accordion from '@mui/material/Accordion';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import FormControl from '@mui/material/FormControl';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormLabel from '@mui/material/FormLabel';
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import FormControl from '@mui/material/FormControl';
-import FormLabel from '@mui/material/FormLabel';
-import ShoppingBagProductDetails from "../shoppingBagProductDetails/shoppingBagProductDetails";
+import Typography from '@mui/material/Typography';
 
-function DeliveryInfoCheckout(props) {
+import ShoppingBagProductDetails from '../shoppingBag/shoppingBagProductDetails/shoppingBagProductDetails';
+
+import "./deliveryInfoCheckout.css"
+
+function DeliveryInfoCheckout({ bag, updateTotalPrice }) {
     return (
         <div className="smaller-container">
             <Accordion>
@@ -19,7 +21,7 @@ function DeliveryInfoCheckout(props) {
                     expandIcon={<ExpandMoreIcon />}
                     aria-controls="panel1a-content"
                     id="panel1a-header"
-                    >
+                >
                     <Typography variant="h6">1º - Selecione um tipo de entrega</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
@@ -44,11 +46,11 @@ function DeliveryInfoCheckout(props) {
                     expandIcon={<ExpandMoreIcon />}
                     aria-controls="panel1a-content"
                     id="panel1a-header"
-                    >
+                >
                     <Typography variant="h6">2º - Selecione uma forma de pagamento</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
-                <FormControl>
+                    <FormControl>
                         <RadioGroup
                             aria-labelledby="demo-radio-buttons-group-label"
                             name="radio-buttons-group"
@@ -67,16 +69,15 @@ function DeliveryInfoCheckout(props) {
                     expandIcon={<ExpandMoreIcon />}
                     aria-controls="panel1a-content"
                     id="panel1a-header"
-                    >
+                >
                     <Typography variant="h6">3º - Revisar pedido</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
-                    <ShoppingBagProductDetails
-                        itemsCount="1"
-                        price="80.75"
-                        name="Bolsa Clutch Azul"
-                        image={'https://photos.enjoei.com.br/clutch-michael-kors-couro-92532468/1200xN/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy82NDY4MzcvNWViODY4ZGIwYmI0MDE5YmRkZDk2NGEzYzJlYTRkMTcuanBn'}
-                        />
+                    {
+                        Object.keys(bag).map((proudctKey) => (
+                            <ShoppingBagProductDetails key={proudctKey} product={bag[proudctKey]} updateTotalPrice={updateTotalPrice} />
+                        ))
+                    }
                 </AccordionDetails>
             </Accordion>
         </div>

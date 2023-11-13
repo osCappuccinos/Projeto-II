@@ -1,7 +1,5 @@
-import Checkout_1 from "./pages/Checkout_1";
-
 import App from "./App";
-import Checkout1 from "./pages/checkout/Checkout1";
+import Checkout1 from './pages/Checkout/Checkout1';
 import Checkout2 from "./pages/checkout/Checkout2";
 import ProductDetails from "./pages/ProductDetails";
 import Products from "./pages/Products";
