@@ -2,18 +2,23 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-between;
     width: 30vh;
-    height: 380px;
-    border-radius: 12px;
-    box-shadow: rgba(100,100,111,0.2) 0px 7px 29px 0px;
-    padding: 0 ;
+    border: 1px solid #D1D1D1;
+    border-radius: 8px;
+    padding: 10px;
+    padding-top:12px;
     margin:10px;
-    height: 380px;
+}
+
+.card-div{
+    display: flex;
+    flex-direction: column;
 }
 
 .card img{
-    border-radius: 2px 2px 0 0;
-    width: 30vh;
+    border-radius: 4px;
+    width: 28vh;
     height: 30vh;
     object-fit: cover;
 }
@@ -41,6 +46,9 @@
 }
 
 .card button{
-    margin-bottom: 1.5vh;
     font-size:1.5vh;
+}
+
+.btn2 a{
+    color: var(--accent-color-text);
 }

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import contentfulController from '../../../service/contentful/contentfulController';
 import "./cardProduct.css"
+import { H4, H2 } from '../../title/titles';
 
 function CardProduct(props) {
     const [content, setContent] = useState([])
@@ -16,14 +17,14 @@ function CardProduct(props) {
     const productName = content.length > 0 ? content[0].name : [];    
     const productPrice = content.length > 0 ? content[0].price : [];    
 
+    const formattedProductPrice = "R$" + productPrice;
     return (
+        
         <div className="card">
-            <div> 
-                    <img src={firstProductImages}/>
-                    <h2>{productName}</h2>
-                    <p>R${productPrice}</p>
-                    <button><a href={uri}>Comprar</a></button>
-            </div>
+            <img src={firstProductImages}/>
+            <H2 text={productName}/>
+            <H4 text={formattedProductPrice}/>
+            <button className='btn2'><a href={uri}>Comprar</a></button>
         </div>
     );
 }
