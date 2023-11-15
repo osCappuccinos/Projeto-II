@@ -1,16 +1,16 @@
 import React from 'react';
 import './titles.css';
 
-const H1 = ({ text }) => (
-  <h1 className="h1">{text}</h1>
+const H1 = ({ text, id }) => (
+  <h1 id={id} className="h1">{text}</h1>
 );
 
-const H2 = ({ text }) => (
-  <h2 className="h2">{text}</h2>
+const H2 = ({ text, id }) => (
+  <h2 id={id} className="h2">{text}</h2>
 );
 
-const H3 = ({ text }) => (
-  <h3 className="h3">{text}</h3>
+const H3 = ({ text, id }) => (
+  <h3 id={id} className="h3">{text}</h3>
 );
 
 const H4 = ({ text }) => (

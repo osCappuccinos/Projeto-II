@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import contentfulController from '../../../service/contentful/contentfulController';
 import { FETCH_STATUS } from '../../../service/fetchStatus';
+import { H2, H3 } from '../../title/titles';
 
 import "./cardStore.css"
 
@@ -51,8 +52,8 @@ function CardStore({ store }) {
                 ))
             }
           </div>
-          <h2>{store.name}</h2>
-          <h3>{content[0].category}</h3>
+          <H2 id="blackText" text={store.name}/>
+          <H3 id="blackText" text={content[0].category}/>
         </div>
       </a>
     );

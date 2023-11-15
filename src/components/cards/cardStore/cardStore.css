@@ -6,7 +6,8 @@
 
 .img{
     width: 8.3vh;
-    height: auto;
+    aspect-ratio: 1/1;
+    object-fit: cover;
     margin-top:12px;
     border-radius: 5px;
 }
@@ -22,12 +23,13 @@
 }
 
 .cardStore h2{
-    font-size:1.3vw;
+    text-align: center !important;
+    font-size:16px;
     margin:5px;
 }
 
 .cardStore h3{
-    font-size:0.8vw;
+    font-size:12px;
     margin-top: 0;
     margin-bottom: 10px;
     font-weight: 300;

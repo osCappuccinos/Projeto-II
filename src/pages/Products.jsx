@@ -8,6 +8,7 @@ import { FETCH_STATUS } from '../service/fetchStatus';
 import useFirebaseStores from '../service/firebase/useFirebaseStores';
 
 import './Products.css';
+import '../../src/themes.css';
 
 function Products() {
     const { readAllStores } = useFirebaseStores();
@@ -43,12 +44,12 @@ function Products() {
         return <span>{error}</span>
     } else if (status === FETCH_STATUS.SUCCESS) {
         return (
-            <div className="bodyContainer">
+            <div className="bodyContainer-products">
                 <Banner />
-                <H1 text="Novas tendências na Ruma" />
+                <H1 id="coloredText" text="Novas tendências na Ruma" />
                 <CardStoreGroup stores={stores} />
                 <div className="all-container">
-                    <H1 text="Produtos" />
+                    <H1 id="coloredText" text="Produtos" />
                     <TopRatedProducts />
                 </div>
             </div>
