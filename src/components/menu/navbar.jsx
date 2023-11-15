@@ -4,6 +4,7 @@ import ShoppingBagDropdown from '../shoppingBag/shoppingBagDropdown/shoppingBagD
 import SearchBar from "./searchbar";
 
 import './navbar.css'
+import '../../themes.css'
 
 const Navbar = () => {
   const [openCartDropdown, setOpenCartDropdown] = useState(false)
