@@ -9,16 +9,15 @@
 
 .search-bar{    
     width: 30vw;
-    height: 4vh;
-    background-color: #CFCFCF;
 }
 .search-bar input[type="text"] {
     width: 70%; 
     height: 100%; 
     padding: 10px;
     font-size: 1em; 
-    border: 1px solid #ccc; 
+    border: 1px solid #FFF; 
     box-sizing: border-box;
+    border-radius: 8px;
 }
 
 /* Estilo para o menu dropdown de resultados da busca */
@@ -58,9 +57,8 @@
 }
 
 .profile-pic {
-    height: 4vh;
+    height:40px;
     aspect-ratio: 1/1;
-    background: #FFF;
 }
 
 .navbar ul{
@@ -71,6 +69,7 @@
     list-style-type: none;
     justify-content: space-between;
     align-items: center;
+    margin:10px;
 
 }
 
@@ -78,5 +77,6 @@
     font-size:1.5vh;
     width: fit-content;
     margin-left: 10px;
+    height:40px;
 }
 

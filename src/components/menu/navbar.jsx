@@ -5,6 +5,7 @@ import SearchBar from "./searchbar";
 
 import './navbar.css'
 import '../../themes.css'
+import accountIcon from '../icons/accounticon.png';
 
 const Navbar = () => {
   const [openCartDropdown, setOpenCartDropdown] = useState(false)
@@ -14,9 +15,9 @@ const Navbar = () => {
         <li><a href="/">Home</a></li>
         <SearchBar />
         <div className="orders-and-cart">
-          <div className="profile-pic"></div>
-          <button>Meus pedidos</button>
-          <button onClick={() => setOpenCartDropdown((prev) => !prev)}>Minha sacola</button>
+          <img className="profile-pic" src={accountIcon} alt="" />
+          <button className='btn1'>Meus pedidos</button>
+          <button className='btn2' onClick={() => setOpenCartDropdown((prev) => !prev)}>Minha sacola</button>
           {
             openCartDropdown && <ShoppingBagDropdown
             itemsCount = "1"

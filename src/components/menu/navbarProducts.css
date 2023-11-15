@@ -1,7 +1,7 @@
 
 
 .navbarProducts{
-    background-color: #EBEBEB;
+    background-color: var(--secondary-color);
     overflow: hidden;
     width: 100%;
     display: flex;
