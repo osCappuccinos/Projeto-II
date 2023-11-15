@@ -1,8 +1,8 @@
 .banner {
     margin: auto;
     margin-top: 2.6em;
-    width: 80vw;
-    height: 30vh;
-    background-color: #D1D1D1;
-    border-radius: 5px;
+    width: 75vw;
+    height: 45vh;
+    border-radius: 8px;
+    object-fit: cover;
   }

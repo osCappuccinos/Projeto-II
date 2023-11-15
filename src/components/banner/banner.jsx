@@ -1,8 +1,9 @@
 import React from 'react';
 import "./banner.css"
+import banner from "../icons/banner.png"
 
 const Banner = () => (
-    <div className="banner"></div>
+    <img className="banner" src={banner} alt="" />
 )
 
 export { Banner }
