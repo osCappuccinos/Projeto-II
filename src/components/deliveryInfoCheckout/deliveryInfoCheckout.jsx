@@ -78,6 +78,7 @@ function DeliveryInfoCheckout({ bag, updateTotalPrice }) {
                             <ShoppingBagProductDetails key={proudctKey} product={bag[proudctKey]} updateTotalPrice={updateTotalPrice} />
                         ))
                     }
+                    <button><a href="/checkout3">Confirmar pedido</a></button>
                 </AccordionDetails>
             </Accordion>
         </div>

@@ -1,0 +1,62 @@
+.container-checkout3{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+}
+
+.container-checkout3 .h5{
+    margin-top: 40px;
+    margin-right: auto;
+}
+
+.container-checkout3 .h6{
+    margin-bottom: 100px;
+}
+
+.container-checkout3 .body1{
+    margin-top:50px;
+    margin-bottom: 50px;
+}
+
+.container-checkout3 button{
+    width: 30%;
+    margin:auto;
+}
+
+.checkout3-container{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+    border-radius: 12px;
+    border: 1px solid #DFDFDF;
+    width: 65vw;
+    min-height: 60vh;
+    height:fit-content;
+    text-align: left;
+    padding:30px;
+}
+
+.pix-copyandpaste{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap:20px;
+    margin:auto;
+}
+
+.pix-copyandpaste img{
+    width:150px;
+    aspect-ratio: 1/1;
+}
+
+.pix-copyandpaste input{
+    width:100%;
+}
+
+.pix-copyandpaste button{
+    width:40%;
+}
