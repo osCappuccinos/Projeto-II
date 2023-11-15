@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import TopRatedProducts from '../components/algorithm/TopRatedProducts';
 import { Banner } from '../components/banner/banner';
 import { CardStoreGroup } from '../components/cards/cardStore/cardStoreGroup';
-import { H1 } from '../components/title/titles';
+import { H1, H2 } from '../components/title/titles';
 import { FETCH_STATUS } from '../service/fetchStatus';
 import useFirebaseStores from '../service/firebase/useFirebaseStores';
 
@@ -46,10 +46,10 @@ function Products() {
         return (
             <div className="bodyContainer-products">
                 <Banner />
-                <H1 id="coloredText" text="Novas tendências na Ruma" />
+                <H2 id="coloredText" text="Novas tendências na Ruma" />
                 <CardStoreGroup stores={stores} />
                 <div className="all-container">
-                    <H1 id="coloredText" text="Produtos" />
+                    <H2 id="coloredText" text="Ofertas especiais" />
                     <TopRatedProducts />
                 </div>
             </div>

@@ -13,8 +13,8 @@ const H3 = ({ text, id }) => (
   <h3 id={id} className="h3">{text}</h3>
 );
 
-const H4 = ({ text }) => (
-  <p className="h4">{text}</p>
+const H4 = ({ text, id }) => (
+  <p id={id} className="h4">{text}</p>
 );
 
 export { H1, H2, H3, H4 };

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import contentfulController from '../../../service/contentful/contentfulController';
 import "./cardProduct.css"
-import { H4, H2 } from '../../title/titles';
+import { H4, H3, H2 } from '../../title/titles';
 
 function CardProduct(props) {
     const [content, setContent] = useState([])
@@ -22,9 +22,10 @@ function CardProduct(props) {
         
         <div className="card">
             <img src={firstProductImages}/>
-            <H2 text={productName}/>
-            <H4 text={formattedProductPrice}/>
-            <button className='btn2'><a href={uri}>Comprar</a></button>
+            <H4 id="thin" text={productName}/>
+            <H2 text={formattedProductPrice}/>
+            <H4 id="greyText" text="Avaliação: 4.5"/>
+            <button className='btn2'><a href={uri}>Adicionar</a></button>
         </div>
     );
 }

@@ -3,7 +3,8 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    width: 30vh;
+    text-align: left;
+    width: 250px;
     border: 1px solid #D1D1D1;
     border-radius: 8px;
     padding: 10px;
@@ -18,9 +19,11 @@
 
 .card img{
     border-radius: 4px;
-    width: 28vh;
-    height: 30vh;
+    width: 230px;
+    height: 260px;
     object-fit: cover;
+    margin-bottom:10px;
+    margin-top:5px;
 }
 
 /*.card-grid {
@@ -34,19 +37,27 @@
 }*/
 
 .card h2{
-    font-size: 2vh;
-    margin: 1.5vh;
-    margin-bottom: 0;
+    font-size: 18px;
+    margin: 0 !important;
+    margin-bottom:10px;
+    margin-right:auto !important;
+    margin-left: 10px !important;
 }
 
 .card p{
-    font-size: 1.6vh;
-    margin-bottom: 1.5vh;
-    margin-top: 0;
+    font-size: 16px;
+    font-weight: 500;
+    margin:0;
+    margin-bottom:10px;
+    margin-right:auto;
+    margin-left: 10px;
 }
 
 .card button{
-    font-size:1.5vh;
+    width:fit-content;
+    margin-bottom:10px;
+    margin-right:auto;
+    margin-left: 10px;
 }
 
 .btn2 a{
