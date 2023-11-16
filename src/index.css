@@ -46,6 +46,11 @@ h1 {
   background-color: var(--accent-color) !important;
 }
 
+.btn3{
+  color: #FFF !important;
+  background-color: var(--colored-text) !important;
+}
+
 button {
   border-radius: 8px;
   border: 1px solid transparent;

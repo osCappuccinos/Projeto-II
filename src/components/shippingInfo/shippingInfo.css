@@ -6,6 +6,10 @@
     flex-wrap: wrap;
 }
 
+.shipping button{
+    width:fit-content;
+}
+
 input{
     height:35px;
 }

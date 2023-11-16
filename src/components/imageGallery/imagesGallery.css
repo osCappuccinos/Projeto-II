@@ -26,6 +26,10 @@
     cursor: pointer;
 }
 
+.big-photo{
+    margin-left:0 !important;
+}
+
 .big-photo img{
     width:81.5%;
     aspect-ratio: 1/1;

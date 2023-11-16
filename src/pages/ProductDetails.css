@@ -62,7 +62,7 @@
 }
 
 .info-block h1,h2{
-    margin:0;
+    margin:0 !important;
 }
 
 .cor{
@@ -85,8 +85,8 @@
     border-radius: 100%;
 }
 
-.addCart{
-    width:60%;
+#addCart{
+    width:85%;
     margin-bottom:30px;
 }
 

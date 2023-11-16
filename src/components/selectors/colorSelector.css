@@ -11,7 +11,7 @@
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  margin: 0 5px;
+  margin: 5px 5px;
   cursor: pointer;
   transition: background-color 0.3s;
 }

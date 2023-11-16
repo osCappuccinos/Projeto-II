@@ -143,7 +143,7 @@ function ProductDetails() {
               <ColorSelector options={content.color} selectedOption={color} handleOptionSelected={handleColorSelected} />
               <SizeSelector options={content.sizes} selectedOption={size} handleOptionSelected={handleChangeSize} />
             </div>
-            <button className="addCart" onClick={addProductToBag}>Adicionar à sacola</button>
+            <button className="btn2" id="addCart" onClick={addProductToBag}>Adicionar à sacola</button>
             <ShippingInfo />
           </div>
         </div>

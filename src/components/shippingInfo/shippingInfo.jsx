@@ -6,7 +6,7 @@ function ShippingInfo(props) {
             <p>Calcular frete e prazo</p>
             <div className="shipping">
                 <input placeholder="Digite seu CEP" type="text" />
-                <button>Confirmar</button>
+                <button className="btn3">Confirmar</button>
                 <p>Não sei meu CEP</p>
             </div>
         </div>
