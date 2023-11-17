@@ -1,4 +1,3 @@
-import { async } from "@firebase/util";
 import contentfulConfig from "./contentfulConfiguration";
 
 const contentfulController = () => {
@@ -111,35 +110,31 @@ const contentfulController = () => {
     }
 
     const getProductsContentByCategory = async (category) => {
-
         try {
             const entries = await client.getEntries({
                 content_type: "product",
                 select: "fields",
-                order: "fields.name"
+                order: "fields.name",
+                "fields.categories[in]": category
             });
-
-
-            const filteredData = entries.items.filter(products => products.fields.category === category);
-
-            const sanitizedFilteredData = filteredData.map((item) => {
-                const imagesArray = item.fields.images
-
-                const images = imagesArray.map((item) => {
-                    return item.fields
-                });
-
+    
+            const sanitizedFilteredData = entries.items.map((item) => {
+                const imagesArray = item.fields.images;
+                const images = imagesArray.map((image) => image.fields);
+    
                 return {
                     ...item.fields,
                     images
                 };
             });
-
+    
             return sanitizedFilteredData;
-        } catch(error) {
-            console.log(`Error getting products: ${error}`)
+        } catch (error) {
+            console.log(`Error getting products: ${error}`);
+            return [];
         }
-    }
+    };
+    
 
     return { getProductContent, getAllProductsContent, getStoreProductsContent, getStoreContent, getProductsContentByCategory };
 };
