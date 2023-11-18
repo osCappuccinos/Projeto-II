@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 import { FETCH_STATUS } from '../../service/fetchStatus';
 import useFirebaseRecommendations from '../../service/firebase/useFirebaseRecommendations';
@@ -7,7 +8,7 @@ import { CardProductGroup } from '../cards/cardProduct/cardProductGroup';
 import './TopRatedProducts.css';
 
 function TopRatedProducts() {
-    const { fetchTopRatedProducts } = useFirebaseRecommendations();
+    const { fetchTopRatedProducts, fetchPersonalizedRecommendations } = useFirebaseRecommendations();
 
     const [products, setProducts] = useState([]);
     const [status, SetStatus] = useState(FETCH_STATUS.IDLE);
@@ -17,15 +18,25 @@ function TopRatedProducts() {
         try {
             SetStatus(FETCH_STATUS.LOADING);
 
-            const response = await fetchTopRatedProducts(8);
+            // Verifica se o usuário está logado
+            const auth = getAuth();
+            let response;
+            onAuthStateChanged(auth, async (user) => {
+                if (user) {
+                    response = await fetchPersonalizedRecommendations(user.uid, 8); 
+                } else {
+                    response = await fetchTopRatedProducts(8);
+                }
 
-            if (response) {
-                setProducts(response);
-                SetStatus(FETCH_STATUS.SUCCESS);
-            }
+                if (response) {
+                    setProducts(response);
+                    SetStatus(FETCH_STATUS.SUCCESS);
+                }
+            });
         } catch (error) {
-            console.error("Error fetching top products:", error);
+            console.error("Error fetching products:", error);
             setError(error.message);
+            SetStatus(FETCH_STATUS.ERROR);
         }
     };
 
@@ -34,9 +45,9 @@ function TopRatedProducts() {
     }, []);
 
     if (status === FETCH_STATUS.LOADING) {
-        return <div></div>
+        return <div>Loading...</div>;
     } else if (status === FETCH_STATUS.ERROR) {
-        return <span>{error}</span>
+        return <span>{error}</span>;
     } else if (status === FETCH_STATUS.SUCCESS) {
         return (
             <div>
