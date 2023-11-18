@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-
 import { FETCH_STATUS } from '../../service/fetchStatus';
 import useFirebaseRecommendations from '../../service/firebase/useFirebaseRecommendations';
 import { CardProductGroup } from '../cards/cardProduct/cardProductGroup';
