@@ -15,6 +15,7 @@ const StoreHeader = ({ store }) => {
     const [content, setContent] = useState([]);
     const [reviews, setReviews] = useState([]);
     const [categories, setCategories] = useState([]);
+    const [storeLogo, setStoreLogo] = useState(null);
     const [status, SetStatus] = useState(FETCH_STATUS.IDLE);
     const [error, setError] = useState(null);
 
@@ -23,21 +24,27 @@ const StoreHeader = ({ store }) => {
     const fetchData = async () => {
         try {
             SetStatus(FETCH_STATUS.LOADING);
-    
+
             const contentResponse = await getStoreContent(store.id);
             const reviewsResponse = await readStoreReviews(store.id);
-    
+
             if (reviewsResponse && contentResponse) {
                 setReviews(reviewsResponse);
                 setContent(contentResponse);
-    
+
                 if (contentResponse.length > 0 && contentResponse[0].category) {
                     setCategories(contentResponse[0].category);
                 }
-    
+
+                if (contentResponse.length > 0 && contentResponse[0].logo) {
+                    const logoUrl = contentResponse[0].logo.fields.file.url;
+                    setStoreLogo(logoUrl);
+                }
+
+
                 SetStatus(FETCH_STATUS.SUCCESS);
             }
-    
+
         } catch (error) {
             console.error('Error fetching data:', error);
             setError(error.message);
@@ -55,13 +62,56 @@ const StoreHeader = ({ store }) => {
         return <span>{error}</span>;
     } else if (status === FETCH_STATUS.SUCCESS) {
         return (
-            <header className="store-header" style={{ backgroundImage: `url(${bannerImage})`, backgroundSize: 'cover', backgroundPosition: 'center', borderRadius:'10px' }}>
-                <div className="white-background-extension" style={{ backgroundColor: 'rgba(255, 255, 255, 0.85)', padding: '20px', borderRadius: '10px', maxWidth: '100%', textAlign: 'center', margin: '0 auto' }}>
-                    <Avatar alt={store.name} src={store.avatar} className="store-avatar" style={{ width: '100px', height: '100px', margin: '0 auto' }} />
+            <header
+                className="store-header"
+                style={{
+                    backgroundImage: `url(${bannerImage})`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    borderRadius: '10px',
+                    width: '100%',
+                }}
+            >
+                <div
+                    className="white-background-extension"
+                    style={{
+                        backgroundColor: 'rgba(255, 255, 255, 0.95)',
+                        padding: '10px', // Reduzido de 20px para 10px
+                        borderRadius: '10px',
+                        maxWidth: '100%',
+                        textAlign: 'center',
+                        margin: '0 auto',
+                        width: '100%',
+                    }}
+                >
+                    <Avatar
+                        alt={store.name}
+                        src={storeLogo}
+                        className="store-avatar"
+                        style={{
+                            width: '50%',
+                            height: 'auto',
+                            maxWidth: '200px',
+                            backgroundColor: 'white',
+                            margin: '10px auto', // Reduzido o espaçamento vertical
+                        }}
+                    />
                     <H2 text={store.name} className="store-name" />
-                    <div className="store-categories" style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: '10px', margin: '10px 0' }}>
+                    <div
+                        className="store-categories"
+                        style={{
+                            display: 'flex',
+                            justifyContent: 'center',
+                            flexWrap: 'wrap',
+                            gap: '5px', // Reduzido o espaço entre os chips
+                            margin: '5px 0', // Reduzido o espaçamento vertical
+                        }}
+                    >
                         {categories.map((category, index) => (
-                            <Chip key={index} label={category} className="category-chip" />
+                            <Chip key={index} label={category} className="category-chip"
+                                style={{
+                                    backgroundColor: `rgba(150, 150, 150, 1)`,
+                                }} />
                         ))}
                     </div>
                     <div className="rating-container">
@@ -70,6 +120,8 @@ const StoreHeader = ({ store }) => {
                     <SocialMediaIcons className="social-media-icons" />
                 </div>
             </header>
+
+
         );
     }
 };
