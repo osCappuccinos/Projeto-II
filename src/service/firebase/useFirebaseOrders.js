@@ -28,21 +28,23 @@ const useFirebaseOrders = () => {
     };
 
     const readAllOrders = async () => {
+        console.log("Tentando ler pedidos...");
         const dbRef = ref(getDatabase());
         const response = get(child(dbRef, `orders`)).then((snapshot) => {
             if (snapshot.exists()) {
+                console.log("Pedidos encontrados:", snapshot.val());
                 return snapshot.val();
             } else {
-                console.log("No data available");
+                console.log("Nenhum pedido disponível");
                 return;
             }
         }).catch((error) => {
-            console.error(error);
-            return error
+            console.error("Erro ao ler pedidos:", error);
         });
-
+    
         return response;
-    }
+    };
+    
 
     const readOrder = async (orderId) => {
         const dbRef = ref(getDatabase());

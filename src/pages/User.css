@@ -1,0 +1,37 @@
+/* Estilização da página do usuário */
+.user-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 50vh; /* Usa a altura total da viewport */
+    margin: 0 auto;
+}
+
+.user-container h1, .user-container h2 {
+    margin: 10px 0;
+}
+
+.user-orders {
+    list-style: none; /* Remove os marcadores de lista */
+    padding: 0;
+}
+
+.user-orders li {
+    margin: 5px 0; /* Espaçamento entre os itens da lista */
+}
+
+.logout-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.logout-button:hover {
+    background-color: #0056b3;
+}

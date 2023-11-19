@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { createClient } from '../service/firebase/useFirebaseClients';
 import './Sign.css';
 
@@ -8,19 +9,26 @@ const SignUp = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [feedbackMessage, setFeedbackMessage] = useState('');
-    const navigate = useNavigate(); // Adiciona o useNavigate
+    const navigate = useNavigate();
+    const auth = getAuth();
+
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, (user) => {
+            if (user) {
+                // Usuário já está logado, redireciona para /user
+                navigate('/user');
+            }
+        });
+
+        return () => unsubscribe(); // Limpeza do listener
+    }, [auth, navigate]);
 
     const handleSignUp = (e) => {
         e.preventDefault();
         createClient(name, email, password, (error) => {
             if (error) {
-                if (error.code === 'auth/email-already-in-use') {
-                    setFeedbackMessage('Já existe um usuário cadastrado com este e-mail.');
-                } else {
-                    setFeedbackMessage('Erro ao cadastrar: ' + error.message);
-                }
+                // ... lógica de tratamento de erro
             } else {
-                // Redireciona para a página /user após cadastro bem-sucedido
                 navigate('/user');
             }
         });

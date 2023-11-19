@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { getAuth, signOut } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 import useFirebaseOrders from '../service/firebase/useFirebaseOrders';
-
+import "./User.css"
 const User = () => {
     const [user, setUser] = useState(null);
     const [orders, setOrders] = useState([]);
@@ -12,28 +12,32 @@ const User = () => {
 
     useEffect(() => {
         const fetchOrders = async () => {
-            const allOrders = await readAllOrders();
-            if (allOrders) {
-                const userOrders = Object.values(allOrders).filter(order => order.clientId === user.uid);
-                setOrders(userOrders);
+            if (user) { // Verifica se o usuário está definido
+                const allOrders = await readAllOrders();
+                if (allOrders) {
+                    const userOrders = Object.values(allOrders).filter(order => order.clientId === user.uid);
+                    setOrders(userOrders);
+                }
             }
         };
 
+        fetchOrders(); // Chama a função fetchOrders
+    }, [user]); // Adiciona user como dependência do useEffect
+
+    useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged((loggedInUser) => {
             if (loggedInUser) {
                 setUser(loggedInUser);
-                fetchOrders();
             } else {
                 navigate('/signin');
             }
         });
 
         return () => unsubscribe(); // Desinscreve o listener quando o componente é desmontado
-    }, [navigate, readAllOrders, auth]);
+    }, [auth, navigate]);
 
     const handleLogout = () => {
         signOut(auth).then(() => {
-            // Redireciona para a página de login após o logout
             navigate('/signin');
         }).catch((error) => {
             console.error('Erro ao fazer logout: ', error);
@@ -41,16 +45,16 @@ const User = () => {
     };
 
     if (!user) {
-        return <div>Carregando...</div>;
+        return <div className="user-container">Carregando...</div>;
     }
 
     return (
-        <div>
+        <div className="user-container">
             <h1>Bem-vindo, {user.email}!</h1>
             <div>
                 <h2>Histórico de Compras</h2>
                 {orders.length > 0 ? (
-                    <ul>
+                     <ul className="user-orders">
                         {orders.map((order, index) => (
                             <li key={index}>Pedido ID: {order.id}, Produtos: {order.products.join(', ')}</li>
                         ))}
@@ -59,7 +63,7 @@ const User = () => {
                     <p>Você ainda não tem pedidos.</p>
                 )}
             </div>
-            <button onClick={handleLogout}>Sair</button> {/* Botão de logout */}
+            <button onClick={handleLogout} className="logout-button">Sair</button> {/* Botão de logout */}
         </div>
     );
 };
