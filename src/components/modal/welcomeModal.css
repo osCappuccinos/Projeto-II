@@ -16,24 +16,23 @@
     padding: 20px;
     border-radius: 5px;
     display: flex;
-    align-items: center;
     justify-content: space-between; /* Espaçamento entre os elementos */
     position: relative;
-    width: 80%; /* Ajuste a largura conforme necessário */
+    width: 100%; 
     max-width: 800px; /* Limita a largura máxima */
     max-height: 600px;
-    margin: auto; /* Centraliza o modal */
+    flex-direction: row;
 }
 
 .text-container {
     flex: 1; /* Ocupa parte do espaço disponível */
     padding-left: 20px; /* Espaçamento entre o texto e a imagem */
+    align-items: flex-start;
 }
 
 .image-container {
     flex: 1; /* Ocupa parte do espaço disponível */
-    display: flex;
-    justify-content: flex-start; /* Alinha a imagem à esquerda */
+    display: flex; /* Alinha a imagem à esquerda */
 }
 
 .image-container img {
