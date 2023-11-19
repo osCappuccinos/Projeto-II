@@ -20,7 +20,8 @@
     justify-content: space-between; /* Espaçamento entre os elementos */
     position: relative;
     width: 80%; /* Ajuste a largura conforme necessário */
-    max-width: 600px; /* Limita a largura máxima */
+    max-width: 800px; /* Limita a largura máxima */
+    max-height: 600px;
     margin: auto; /* Centraliza o modal */
 }
 
