@@ -4,6 +4,8 @@ import Checkout2 from "./pages/checkout/Checkout2";
 import Checkout3 from "./pages/Checkout/Checkout3";
 import ProductDetails from "./pages/ProductDetails";
 import Products from "./pages/Products";
+import SignIn from "./pages/SignIn";
+import SignUp from "./pages/SignUp";
 import Store from "./pages/Store";
 
 export const routes = [
@@ -35,6 +37,14 @@ export const routes = [
             path: '/checkout3',
             element: <Checkout3/>
          },
+         {
+            path: '/signin',
+            element: <SignIn />
+         },
+         {
+            path: '/signup',
+            element: <SignUp />
+         }
       ]
    },
 ];
