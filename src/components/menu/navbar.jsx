@@ -9,7 +9,7 @@ const Navbar = () => {
     const [openCartDropdown, setOpenCartDropdown] = useState(false);
     const navigate = useNavigate();
     const goToUserPage = () => {
-        navigate('/user');
+        navigate('/Client');
     };
 
     return (
