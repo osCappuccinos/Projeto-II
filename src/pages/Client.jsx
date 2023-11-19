@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { getAuth, signOut } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 import useFirebaseOrders from '../service/firebase/useFirebaseOrders';
-import "./User.css"
-const User = () => {
+import "./Client.css"
+const Client = () => {
     const [user, setUser] = useState(null);
     const [orders, setOrders] = useState([]);
     const navigate = useNavigate();
@@ -68,4 +68,4 @@ const User = () => {
     );
 };
 
-export default User;
+export default Client;
