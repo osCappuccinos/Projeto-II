@@ -16,7 +16,7 @@ const SignUp = () => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
             if (user) {
                 // Usuário já está logado, redireciona para /user
-                navigate('/user');
+                navigate('/client');
             }
         });
 
@@ -27,8 +27,14 @@ const SignUp = () => {
         e.preventDefault();
         createClient(name, email, password, (error) => {
             if (error) {
-                // ... lógica de tratamento de erro
+                // Verifica se o erro é devido a um e-mail já existente
+                if (error.code === 'auth/email-already-in-use') {
+                    setFeedbackMessage('Já existe um usuário cadastrado com este e-mail.');
+                } else {
+                    setFeedbackMessage('Erro ao cadastrar: ' + error.message);
+                }
             } else {
+                setFeedbackMessage('Cadastro realizado com sucesso!');
                 navigate('/user');
             }
         });
