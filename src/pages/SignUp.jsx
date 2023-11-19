@@ -1,26 +1,27 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom'; 
-import { createClient } from '../service/firebase/useFirebaseClients'; // Importe a função createClient
-import './Sign.css'
+import { Link, useNavigate } from 'react-router-dom';
+import { createClient } from '../service/firebase/useFirebaseClients';
+import './Sign.css';
 
 const SignUp = () => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [feedbackMessage, setFeedbackMessage] = useState('');
+    const navigate = useNavigate(); // Adiciona o useNavigate
 
     const handleSignUp = (e) => {
         e.preventDefault();
         createClient(name, email, password, (error) => {
             if (error) {
-                // Verifica se o erro é devido a um e-mail já existente
                 if (error.code === 'auth/email-already-in-use') {
                     setFeedbackMessage('Já existe um usuário cadastrado com este e-mail.');
                 } else {
                     setFeedbackMessage('Erro ao cadastrar: ' + error.message);
                 }
             } else {
-                setFeedbackMessage('Cadastro realizado com sucesso!');
+                // Redireciona para a página /user após cadastro bem-sucedido
+                navigate('/user');
             }
         });
     };
