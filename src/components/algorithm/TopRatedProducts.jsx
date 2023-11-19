@@ -16,17 +16,22 @@ function TopRatedProducts() {
     const fetchProducts = async () => {
         try {
             SetStatus(FETCH_STATUS.LOADING);
-
-            // Verifica se o usuário está logado
+    
             const auth = getAuth();
             let response;
             onAuthStateChanged(auth, async (user) => {
                 if (user) {
-                    response = await fetchPersonalizedRecommendations(user.uid, 8); 
+                    const personalizedResponse = await fetchPersonalizedRecommendations(user.uid, 8);
+                    
+                    if (personalizedResponse && personalizedResponse.length > 0) {
+                        response = personalizedResponse;
+                    } else {
+                        response = await fetchTopRatedProducts(8);
+                    }
                 } else {
                     response = await fetchTopRatedProducts(8);
                 }
-
+    
                 if (response) {
                     setProducts(response);
                     SetStatus(FETCH_STATUS.SUCCESS);
