@@ -67,7 +67,6 @@ function Products() {
                 isOpen={!isAuthenticated} 
                 onClose={() => setIsAuthenticated(true)} 
                 userName={user ? user.displayName : ''} 
-                imageUrl={'https://images.ctfassets.net/kw4ib93qcl5n/1lwkkFZBQQc6h4gDIqgmZI/10c66258106c768ea83b212ec086acb5/banner01.png'}
             />
                 <Banner />
                 <H1 text="Novas tendências na Ruma" />

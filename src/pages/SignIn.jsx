@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
-import { loginUser } from '../service/firebase/useFirebaseClients';
+import { loginUser, resetClientPassword } from '../service/firebase/useFirebaseClients';
 import './Sign.css';
 
 const SignIn = () => {
@@ -36,8 +36,22 @@ const SignIn = () => {
         });
     };
 
+    const handleResetPassword = () => {
+        const userEmail = prompt("Por favor, insira seu e-mail para redefinir a senha:");
+        if (userEmail) {
+            resetClientPassword(userEmail)
+                .then(() => setFeedbackMessage("E-mail de redefinição de senha enviado. Verifique sua caixa de entrada."))
+                .catch(error => {
+                    setFeedbackMessage(`Erro ao enviar e-mail de redefinição: ${error.message}`);
+                    setIsError(true);
+                });
+        }
+    };
+    
+
     return (
         <div className='form-container'>
+            <h1>Bem-vinde de volta!</h1>
             <form onSubmit={handleSignIn}>
             <input 
                     type="email"
@@ -54,9 +68,8 @@ const SignIn = () => {
                 <button type="submit">Entrar</button>
             </form>
             {feedbackMessage && <p className={isError ? 'error-message' : 'success-message'}>{feedbackMessage}</p>}
-            <p>
-                <Link to="/signup">Não possuo cadastro</Link>
-            </p>
+            <p className="reset-password-link" onClick={handleResetPassword}>Esqueci minha senha</p>
+            <p className="sign-up-link"><Link to="/signup">Não possuo cadastro</Link></p>
         </div>
     );
 };

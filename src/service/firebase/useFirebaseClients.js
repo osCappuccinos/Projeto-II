@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, getAuth } from 'firebase/auth';
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, getAuth, sendPasswordResetEmail  } from 'firebase/auth';
 import { getDatabase, ref, set, update, remove, get, onValue } from 'firebase/database';
 import { db } from './firebase-config';
 
@@ -109,3 +109,15 @@ export function deleteClient(clientId) {
   const clientRef = ref(db, `clients/${clientId}`);
   remove(clientRef);
 }
+
+export function resetClientPassword(email) {
+    const auth = getAuth();
+    sendPasswordResetEmail(auth, email)
+      .then(() => {
+        console.log("Password reset email sent successfully");
+      })
+      .catch((error) => {
+        console.error("Error sending password reset email:", error);
+      });
+  }
+  

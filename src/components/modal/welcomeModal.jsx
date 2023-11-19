@@ -21,20 +21,18 @@ const WelcomeModal = ({ isOpen, onClose, userName, imageUrl }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="modal-backdrop">
+    <div className="modal">
       <div className="modal-content" ref={modalRef}>
-        {userName ? (
-          <>
-            <div className="image-container">
-              <img src={imageUrl} alt="Imagem" />
-            </div>
-            <div className="text-container">
-              <h2>Bem-vinde de volta, {userName}!</h2>
-            </div>
-          </>
-        ) : (
-          <SignIn />
-        )}
+        <div className="image-container">
+{/* Coloque aqui sua imagem */} 
+       </div>
+        <div className="text-container">
+          {userName ? (
+            <p>Bem-vinde de volta, {userName}!</p> 
+          ) : (
+            <SignIn />
+          )}
+        </div>
       </div>
     </div>
   );

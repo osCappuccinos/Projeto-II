@@ -1,4 +1,4 @@
-.modal-backdrop {
+.modal {
     position: fixed;
     top: 0;
     left: 0;
@@ -13,29 +13,31 @@
   
   .modal-content {
     background-color: white;
-    padding: 20px;
     border-radius: 5px;
     display: flex;
     justify-content: space-between; /* Espaçamento entre os elementos */
     position: relative;
     width: 100%; 
-    max-width: 800px; /* Limita a largura máxima */
+    max-width: 80%; /* Limita a largura máxima */
     max-height: 600px;
     flex-direction: row;
+    margin: auto;
 }
 
-.text-container {
-    flex: 1; /* Ocupa parte do espaço disponível */
-    padding-left: 20px; /* Espaçamento entre o texto e a imagem */
-    align-items: flex-start;
-}
-
-.image-container {
-    flex: 1; /* Ocupa parte do espaço disponível */
-    display: flex; /* Alinha a imagem à esquerda */
+.image-container, .text-container {
+    flex: 1;
+    margin: 10px;
 }
 
 .image-container img {
-    max-width: 100%; /* Certifique-se de que a imagem se ajusta ao contêiner */
-    height: auto;
+    width: 100%; /* Faz a imagem expandir para preencher o contêiner */
+    height: auto; /* Mantém a proporção da imagem */
+    max-height: 100%; /* Garante que a imagem não exceda a altura do modal */
+}
+
+.text-container {
+    display: flex; /* Usa Flexbox */
+    flex-direction: column; /* Organiza os filhos verticalmente */
+    justify-content: center; /* Centraliza verticalmente */
+    margin: 10px;
 }
