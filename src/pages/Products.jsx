@@ -1,4 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
+
+// Importe o seu componente modal
+import WelcomeModal from '../components/modal/welcomeModal';
 
 import TopRatedProducts from '../components/algorithm/TopRatedProducts';
 import { Banner } from '../components/banner/banner';
@@ -15,6 +19,8 @@ function Products() {
     const [stores, setStores] = useState(null);
     const [status, setStatus] = useState(FETCH_STATUS.IDLE);
     const [error, setError] = useState(null);
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
+    const [user, setUser] = useState(null);
 
     const fetchData = async () => {
         try {
@@ -34,7 +40,20 @@ function Products() {
     };
 
     useEffect(() => {
+        const auth = getAuth();
+        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+            if (currentUser) {
+                setIsAuthenticated(true);
+                setUser(currentUser); // Ou apenas uma string com o nome, por exemplo
+            } else {
+                setIsAuthenticated(false);
+                setUser(null);
+            }
+        });
+
         fetchData();
+
+        return () => unsubscribe(); // Limpeza
     }, []);
 
     if (status === FETCH_STATUS.LOADING) {
@@ -44,6 +63,11 @@ function Products() {
     } else if (status === FETCH_STATUS.SUCCESS) {
         return (
             <div className="bodyContainer">
+                <WelcomeModal 
+                isOpen={!isAuthenticated} 
+                onClose={() => setIsAuthenticated(true)} 
+                userName={user ? user.displayName : ''} 
+            />
                 <Banner />
                 <H1 text="Novas tendências na Ruma" />
                 <CardStoreGroup stores={stores} />

@@ -1,61 +1,43 @@
-import React from 'react';
-import './welcomeModal.css'; // Certifique-se de criar este arquivo CSS
+import React, { useRef, useEffect } from 'react';
+import SignIn from '../../pages/SignIn'; // Ajuste o caminho conforme necessário
+import './welcomeModal.css';
 
-const WelcomeModal = ({ isOpen, onClose, userName }) => {
+const WelcomeModal = ({ isOpen, onClose, userName, imageUrl }) => {
+  const modalRef = useRef();
+
+  const closeModalOnOutsideClick = (event) => {
+    if (modalRef.current && !modalRef.current.contains(event.target)) {
+      onClose();
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('mousedown', closeModalOnOutsideClick);
+    return () => {
+      document.removeEventListener('mousedown', closeModalOnOutsideClick);
+    };
+  }, []);
+
   if (!isOpen) return null;
 
   return (
     <div className="modal-backdrop">
-      <div className="modal-content">
-        <h2>Bem-vindo de volta, {userName}!</h2>
-        <button onClick={onClose} className="close-modal-button">Fechar</button>
+      <div className="modal-content" ref={modalRef}>
+        {userName ? (
+          <>
+            <div className="image-container">
+              <img src={imageUrl} alt="Imagem" />
+            </div>
+            <div className="text-container">
+              <h2>Bem-vinde de volta, {userName}!</h2>
+            </div>
+          </>
+        ) : (
+          <SignIn />
+        )}
       </div>
     </div>
   );
 };
 
 export default WelcomeModal;
-
-
-/** 
- PARA IMPLEMENTAR O MODAL:
-const [showModal, setShowModal] = useState(false);
-    const [userName, setUserName] = useState('');
-    const auth = getAuth();
-
-    useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, (user) => {
-            if (user) {
-                // Define o nome do usuário e mostra o modal
-                setUserName(user.displayName || user.email);
-                setShowModal(true);
-            }
-        });
-
-        return () => unsubscribe();
-    }, [auth]);
-
-    const handleCloseModal = () => {
-        setShowModal(false);
-    };
-
-
-
-    e o componente:
-  <WelcomeModal 
-                isOpen={showModal}
-                onClose={handleCloseModal}
-                userName={userName}
-            />
-
-
-
-
-
-
-};
-
-
-
-
- */
