@@ -9,8 +9,8 @@ function CardHomeStore({ logo, path }) {
     };
 
     return (
-      <div className="card">
-        <div className="card-logo">
+      <div className="card-home-store">
+        <div className="card-home-logo">
           <img src={logo} alt={`Logo da Loja`} />
         </div>
         <Link to={path} className="card-button">Conhecer</Link>

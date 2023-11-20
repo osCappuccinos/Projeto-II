@@ -17,7 +17,7 @@ function CardProduct(props) {
     const productPrice = content.length > 0 ? content[0].price : [];    
 
     return (
-        <div className="card">
+        <div className="card-product">
             <div> 
                     <img src={firstProductImages}/>
                     <h2>{productName}</h2>
