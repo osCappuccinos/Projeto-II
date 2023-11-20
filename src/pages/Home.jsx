@@ -9,6 +9,7 @@ import StarBorderOutlinedIcon from '@mui/icons-material/StarBorderOutlined';
 import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
 import TopRatedProducts from '../components/algorithm/TopRatedProducts';
 import Footer from '../components/footer/Footer';
+import FooterEnd from '../components/footer/FooterEnd';
 
 function Home() {
 
@@ -92,15 +93,11 @@ function Home() {
             <TopRatedProducts />
           </div>
         </div >
-
-        <div className='footer-section'>
-          <div className='footer-images'>
-            <img src={'https://s2-ego.glbimg.com/RAzzhksLz9GbQmxMIkMavJZkMtE=/620x0/s.glbimg.com/jo/eg/f/original/2015/08/22/mg_5632.jpg'} />
-
-          </div>
+        <div className='footer'>
           <Footer />
-
+          <FooterEnd />
         </div>
+          
       </div >
     </>
   );

@@ -55,11 +55,6 @@
     
   .partners-section {
     margin-top: 20px;
-    /* Adicione mais estilos conforme o design */
-  }
-  
-  .partners-title {
-    font-size: 50px;
   }
   
   .partners-list {
@@ -67,10 +62,15 @@
     justify-content: space-around;
     /* Adicione mais estilos conforme o design */
   }
+
+  .partners-title {
+    font-size: 50px;
+  }
   
   .info-section {
     background-color: #3B684D;
     margin: auto;
+    margin-top: 100px;
     color: white;
     width: 100% ;
     padding-bottom: 142px;
@@ -118,127 +118,7 @@
     font-size: 24px;
   }
 
-  .footer-section {
-    display: flex;        /* Enables Flexbox layout */
-    justify-content: space-between; /* Positions children with space between */
-    align-items: center;  /* Aligns children vertically in the center */
-    background-color: #3B684D;
-    padding: 50px;
-    margin-top: 200px;
-    color: white;
-  }
-  
-  .footer-images {
-    /* Apply any specific styles for your images here */
-    flex: 1; /* Adjust as needed */
-  }
-  
-  .footer-content {
-    flex: 2; /* Adjust as needed */
-    max-width: 566px;
-    text-align: left; 
-  }
-
-  .footer-title {
-    font-size: 50px;
-    color: #FFCD8F;
-  }
-  
-  .footer-highlight {
-    font-size: 50px;
-    color: white;
-    display: inline;
-  }
-
-  .footer-text {
-    font-size: 16px;
-  }
-
-  .footer-buttons {
+  .footer {
     display: flex;
-    justify-content: flex-start; /* Alinha os itens ao início da linha do container flex */
-    align-items: center;
-    padding: 20px;
-    gap: 10px;
-    font-size: 14px;
-    margin-left: -20px;
-    margin-top: 30px;
+    flex-direction: column;
   }
-
-  .footer-button-1 {
-    border: none;
-    border-radius: 50px;
-    padding: 15px 30px;
-    font-size: 16px;
-    cursor: pointer;
-    outline: none;
-    background-color: #d2a679;
-  color:#383B39;
-  max-width: 221px;
-    max-height: 54px;
-  }
-
-  .footer-button-2{
-    border-radius: 50px;
-    padding: 15px 50px;
-    font-size: 16px;
-    cursor: pointer;
-    outline: none;
-    background-color: transparent;
-  border: 2px solid #d2a679;
-  color: #d2a679;
-  max-width: 221px;
-    max-height: 54px;
-
-  }
-
-  .footer-end {
-    background-color: ##3B684D;
-    color: #fff;
-    padding: 20px;
-    font-family: 'Arial', sans-serif;
-  }
-  
-  .footer-end-section {
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .footer-column h4 {
-    margin-bottom: 10px;
-  }
-  
-  .footer-column ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .footer-column ul li {
-    padding: 5px 0;
-  }
-  
-  .footer-logo {
-    display: flex;
-    align-items: center;
-  }
-  
-  .footer-logo img {
-    margin-right: 10px;
-  }
-  
-  .footer-logo-text {
-    font-weight: bold;
-  }
-  
-  .footer-bottom {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-top: 20px;
-    border-top: 1px solid #555;
-  }
-  
-  .footer-rights {
-    text-align: right;
-  }
-  
