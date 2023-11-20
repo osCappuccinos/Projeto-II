@@ -8,6 +8,7 @@ import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import Store from "./pages/Store";
 import Client from "./pages/Client";
+import Home from "./pages/Home";
 import ProductsByCategory from "./pages/ProductsByCategory"; // Add this import
 
 export const routes = [
@@ -17,6 +18,10 @@ export const routes = [
       children: [
          {
             path: '/',
+            element: <Home />
+         },
+         {
+            path: '/produtos',
             element: <Products />
          },
          {

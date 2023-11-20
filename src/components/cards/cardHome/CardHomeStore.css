@@ -1,0 +1,46 @@
+/* card.css */
+.card {
+    background: #F0FAF0; /* Altere conforme a cor de fundo desejada */
+    border-radius: 12px; /* Arredonda os cantos do card */
+    padding: 20px;
+    text-align: center; 
+    max-width: 212px;
+    max-height: 212px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra suave */
+    margin: 20px;
+  }
+  
+  .card-logo {
+    margin-bottom: 20px;
+    max-width: 200px;
+    max-height: 120px; /* Espaço entre o logo e o texto */
+  }
+  
+  .card-title {
+    font-size: 24px; /* Tamanho da fonte do título do card */
+    margin: auto; /* Espaço entre o título e o botão */
+    color: #383B39; /* Cor do texto */
+  }
+  
+  .card-button {
+    border: 1px solid #383B39; /* Borda do botão */
+    background: transparent; /* Fundo transparente */
+    border-radius: 20px; /* Borda arredondada */
+    padding: 10px 20px; /* Preenchimento interno do botão */
+    text-transform: uppercase; /* Texto em maiúsculas */
+    cursor: pointer; /* Muda o cursor para indicar que é clicável */
+    outline: none; /* Remove o contorno padrão focado */
+    color: #383B39;
+    margin: auto;
+    max-width: 164px;
+    max-height: 48px;
+    font-size: 14px;
+  }
+  
+  .card-button:hover {
+    background: #e1e1e1; /* Cor de fundo ao passar o mouse */
+  }
+  
+  .a {
+    color: #383B39;
+  }
