@@ -95,7 +95,6 @@ function Home() {
         </div >
         <div className='footer'>
           <Footer />
-          <FooterEnd />
         </div>
           
       </div >
