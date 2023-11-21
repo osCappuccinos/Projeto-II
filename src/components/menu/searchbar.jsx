@@ -66,8 +66,6 @@ function SearchBar() {
         onChange={(e) => setSearchTerm(e.target.value)}
         aria-label="Search Products"
       />
-      <button onClick={handleSearchClick}><SearchOutlinedIcon /></button>
-
       {isDropdownVisible && (
         <div className="search-results-dropdown" ref={dropdownRef}>
           {searchResults.length > 0 ? (

@@ -7,6 +7,7 @@ import SearchBar from "./searchbar";
 import './navbar.css';
 
 const Navbar = () => {
+    const [showShoppingBag, setShowShoppingBag] = useState(false);
     const [openCartDropdown, setOpenCartDropdown] = useState(false);
     const navigate = useNavigate();
     const goToUserPage = () => {
