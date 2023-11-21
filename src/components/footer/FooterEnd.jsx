@@ -21,7 +21,7 @@ function FooterEnd() {
       <div className="footer-column">
         <h4>Ruma</h4>
         <ul>
-          <li><Link to="/sobre-nos">Sobre nós</Link></li>
+          <li><Link to="/ruma">Sobre nós</Link></li>
           <li><Link to="/trabalhe-conosco">Trabalhe conosco</Link></li>
           <li><Link to="/investimento">Invista no nosso trabalho</Link></li>
           <li><Link to="/contato">Fale conosco</Link></li>

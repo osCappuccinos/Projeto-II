@@ -74,7 +74,7 @@
 
   .footer-end {
     background-color: #3B684D;
-    color: #fff;
+    color: #fff !important;
     padding: 20px 100px;
     display: block;
     text-align: start;
@@ -96,6 +96,7 @@
   .footer-column ul {
     list-style: none;
     padding: 0;
+    color: #fff !important;
   }
   
   .footer-column ul li {
