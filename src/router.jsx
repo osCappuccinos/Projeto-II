@@ -62,7 +62,7 @@ export const routes = [
             element: <Client />
          },
          {
-            path: '/partners',
+            path: '/parceiros',
             element: <Partners />
          }
       ]
