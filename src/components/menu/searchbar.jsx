@@ -1,10 +1,10 @@
 import { debounce } from 'lodash';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-
+import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import useFirebaseSearch from '../../service/firebase/useFirebaseSearch';
 
 // Assuming lodash is installed
-import './navbar.css';
+import './searchbar.css';
 
 function SearchBar() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -66,7 +66,7 @@ function SearchBar() {
         onChange={(e) => setSearchTerm(e.target.value)}
         aria-label="Search Products"
       />
-      <button onClick={handleSearchClick}>Buscar</button>
+      <button onClick={handleSearchClick}><SearchOutlinedIcon /></button>
 
       {isDropdownVisible && (
         <div className="search-results-dropdown" ref={dropdownRef}>
