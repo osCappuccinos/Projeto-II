@@ -26,7 +26,7 @@ function CardProduct(props) {
                 <div className="price-and-rating">
                     <p>R${productPrice}</p>
                     <StarIcon className="star"/>
-                    <p>4.5</p>
+                    <p className='ratingtext'>4.5</p>
                 </div>
                 <a href={uri}><img className="shoppingBagIcon" src={ShoppingBagIcon} alt="" /></a>
             </div>

@@ -20,7 +20,7 @@
     margin-top: 25px;
     border-radius: 12px;
     width: 80%;
-    aspect-ratio: 1/1;
+    aspect-ratio: 1/1.05;
     object-fit: cover;
 }
 
@@ -81,4 +81,8 @@
     flex-direction: row;
     align-items: flex-end;
     margin-bottom:5px;
+}
+
+.ratingtext{
+    color:#696F6B;
 }
