@@ -2,18 +2,24 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 30vh;
-    height: 380px;
+    width: 270px;
     border-radius: 12px;
-    box-shadow: rgba(100,100,111,0.2) 0px 7px 29px 0px;
-    padding: 0 ;
+    background-color: #EFEFEF;
     margin:10px;
-    height: 380px;
+    height: 400px;
+}
+
+.card-product{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .card-product img{
-    border-radius: 2px 2px 0 0;
-    width: 100%;
+    margin-top: 25px;
+    border-radius: 12px;
+    width: 80%;
     aspect-ratio: 1/1;
     object-fit: cover;
 }
@@ -29,18 +35,50 @@
 }*/
 
 .card-product h2{
-    font-size: 2vh;
-    margin: 1.5vh;
-    margin-bottom: 0;
+    width:80%;
+    text-align: left;
+    font-size: 18px;
+    margin:auto;
+    margin-top: 12px;
 }
 
-.card-product p{
-    font-size: 1.6vh;
-    margin-bottom: 1.5vh;
-    margin-top: 0;
+.bottom-info{
+    width:80%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding-bottom:15px;
 }
 
-.card button{
-    margin-bottom: 1.5vh;
-    font-size:1.5vh;
+.bottom-info button{
+    margin-top:0;
+    margin-bottom:0;
+    margin-left:auto;
+    width: fit-content;
+}
+
+.bottom-info p{
+    font-weight: 500;
+    margin:0;
+}
+
+.bottom-info .star{
+    margin-left:10px;
+    margin-right:5px;
+}
+
+.bottom-info img{
+    width:30px;
+    aspect-ratio: 1/1;
+    margin:auto;
+    padding:10px;
+    border: 1px solid #000;
+}
+
+.price-and-rating{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    margin-bottom:5px;
 }
