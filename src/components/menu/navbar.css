@@ -55,3 +55,7 @@
   color: #383B39;
   font-weight: bold;
 }
+
+.navbar ul li a:hover {
+    color: #3B684D;
+}
