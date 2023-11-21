@@ -16,7 +16,7 @@
 
 a {
   font-weight: 500;
-  color: #646cff;
+  color: var(--primary-body) !important;
   text-decoration: inherit;
 }
 a:hover {
@@ -47,9 +47,26 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
-button:hover {
-  border-color: #646cff;
+
+.btn1{
+  width:220px !important;
+  height:50px !important;
+  background-color: var(--secondary-brand);
+  color: var(--primary-body) !important;
 }
+
+.btn-clear{
+  width:220px !important;
+  height:50px !important;
+  background-color: transparent !important;
+  border: 1px solid #000;
+  color: var(--primary-body) !important;
+}
+
+/* button:hover {
+  border-color: #646cff;
+} */
+
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
