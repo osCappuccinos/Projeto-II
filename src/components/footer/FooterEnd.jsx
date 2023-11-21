@@ -1,7 +1,9 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./Footer.css"
+
 function FooterEnd() {
-    return <footer className="footer-end">
+  return <footer className="footer-end">
     <div className="footer-end-section">
       <div className="footer-logo">
         {/* Aqui você colocaria o seu logo, como um <img> ou um SVG */}
@@ -11,19 +13,19 @@ function FooterEnd() {
       <div className="footer-column">
         <h4>De Fortaleza para você</h4>
         <ul>
-          <li>Conheça nossos parceiros</li>
-          <li>Seja um investidor anjo</li>
-          <li>Se inscreva para o próximo ciclo</li>
+          <li><Link to="/parceiros">Conheça nossos parceiros</Link></li>
+          <li><Link to="/investidor-anjo">Seja um investidor anjo</Link></li>
+          <li><Link to="/inscricao">Se inscreva para o próximo ciclo</Link></li>
         </ul>
       </div>
       <div className="footer-column">
         <h4>Ruma</h4>
         <ul>
-          <li>Sobre nós</li>
-          <li>Trabalhe conosco</li>
-          <li>Invista no nosso trabalho</li>
-          <li>Fale conosco</li>
-          <li>Central de ajuda</li>
+          <li><Link to="/sobre-nos">Sobre nós</Link></li>
+          <li><Link to="/trabalhe-conosco">Trabalhe conosco</Link></li>
+          <li><Link to="/investimento">Invista no nosso trabalho</Link></li>
+          <li><Link to="/contato">Fale conosco</Link></li>
+          <li><Link to="/ajuda">Central de ajuda</Link></li>
         </ul>
       </div>
       <div className="footer-column">
@@ -39,9 +41,9 @@ function FooterEnd() {
       <div className="footer-column">
         <h4>Social</h4>
         <ul>
-          <li>Instagram</li>
-          <li>Twitter / X</li>
-          <li>Linkedin</li>
+          <li><Link to="www.instagram.com">Instagram</Link></li>
+          <li><Link to='www.twitter.com'>Twitter / X</Link></li>
+          <li><Link to='www.linkedin.com'>Linkedin</Link></li>
         </ul>
       </div>
     </div>
