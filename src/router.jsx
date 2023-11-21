@@ -11,6 +11,7 @@ import Client from "./pages/Client";
 import Home from "./pages/Home";
 import Partners from "./pages/Partners";
 import ProductsByCategory from "./pages/ProductsByCategory"; // Add this import
+import Ruma from "./pages/Ruma";
 
 export const routes = [
    {
@@ -64,6 +65,10 @@ export const routes = [
          {
             path: '/parceiros',
             element: <Partners />
+         },
+         {
+            path: '/ruma',
+            element: <Ruma />
          }
       ]
    }
