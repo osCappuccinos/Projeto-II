@@ -6,9 +6,7 @@ function FooterEnd() {
   return <footer className="footer-end">
     <div className="footer-end-section">
       <div className="footer-logo">
-        {/* Aqui você colocaria o seu logo, como um <img> ou um SVG */}
-        <img src="path-to-your-logo.svg" alt="Logo" />
-        <div className="footer-logo-text">logoipsum</div>
+        <img src="https://images.ctfassets.net/kw4ib93qcl5n/2cCwIYWYTSc9qbXeLJFu0l/e92bc58e8cb7d99c7964db3578d23646/ruma__1_.png" alt="Logo" />
       </div>
       <div className="footer-column">
         <h4>De Fortaleza para você</h4>
@@ -48,16 +46,13 @@ function FooterEnd() {
       </div>
     </div>
     <div className="footer-bottom">
-      <div className="footer-logo">
-        {/* Repita o logo aqui, se necessário */}
-        <img src="path-to-your-logo.svg" alt="Logo" />
-        <div className="footer-logo-text">logoipsum</div>
+      <div className="footer-logo-2">
+        <img src="https://images.ctfassets.net/kw4ib93qcl5n/2cCwIYWYTSc9qbXeLJFu0l/e92bc58e8cb7d99c7964db3578d23646/ruma__1_.png" alt="Logo" />
+        by Os Cappuccinos. Todos os direitos reservados.
       </div>
 
     </div>
-    <div className="footer-rights">
-      by Os Cappuccinos. Todos os direitos reservados.
-    </div>
+  
   </footer>
 }
 

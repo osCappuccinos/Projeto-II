@@ -112,10 +112,13 @@
   
   .footer-logo img {
     margin-right: 10px;
+    max-width: 200px;
   }
   
-  .footer-logo-text {
-    font-weight: bold;
+  .footer-logo-2 img {
+    max-width: 125px;
+    margin-right: 10px;
+    margin-top: 20px;
   }
   
   .footer-bottom {
