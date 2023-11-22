@@ -34,3 +34,11 @@
     flex-direction: column;
 }
 
+button a {
+    color: white !important;
+}
+
+.button {
+    margin-bottom: 50px !important;
+}
+

@@ -29,6 +29,7 @@ function ProductDetails() {
   const [reviews, setReviews] = useState([]);
   const [status, SetStatus] = useState(FETCH_STATUS.IDLE);
   const [error, setError] = useState(null);
+  const [store, setStore] = useState(null); 
 
   const [size, setSize] = useState([]);
   const [color, setColor] = useState([]);
@@ -40,22 +41,30 @@ function ProductDetails() {
   const fetchData = async () => {
     try {
       SetStatus(FETCH_STATUS.LOADING);
-
+  
       const contentResponse = await getProductContent(id);
       const productResponse = await readProduct(id);
+  
+      // Busca e define a loja
+      if (productResponse && productResponse.storeSlug) {
+          const storeResponse = await getStoreContent(productResponse.storeSlug);
+          if (storeResponse && storeResponse.length > 0) {
+              setStore(storeResponse[0]);
+          }
+      }
+  
       const reviewsResponse = await readAllProductReviews(id);
-
       setReviews(reviewsResponse);
-
+  
       if (contentResponse[0].id === productResponse.id) {
         setContent(contentResponse[0]);
         setProduct(productResponse);
         SetStatus(FETCH_STATUS.SUCCESS);
       }
-
+  
     } catch (error) {
       console.error('Error fetching data:', error);
-      setError(error.message)
+      setError(error.message);
       SetStatus(FETCH_STATUS.ERROR);
     }
   }
@@ -132,7 +141,7 @@ function ProductDetails() {
           <div className="textual-info">
             <div className="info-block">
               <H2 text={content.name}></H2>
-              <p>Vendido por {content.store}</p>
+       {/*      <p>Vendido por {store ? store.name : 'Carregando...'}</p> */}
               <p>{product.ratingCount} avaliações</p>
             </div>
             <ProductPrice
@@ -167,19 +176,30 @@ function ProductDetails() {
             </button>
 
             {showReviewForm && (
-              <form onSubmit={handleFormSubmit}>
-                <label>
-                  Rating:
-                  <input type="number" value={rating} onChange={handleRatingChange} min="1" max="5" />
-                </label>
-                <br />
-                <label>
-                  Comment:
-                  <textarea value={comment} onChange={handleCommentChange} />
-                </label>
-                <br />
-                <button type="submit">Submit Review</button>
-              </form>
+              <form className="review-form">
+              <label className="rating-label">
+                Rating:
+                <input
+                  type="number"
+                  value={rating}
+                  onChange={handleRatingChange}
+                  min="1"
+                  max="5"
+                  className="rating-input"
+                />
+              </label>
+              <br />
+              <label className="comment-label">
+                Comment:
+                <textarea
+                  value={comment}
+                  onChange={handleCommentChange}
+                  className="comment-textarea"
+                />
+              </label>
+              <br />
+              <button type="submit" className="submit-review-button">Submit Review</button>
+            </form>
             )}
           </div>
         </div>
