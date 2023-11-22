@@ -1,4 +1,5 @@
-import "./shippingInfo.css"
+import "./shippingInfo.css";
+import { Link } from "react-router-dom";
 
 function ShippingInfo(props) {
     return (
@@ -6,7 +7,9 @@ function ShippingInfo(props) {
             <p>Calcular frete e prazo</p>
             <div className="shipping">
                 <input placeholder="Digite seu CEP" type="text" />
-                <button>Confirmar</button>
+                <Link to="/checkout">
+                    <button>Confirmar</button>
+                </Link>
                 <p>Não sei meu CEP</p>
             </div>
         </div>

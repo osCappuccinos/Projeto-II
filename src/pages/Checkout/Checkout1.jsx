@@ -92,7 +92,7 @@ const Checkout1 = (props) => {
                             price={totalPrice}
                             installments="5"
                         />
-                        <button><a href='/checkout2/'>Continuar pedido</a></button>
+                        <button className="button"><a href='/checkout2/'>Continuar pedido</a></button>
                     </div>
                     <p className="keep-buying">Continuar comprando</p>
 

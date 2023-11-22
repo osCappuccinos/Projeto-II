@@ -1,8 +1,9 @@
 .photos{
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: stretch;
     width:60%;
+    margin-top: -20%;
 }
 
 .small-photos{
