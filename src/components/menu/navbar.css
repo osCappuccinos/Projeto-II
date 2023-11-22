@@ -10,7 +10,11 @@
 }
 
 .logo {
-  max-width: 94px;
+ margin: 3px 30px;
+}
+
+.logo img {
+  width: 94px;
 }
  
 
@@ -57,5 +61,5 @@
 }
 
 .navbar ul li a:hover {
-    color: #3B684D;
+    color: #3B684D !important;
 }

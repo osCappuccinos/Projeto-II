@@ -17,7 +17,7 @@ const Navbar = () => {
     return (
         <nav className="navbar">
             <div className="logo">
-                <Link to="/"><img src={""} alt="Logotipo"/></Link>
+                <Link to="/"><img src={"https://images.ctfassets.net/kw4ib93qcl5n/55Hm6Xvw8xnCJfeDazxZA1/bef4769f737f2989f2fba298d5c07c16/ruma.png"} alt="Logotipo"/></Link>
             </div>
             <ul>
             <li><Link to="/">Início</Link></li>
