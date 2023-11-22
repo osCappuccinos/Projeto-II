@@ -24,7 +24,7 @@ const WelcomeModal = ({ isOpen, onClose, userName, imageUrl }) => {
     <div className="modal">
       <div className="modal-content" ref={modalRef}>
         <div className="image-container">
-{/* Coloque aqui sua imagem */} 
+      <img src='https://images.ctfassets.net/kw4ib93qcl5n/55FZRHuY6MpSyS6YSGUrve/752b9ee3241821e18a0defb5538d2d23/container-login.png' />
        </div>
         <div className="text-container">
           {userName ? (
