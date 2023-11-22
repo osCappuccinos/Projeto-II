@@ -12,11 +12,12 @@ const Ruma = () => {
             <div className="container2">
                 <div className="image">
                     <img src='https://images.ctfassets.net/kw4ib93qcl5n/3nrZWwrJnRDzfFMEzfjx2V/e2c00913ff32a9f6555ef8b665243f1c/equipe.png' />
+                    <img src='https://images.ctfassets.net/kw4ib93qcl5n/3kzPep6clGXomq0BHGz6DU/91ef1480b8458ce21d2a362125b9b08a/logo_ruma.png' className='imagem-sobreposta' />
                 </div>
                 <div className="text">
                     <div className='title'><p>Saiba mais sobre a nossa proposta</p></div>
                     <div className='big-title'>O nosso Rumo</div>
-                    <div className='description'>Lorem ipsum dolor sit amet consectetur. Ut adipiscing mauris et etiam sed. Commodo odio ut porta vitae libero vitae lectus justo enim. Et sit ornare id turpis fringilla nunc. Pellentesque pellentesque nullam amet sit et at id pharetra. Justo et quis sem at fames. Augue nullam non pellentesque iaculis convallis aliquam tortor quam rhoncus.</div>
+                    <div className='description'>A Ruma é uma plataforma que destaca marcas autorais e talentosos produtores locais. Valorizamos cada item como uma expressão de arte e dedicação, conectando consumidores a peças exclusivas e com histórias inspiradoras. Ao escolher a Ruma, os clientes não apenas adquirem produtos de alta qualidade, mas também apoiam o crescimento sustentável da economia local.</div>
                 </div>
             </div>
             <div className="container3">

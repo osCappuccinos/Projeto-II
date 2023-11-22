@@ -9,7 +9,7 @@
     border-radius: 12px;
 }
 
-.container1 img{
+.container1 img {
     width: 1156px;
     height: 421px;
 }
@@ -33,7 +33,7 @@
     text-align: start;
 }
 
-.title p{
+.title p {
     color: #FFAB44 !important;
     font-weight: 700 !important;
     font-size: 16px;
@@ -67,6 +67,14 @@
 
 .cards {
     display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 20px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+}
+
+.imagem-sobreposta {
+    position: absolute;
+    top: 870px;
+    left: 469px;
+    max-width: 269px;
+    max-height: 269px;
 }
