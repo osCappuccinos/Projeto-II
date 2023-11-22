@@ -24,11 +24,15 @@ const useFirebaseRecommendations = () => {
     };
 
     const readClientOrders = async (clientId) => {
-        const ordersRef = ref(db, 'orders');
-        const allOrders = await get(ordersRef);
-        const ordersData = allOrders.val();
-        const clientOrders = Object.values(ordersData).filter(order => order.clientId === clientId);
-        return clientOrders;
+        const clientOrdersRef = ref(db, `orders/${clientId}`);
+        const snapshot = await get(clientOrdersRef);
+    
+        if (snapshot.exists()) {
+            return Object.values(snapshot.val());
+        } else {
+            console.log("No orders available for this client");
+            return [];
+        }
     };
 
     const getTopCategoriesFromOrders = async (clientOrders) => {
