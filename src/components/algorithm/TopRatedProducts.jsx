@@ -16,27 +16,35 @@ function TopRatedProducts() {
     const fetchProducts = async () => {
         try {
             SetStatus(FETCH_STATUS.LOADING);
-    
+
             const auth = getAuth();
-            let response;
             onAuthStateChanged(auth, async (user) => {
+                let response;
                 if (user) {
-                    const personalizedResponse = await fetchPersonalizedRecommendations(user.uid, 8);
-                    
-                    if (personalizedResponse && personalizedResponse.length > 0) {
-                        response = personalizedResponse;
-                    } else {
+                    response = await fetchPersonalizedRecommendations(user.uid, 8);
+                    if (!response || response.length === 0) {
                         response = await fetchTopRatedProducts(8);
                     }
                 } else {
                     response = await fetchTopRatedProducts(8);
                 }
-    
+
                 if (response) {
                     setProducts(response);
                     SetStatus(FETCH_STATUS.SUCCESS);
                 }
             });
+
+            // Definir um tempo limite para mudar para fetchTopRatedProducts se ainda estiver carregando
+            setTimeout(async () => {
+                if (status === FETCH_STATUS.LOADING) {
+                    const response = await fetchTopRatedProducts(8);
+                    if (response) {
+                        setProducts(response);
+                        SetStatus(FETCH_STATUS.SUCCESS);
+                    }
+                }
+            }, 5000); // 5 segundos de tempo limite
         } catch (error) {
             console.error("Error fetching products:", error);
             setError(error.message);
