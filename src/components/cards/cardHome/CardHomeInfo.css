@@ -27,5 +27,6 @@
     font-size: 13px; /* tamanho do texto */
     text-align: center; /* centraliza o texto */
     line-height: 19px; /* espaçamento entre linhas */
+    margin: 0 auto;
   }
   
