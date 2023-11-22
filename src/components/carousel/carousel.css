@@ -1,0 +1,27 @@
+/* ImageCarousel.css */
+.carousel-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 16px;
+    margin: 25px 0;
+    text-align: start;
+  }
+  
+  .carousel-image {
+    width: 1152px;
+    height: 320px;
+    object-fit: cover;
+    display: block;
+  }
+  
+  .carousel-caption {
+    position: absolute;
+    top: 50%; 
+    left: 50%;
+    transform: translate(-50%, -50%); 
+    color: white !important;
+    font-size: 1.5em;
+    text-align: center;
+  }
+  
+  
