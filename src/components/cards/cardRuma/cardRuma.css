@@ -1,0 +1,30 @@
+.card {
+    max-width: 327px;
+    max-height: 416px;
+    background-color: #EFEFEF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+  }
+
+.card img {
+    width: 279px;
+    height: 279px;
+    border-radius: 12px;
+    margin: 24px;
+  }
+
+  .title {
+    font-size: 21px;
+    font-weight: 500;
+    color: #383B39 !important;
+  }
+
+  .description {
+    font-size: 14px;
+    font-weight: 500;
+    color: #383B39 !important;
+    margin-top: 10px;
+  }

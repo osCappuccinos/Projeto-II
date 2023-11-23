@@ -1,0 +1,80 @@
+.ruma {
+    display: flex;
+    flex-direction: column;
+    /* Adicione estilos adicionais para posicionar os containers conforme necessário */
+}
+
+.container1 {
+    margin-top: 30px;
+    border-radius: 12px;
+}
+
+.container1 img {
+    width: 1156px;
+    height: 421px;
+}
+
+.container2 {
+    display: flex;
+    margin: 50px;
+    align-items: center;
+}
+
+.image img {
+    width: 549px;
+    height: 549px;
+    border-radius: 16px;
+    margin-left: 70px;
+}
+
+.text {
+    max-width: 450px;
+    margin: 0 100px;
+    text-align: start;
+}
+
+.title p {
+    color: #FFAB44 !important;
+    font-weight: 700 !important;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.big-title {
+    color: #3B684D;
+    font-size: 50px;
+    font-weight: 700;
+    line-height: 75px;
+    margin-bottom: 30px;
+}
+
+.description {
+    color: #383B39;
+    font-size: 14px;
+}
+
+.container3 {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: 50px 0;
+}
+
+.container3 .description {
+    max-width: 624px;
+    margin-bottom: 50px;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+}
+
+.imagem-sobreposta {
+    position: absolute;
+    top: 870px;
+    left: 469px;
+    max-width: 269px;
+    max-height: 269px;
+}
