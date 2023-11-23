@@ -17,14 +17,14 @@
     .imagem-de-fundo {
       position: absolute;
       top: 3800px;
-      left: 100px;
+      left: 150px;
       z-index: 1;
     }
 
     .imagem-sobreposta {
       position: relative !important;
       top: 100px !important;
-      left: 250px !important; 
+      left: 300px !important; 
       z-index: 2;
     }
 
@@ -35,6 +35,7 @@
     flex: 2; /* Adjust as needed */
     max-width: 566px;
     text-align: left; 
+    padding-right: 150px;
   }
 
   .footer-title {
