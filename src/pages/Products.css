@@ -17,6 +17,14 @@
     margin:auto;
     gap: 2.6em;
   }
+
+  h1 {
+    text-align: start;
+    color: #696F6B;
+    font-size: 38px;
+    font-weight: 200;
+    margin-left: 15px;
+  }
   
  /* @media (max-width:600px){
     .card-grid {

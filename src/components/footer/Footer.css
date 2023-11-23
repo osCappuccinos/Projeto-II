@@ -9,8 +9,9 @@
   }
   
   .footer-images {
-    /* Apply any specific styles for your images here */
-    flex: 1; /* Adjust as needed */
+    flex: 1; 
+    position: relative;
+    margin-bottom: 50px;
   }
   
   .footer-content {
@@ -74,7 +75,7 @@
 
   .footer-end {
     background-color: #3B684D;
-    color: #fff;
+    color: #fff !important;
     padding: 20px 100px;
     display: block;
     text-align: start;
@@ -96,6 +97,7 @@
   .footer-column ul {
     list-style: none;
     padding: 0;
+    color: #fff !important;
   }
   
   .footer-column ul li {
@@ -110,10 +112,13 @@
   
   .footer-logo img {
     margin-right: 10px;
+    max-width: 200px;
   }
   
-  .footer-logo-text {
-    font-weight: bold;
+  .footer-logo-2 img {
+    max-width: 125px;
+    margin-right: 10px;
+    margin-top: 20px;
   }
   
   .footer-bottom {
@@ -128,3 +133,22 @@
     text-align: start;
   padding-top: 10px;
   }
+
+  
+.imagem-de-fundo {
+  position: absolute;
+  top: 0px;
+  left: 100px;
+  z-index: 1;
+}
+
+.imagem-sobreposta {
+  position: relative;
+  top: 100px;
+  left: 50px;
+  z-index: 1;
+}
+
+.footer-end a {
+  color: white !important;
+}

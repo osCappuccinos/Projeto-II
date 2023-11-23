@@ -10,6 +10,10 @@
   button {
     background-color: #3B684D;
   }
+
+  .main-button a {
+    color: white !important;
+  }
   
   .main-title {
     font-size: 90px;
@@ -17,8 +21,8 @@
 
   .highlight {
     color: #3B684D;
-
   }
+
   
   .main-button {
     align-self: flex-start;
@@ -32,6 +36,7 @@
     text-decoration: none; /* remove a decoração padrão de links */
     text-align: center; /* centraliza o texto dentro do link */
     background-color: #3B684D;
+    color: white !important;
   }
   
   .content-section {
@@ -49,8 +54,14 @@
     margin: 10%;
   }
 
+  .image-section-2 {
+    position: absolute;
+    top: 551px;
+    left: 850px;
+  }
+
   a {
-    color: #fff; /* Isso irá tornar todos os links de cor vermelha */
+    color: #fff; 
   }
     
   .partners-section {
@@ -60,7 +71,7 @@
   .partners-list {
     display: flex;
     justify-content: space-around;
-    /* Adicione mais estilos conforme o design */
+    margin: 0 50px;
   }
 
   .partners-title {
