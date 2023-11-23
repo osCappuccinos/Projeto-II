@@ -20,6 +20,7 @@ const StoreHeader = ({ store }) => {
     const [error, setError] = useState(null);
 
     const bannerImage = "https://images.ctfassets.net/kw4ib93qcl5n/1lwkkFZBQQc6h4gDIqgmZI/10c66258106c768ea83b212ec086acb5/banner01.png";
+    const profileImage = "https://s2-g1.glbimg.com/enqW-At-ko9YkM1sRM5oFAsjPp4=/696x390/smart/filters:cover():strip_icc()/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2022/r/B/Rh7NobSomsDNjpDfsUyg/iracema-guardia-reinstalada.jpg"
 
     const fetchData = async () => {
         try {
@@ -62,10 +63,13 @@ const StoreHeader = ({ store }) => {
         return (
             <header className="store-header" style={{ backgroundImage: `url(${bannerImage})` }}>
                 <div className="white-background-extension">
-                    <Avatar alt={store.name} src={storeLogo} className="store-avatar" />
-                    <H2 text={store.name} className="store-name" />
+                    {/* <Avatar alt={store.name} src={storeLogo} className="store-avatar" />
+                    <H2 text={store.name} className="store-name" /> */}
+                    <div className="store-rectangle" style={{ backgroundImage: `url(${bannerImage})` }}>
+                        <div className="store-circle" ></div>
+                    </div>
                     <div className="rating-container">
-                        <H4 text={`⭐ Average Rating: ${reviews.totalAverageRating}`} className="store-rating" />
+                        <H4 text={`⭐ Avaliação geral: ${reviews.totalAverageRating}`} className="store-rating" />
                     </div>
                     <div className="store-categories">
                         {categories.map((category, index) => (
