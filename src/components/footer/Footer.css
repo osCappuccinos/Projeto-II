@@ -1,0 +1,130 @@
+.footer-section {
+    display: flex;        /* Enables Flexbox layout */
+    justify-content: space-between; /* Positions children with space between */
+    align-items: center;  /* Aligns children vertically in the center */
+    background-color: #3B684D;
+    padding: 50px;
+    margin-top: 200px;
+    color: white;
+  }
+  
+  .footer-images {
+    /* Apply any specific styles for your images here */
+    flex: 1; /* Adjust as needed */
+  }
+  
+  .footer-content {
+    flex: 2; /* Adjust as needed */
+    max-width: 566px;
+    text-align: left; 
+  }
+
+  .footer-title {
+    font-size: 50px;
+    color: #FFCD8F;
+  }
+  
+  .footer-highlight {
+    font-size: 50px;
+    color: white;
+    display: inline;
+  }
+
+  .footer-text {
+    font-size: 16px;
+  }
+
+  .footer-buttons {
+    display: flex;
+    justify-content: flex-start; /* Alinha os itens ao início da linha do container flex */
+    align-items: center;
+    padding: 20px;
+    gap: 10px;
+    font-size: 14px;
+    margin-left: -20px;
+    margin-top: 30px;
+  }
+
+  .footer-button-1 {
+    border: none;
+    border-radius: 50px;
+    padding: 15px 30px;
+    font-size: 16px;
+    cursor: pointer;
+    outline: none;
+    background-color: #d2a679;
+  color:#383B39;
+  max-width: 221px;
+    max-height: 54px;
+  }
+
+  .footer-button-2{
+    border-radius: 50px;
+    padding: 15px 50px;
+    font-size: 16px;
+    cursor: pointer;
+    outline: none;
+    background-color: transparent;
+  border: 2px solid #d2a679;
+  color: #d2a679;
+  max-width: 221px;
+    max-height: 54px;
+
+  }
+
+  .footer-end {
+    background-color: #3B684D;
+    color: #fff;
+    padding: 20px 100px;
+    display: block;
+    text-align: start;
+    font-size: 16px;
+    width: 87%;
+    display: block;
+  }
+  
+  .footer-end-section {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 0;
+  }
+  
+  .footer-column h4 {
+    margin-bottom: 10px;
+  }
+  
+  .footer-column ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .footer-column ul li {
+    padding: 5px 0;
+  }
+  
+  .footer-logo {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .footer-logo img {
+    margin-right: 10px;
+  }
+  
+  .footer-logo-text {
+    font-weight: bold;
+  }
+  
+  .footer-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 3px solid #ccc; /* Adiciona uma linha no topo, se desejado */
+  padding-top: 20px; /* Adiciona espaço acima do conteúdo da seção inferior */
+  }
+  
+  .footer-rights {
+    text-align: start;
+  padding-top: 10px;
+  }

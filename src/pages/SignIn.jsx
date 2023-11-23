@@ -16,7 +16,7 @@ const SignIn = () => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
             if (user) {
                 // Usuário já está logado, redireciona para /user
-                navigate('/user');
+                navigate('/client');
             }
         });
 
@@ -31,7 +31,7 @@ const SignIn = () => {
                 setIsError(true);
             } else {
                 // Redireciona para /user após login bem-sucedido
-                navigate('/user');
+                navigate('/client');
             }
         });
     };

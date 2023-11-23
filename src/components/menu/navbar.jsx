@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // Importe useNavigate
-
+import { useNavigate, Link } from 'react-router-dom'; // Importe useNavigate
+import PersonOutlinedIcon from '@mui/icons-material/PersonOutlined';
+import LocalMallOutlinedIcon from '@mui/icons-material/LocalMallOutlined';
 import ShoppingBagDropdown from '../shoppingBag/shoppingBagDropdown/shoppingBagDropdown';
 import SearchBar from "./searchbar";
 import './navbar.css';
 
 const Navbar = () => {
+    const [showShoppingBag, setShowShoppingBag] = useState(false);
     const [openCartDropdown, setOpenCartDropdown] = useState(false);
     const navigate = useNavigate();
     const goToUserPage = () => {
@@ -14,19 +16,26 @@ const Navbar = () => {
 
     return (
         <nav className="navbar">
+            <div className="logo">
+                <Link to="/"><img src={""} alt="Logotipo"/></Link>
+            </div>
             <ul>
-                <li><a href="/">Home</a></li>
-                <SearchBar />
-                <div className="orders-and-cart">
-                    <div className="profile-pic"></div>
-                    <button onClick={goToUserPage}>Meus pedidos</button> 
-                    <button onClick={() => setOpenCartDropdown((prev) => !prev)}>Minha sacola</button>
+            <li><Link to="/">Início</Link></li>
+                <li><Link to="/produtos">Produtos</Link></li>
+                <li><Link to="/parceiros">Parceiros</Link></li>
+                <li><Link to="/ruma">A Ruma</Link></li>
+             
+                
+                <div className="orders-and-cart">   
+                <SearchBar />                 
+                    <button onClick={() => setOpenCartDropdown((prev) => !prev)}><LocalMallOutlinedIcon /></button>
                     {
                         openCartDropdown && <ShoppingBagDropdown
                         itemsCount = "1"
                         cartTotal = "80.75"
                         />
                     }
+                    <button onClick={goToUserPage}><PersonOutlinedIcon /></button> 
                 </div>
             </ul>
         </nav>

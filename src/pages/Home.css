@@ -1,0 +1,125 @@
+.main-section {
+    display: flex;
+    align-items: center; /* Alinha verticalmente */
+    justify-content: center; /* Alinha horizontalmente */
+    gap: 20px; /* Espaço entre os elementos filho */
+    margin: auto;
+    color: #383B39;
+  }
+
+  button {
+    background-color: #3B684D;
+  }
+  
+  .main-title {
+    font-size: 90px;
+  }
+
+  .highlight {
+    color: #3B684D;
+
+  }
+  
+  .main-button {
+    align-self: flex-start;
+    margin-top: 10%;
+    padding: 8px 16px;
+    max-width: 200px; 
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+    display: inline-block; /* para que ele se comporte como um botão */
+    text-decoration: none; /* remove a decoração padrão de links */
+    text-align: center; /* centraliza o texto dentro do link */
+    background-color: #3B684D;
+  }
+  
+  .content-section {
+    display: flex;
+  flex-direction: column; /* Empilha os filhos verticalmente */
+  align-items: flex-start;
+    flex: 1;
+    text-align: left;
+    padding: 20px;
+    margin-left: 5%;
+  }
+
+  .image-section {
+    flex: 1;
+    margin: 10%;
+  }
+
+  a {
+    color: #fff; /* Isso irá tornar todos os links de cor vermelha */
+  }
+    
+  .partners-section {
+    margin-top: 20px;
+  }
+  
+  .partners-list {
+    display: flex;
+    justify-content: space-around;
+    /* Adicione mais estilos conforme o design */
+  }
+
+  .partners-title {
+    font-size: 50px;
+  }
+  
+  .info-section {
+    background-color: #3B684D;
+    margin: auto;
+    margin-top: 100px;
+    color: white;
+    width: 100% ;
+    padding-bottom: 142px;
+  }
+
+  .info-title {
+    color: #FFCD8F;
+    font-size: 16px;
+    padding: 16px;
+    margin-bottom: -60px;
+    font-weight: bold;
+  }
+
+  .info-text-title {
+    font-size: 56px;
+    margin-bottom: -50px;
+  }
+
+  .info-text {
+    font-size: 16px;
+    max-width: 624px;
+    margin: auto;
+  }
+
+  .info-cards {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+  }
+
+  .exclusive-section {
+    position: relative;
+    margin: auto;
+  }
+
+  .exclusive-title {
+    font-size: 48px;
+    font-weight: 700;
+    color: #383B39;
+    margin-bottom: -30px;
+  }
+
+  .exclusive-text {
+    color: #696F6B;
+    font-size: 24px;
+  }
+
+  .footer {
+    width:100%;
+    display: flex;
+    flex-direction: column;
+  }

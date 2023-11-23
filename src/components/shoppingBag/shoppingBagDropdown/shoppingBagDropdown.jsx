@@ -41,11 +41,12 @@ function ShoppingBagDropdown(props) {
             SetStatus(FETCH_STATUS.LOADING);
     
             const response = await readBag(0);
-    
+        
+            // Atualiza o estado da sacola independentemente de estar vazia ou não
             if (response) {
                 updateTotalPrice();
-                SetStatus(FETCH_STATUS.SUCCESS);
             }
+            SetStatus(FETCH_STATUS.SUCCESS); // Muda o status para sucesso mesmo se a sacola estiver vazia
         } catch (error) {
             console.error('Error fetching data:', error);
             setError(error.message);
@@ -69,31 +70,43 @@ function ShoppingBagDropdown(props) {
         }
     }, [Object.keys(bag).length])
 
-    if (status === FETCH_STATUS.LOADING) {
-        return <div></div>
-    } else if (status === FETCH_STATUS.ERROR) {
-        return <span>{error}</span>
-    } else if (status === FETCH_STATUS.SUCCESS) {
-
-        return (
-            <div className="dropdownContainer">
-                <div className="summary">
-                    <h3>Resumo</h3>
-                    <p>{Object.keys(bag).length} {itemsString}</p>
+    // Função para renderizar o conteúdo do Dropdown
+    const renderDropdownContent = () => {
+        if (status === FETCH_STATUS.LOADING) {
+            return <div>Loading...</div>;
+        } else if (status === FETCH_STATUS.ERROR) {
+            return <span>{error}</span>;
+        } else {
+            // Exibe os itens da sacola ou uma mensagem para sacola vazia
+            return Object.keys(bag).length > 0 ? (
+                <>
+                    <div className="summary">
+                        <h3>Resumo</h3>
+                        <p>{Object.keys(bag).length} {itemsString}</p>
+                    </div>
+                    {Object.keys(bag).map((productKey) => (
+                        <ShoppingBagProductDetails key={productKey} product={bag[productKey]} updateTotalPrice={updateTotalPrice} />
+                    ))}
+                    <div className="total">
+                        <h4>Total</h4>
+                        <h4>R${totalPrice}</h4>
+                    </div>
+                </>
+            ) : (
+                <div className="emptyBagMessage">
+                    Sua sacola está vazia.
                 </div>
-                {
-                    Object.keys(bag).map((proudctKey) => (
-                        <ShoppingBagProductDetails key={proudctKey} product={bag[proudctKey]} updateTotalPrice={updateTotalPrice} />
-                    ))
-                }
-                <div className="total">
-                    <h4>Total</h4>
-                    <h4>R${totalPrice}</h4>
-                </div>
-                <button className="goToCart">Ir para minha sacola</button>
-            </div>
-        );
+            );
+        }
     }
+
+    // Sempre renderiza o container do Dropdown
+    return (
+        <div className="dropdownContainer">
+            {renderDropdownContent()}
+            <button className="goToCart">Ir para minha sacola</button>
+        </div>
+    );
 }
 
 export default ShoppingBagDropdown;

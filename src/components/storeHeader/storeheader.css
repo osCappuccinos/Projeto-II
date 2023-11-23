@@ -1,0 +1,56 @@
+.store-header {
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    width: 100%;
+}
+
+.white-background-extension {
+    background-color: rgba(255, 255, 255, 1);
+    padding: 10px;
+    border-radius: 10px;
+    max-width: 100%;
+    text-align: center;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.store-avatar {
+    width: 50% !important; 
+    height: auto !important;
+    max-width: 200px;
+    background-color: white;
+    margin: 10px auto -40px auto; /* Ajuste o valor negativo conforme necessário */
+}
+
+.store-name, .store-header h2 { /* Combine as definições de estilo se aplicável */
+    color: #383B39;
+    font-size: 28px; /* Correção da propriedade de 'size' para 'font-size' */
+    line-height: 42px; /* Ajuste conforme necessário */
+}
+
+.rating-container {
+    margin-top: -30px; /* Ajuste o valor conforme necessário */
+    margin-bottom: 10px;
+    color: #FFAB44;
+    font-weight: 400;
+}
+
+.store-rating {
+    font-size: 16px;
+    color: #FFAB44;
+    font-weight: 400;
+}
+
+.store-categories {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin: auto;
+}
+
+.category-chip {
+    background-color: #3B684D !important;
+    color: white !important;
+}
