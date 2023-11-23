@@ -29,6 +29,7 @@ function Partners() {
             </div>
         </div>
         <StoreBanner
+        linkPath={'/lojas/charm-chic'}
         backgroundImage={backgroundCharmChic}
         logoImage={logoCharmChic}
         category={'Moda feminina'}
@@ -36,6 +37,7 @@ function Partners() {
         text={'Seja cativado pela autenticidade das peças exclusivas na CharmChic, uma loja que captura a essência da simplicidade e elegância. Explore nossa coleção que celebra o minimalismo com um toque de artesanato refinado. Cada criação é única, refletindo a arte e a dedicação das mãos talentosas por trás de cada produto.'}
         />
         <StoreBanner
+        linkPath={'/lojas/loja-iracema'}
         backgroundImage={backgroundIracema}
         logoImage={logoIracema}
         category={'Moda e acessórios'}
@@ -44,6 +46,7 @@ function Partners() {
         reverseOrder
         />
         <StoreBanner
+        linkPath={'/lojas/areia-moda'}
         backgroundImage={backgroundAreiaeModa}
         logoImage={logoAreiaeModa}
         category={'Moda praia'}
@@ -51,6 +54,7 @@ function Partners() {
         text={'Descubra a elegância à beira-mar na Areia&Moda. Nossas peças de moda praia, com estampas exclusivas, unem o luxo ao conforto, oferecendo proteção UV sem comprometer o estilo. Criações que refletem a sofisticação, qualidade e design exclusivo. Envolva-se na aura de exclusividade e glamour com cada peça que carrega a assinatura da Areia&Moda.'}
         />
         <StoreBanner
+        linkPath={'/lojas/estilo-fino'}
         backgroundImage={backgroundEstiloFino}
         logoImage={logoEstiloFino}
         category={'Moda para todes'}
@@ -60,7 +64,6 @@ function Partners() {
         />
         <div className='footer'>
           <Footer />
-          <FooterEnd />
         </div>
       </div >
     </>
