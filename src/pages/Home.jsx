@@ -17,7 +17,7 @@ function Home() {
       <div className="main-section">
         <div className="content-section">
           <h1 className="main-title">A Ruma veio para <span className="highlight">Fortal</span>ecer!</h1>
-          <p>Na Ruma, encontre a seleção premium de produtos exclusivos e criteriosamente avaliados por nossa curadoria.
+          <p className='paragraph'>Na Ruma, encontre a seleção premium de produtos exclusivos e criteriosamente avaliados por nossa curadoria.
             <b> Descubra qualidade e singularidade em cada item escolhido a dedo para você.</b></p>
           <button className="main-button">
             <Link to="/produtos" >COMPRE AGORA</Link>

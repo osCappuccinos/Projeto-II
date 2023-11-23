@@ -17,16 +17,22 @@
   
   .main-title {
     font-size: 90px;
+    font-weight: 700;
   }
 
   .highlight {
     color: #3B684D;
   }
 
+  .paragraph {
+    margin: 0 15px;
+  }
+
   
   .main-button {
     align-self: flex-start;
     margin-top: 10%;
+    margin-left: 15px;
     padding: 8px 16px;
     max-width: 200px; 
     font-size: 14px;
@@ -127,6 +133,11 @@
   .exclusive-text {
     color: #696F6B;
     font-size: 24px;
+  }
+
+  .exclusive-cards {
+    display: flex;
+    margin: 0 50px;
   }
 
   .footer {
