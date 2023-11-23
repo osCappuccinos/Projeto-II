@@ -5,8 +5,8 @@ const Footer = () => {
     return (
         <div className='footer-section'>
             <div className='footer-images'>
-                <img src="https://images.ctfassets.net/kw4ib93qcl5n/3umWQjDlsEKJaSIcAKCPCp/fdde899a18863d77af874d749610b556/container-parceria-footer1.png" alt="Imagem 1" class="imagem-de-fundo" />
-                    <img src="https://images.ctfassets.net/kw4ib93qcl5n/7kbnGx9IK7bR6TmRACJfEG/b2bec7d9cc594320c4bb97acf0722d8e/container-parceria-footer2.png" alt="Imagem 2" class="imagem-sobreposta"/>
+                <img src="https://images.ctfassets.net/kw4ib93qcl5n/3umWQjDlsEKJaSIcAKCPCp/fdde899a18863d77af874d749610b556/container-parceria-footer1.png" alt="Imagem 1" className="imagem-de-fundo" />
+                    <img src="https://images.ctfassets.net/kw4ib93qcl5n/7kbnGx9IK7bR6TmRACJfEG/b2bec7d9cc594320c4bb97acf0722d8e/container-parceria-footer2.png" alt="Imagem 2" className="imagem-sobreposta"/>
                     </div>
                     <div className='footer-content'>
                         <div className='footer-title'>Venha ser <div className='footer-highlight'>Ruma</div></div>
