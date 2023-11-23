@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Typography from '@mui/material/Typography';
 import "./Checkout3.css"
+import { Link } from 'react-router-dom';
 
 function Checkout3() {
 
@@ -18,7 +19,7 @@ function Checkout3() {
                         <button>Copiar código</button>
                     </div>
                     <Typography variant="body1" className="body1">Copie o código acima <br/> Acesse o app do seu banco ou internet banking de preferência <br/> Escolha pagar com o Pix, cole o código e finalize o pagamento <br/> Seu pagamento será aprovado em alguns segundos</Typography>
-                    <button>Ir para Meus Pedidos</button>
+                    <button><Link to="/Client">Ir para Meus Pedidos</Link></button>
                 </div>
             </div>
         </div>
