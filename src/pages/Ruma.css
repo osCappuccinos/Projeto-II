@@ -72,9 +72,9 @@
 }
 
 .imagem-sobreposta {
-    position: absolute;
-    top: 870px;
-    left: 469px;
+    position: absolute !important;
+    top: 870px !important;
+    left: 469px !important;
     max-width: 269px;
     max-height: 269px;
 }

@@ -63,7 +63,6 @@ function Partners() {
         reverseOrder
         />
         <div className='footer'>
-          <Footer />
         </div>
       </div >
     </>
