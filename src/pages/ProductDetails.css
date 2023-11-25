@@ -185,6 +185,13 @@ input{
     align-items: stretch;
 
   }
+
+  .rating-stars {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+  }
   
   .rating-label,
   .comment-label {

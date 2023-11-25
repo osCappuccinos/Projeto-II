@@ -55,6 +55,7 @@
 
 .pix-copyandpaste input{
     width:100%;
+    text-align: center;
 }
 
 .pix-copyandpaste button{

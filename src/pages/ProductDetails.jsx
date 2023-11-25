@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Rating from '@mui/material/Rating';
 import { useParams } from 'react-router-dom';
 
 import { CommentGroup } from '../components/comment/commentGroup';
@@ -29,39 +30,39 @@ function ProductDetails() {
   const [reviews, setReviews] = useState([]);
   const [status, SetStatus] = useState(FETCH_STATUS.IDLE);
   const [error, setError] = useState(null);
-  const [store, setStore] = useState(null); 
+  const [store, setStore] = useState(null);
 
   const [size, setSize] = useState([]);
   const [color, setColor] = useState([]);
   const [selectedImage, setSelectedImage] = useState(null);
   const [showReviewForm, setShowReviewForm] = useState(false);
-  const [rating, setRating] = useState(0); 
+  const [rating, setRating] = useState(0);
   const [comment, setComment] = useState('');
 
   const fetchData = async () => {
     try {
       SetStatus(FETCH_STATUS.LOADING);
-  
+
       const contentResponse = await getProductContent(id);
       const productResponse = await readProduct(id);
-  
+
       // Busca e define a loja
       if (productResponse && productResponse.storeSlug) {
-          const storeResponse = await getStoreContent(productResponse.storeSlug);
-          if (storeResponse && storeResponse.length > 0) {
-              setStore(storeResponse[0]);
-          }
+        const storeResponse = await getStoreContent(productResponse.storeSlug);
+        if (storeResponse && storeResponse.length > 0) {
+          setStore(storeResponse[0]);
+        }
       }
-  
+
       const reviewsResponse = await readAllProductReviews(id);
       setReviews(reviewsResponse);
-  
+
       if (contentResponse[0].id === productResponse.id) {
         setContent(contentResponse[0]);
         setProduct(productResponse);
         SetStatus(FETCH_STATUS.SUCCESS);
       }
-  
+
     } catch (error) {
       console.error('Error fetching data:', error);
       setError(error.message);
@@ -73,13 +74,14 @@ function ProductDetails() {
     fetchData();
   }, []);
 
-  const handleChangeSize = (event) => {
-    setSize(event.target.value);
-  }
+  const handleChangeSize = (selectedSize) => {
+    setSize(selectedSize);
+  };
 
-  const handleColorSelected = (event) => {
-    setColor(event.target.value);
-  }
+  const handleColorSelected = (selectedColor) => {
+    setColor(selectedColor);
+  };
+
 
   const handleThumbnailClick = (image) => {
     setSelectedImage(image);
@@ -87,17 +89,16 @@ function ProductDetails() {
 
   const addProductToBag = () => {
     const response = createProductInBag(0, product.id, 1);
-  } 
-  
+  }
+
   const handleReviewButtonClick = () => {
     setShowReviewForm(true);
   };
 
-  const handleRatingChange = (event) => {
-    // Ensure rating is within the range 1-5
-    const newRating = Math.min(Math.max(parseInt(event.target.value, 10), 1), 5);
-    setRating(newRating);
+  const handleRatingChange = (newValue) => {
+    setRating(newValue);
   };
+
 
   const handleCommentChange = (event) => {
     setComment(event.target.value);
@@ -141,7 +142,7 @@ function ProductDetails() {
           <div className="textual-info">
             <div className="info-block">
               <H2 text={content.name}></H2>
-       {/*      <p>Vendido por {store ? store.name : 'Carregando...'}</p> */}
+              {/*      <p>Vendido por {store ? store.name : 'Carregando...'}</p> */}
               <p>{product.ratingCount} avaliações</p>
             </div>
             <ProductPrice
@@ -161,15 +162,15 @@ function ProductDetails() {
           <div className="ratingsDiv">
             {
               product.ratings ? <Ratings
-              ratingCount={product.ratingCount}
-              averageRating={product.averageRating}
-              ratings={product.ratings}
-            /> : ""
+                ratingCount={product.ratingCount}
+                averageRating={product.averageRating}
+                ratings={product.ratings}
+              /> : ""
             }
           </div>
           <div className="commentsDiv">
             {
-              reviews? <CommentGroup reviews={reviews} /> : ""
+              reviews ? <CommentGroup reviews={reviews} /> : ""
             }
             <button className="addCart" onClick={handleReviewButtonClick}>
               Escreva uma avaliação
@@ -177,29 +178,28 @@ function ProductDetails() {
 
             {showReviewForm && (
               <form className="review-form">
-              <label className="rating-label">
-                Rating:
-                <input
-                  type="number"
+                <div className='rating-stars'>
+                Avaliação:
+                <Rating
+                  name="rating"
                   value={rating}
-                  onChange={handleRatingChange}
-                  min="1"
-                  max="5"
-                  className="rating-input"
+                  onChange={(event, newValue) => {
+                    handleRatingChange(newValue);
+                  }}
                 />
-              </label>
-              <br />
-              <label className="comment-label">
-                Comment:
-                <textarea
-                  value={comment}
-                  onChange={handleCommentChange}
-                  className="comment-textarea"
-                />
-              </label>
-              <br />
-              <button type="submit" className="submit-review-button">Submit Review</button>
-            </form>
+                </div>
+                <br />
+                <label className="comment-label">
+                  Comment:
+                  <textarea
+                    value={comment}
+                    onChange={handleCommentChange}
+                    className="comment-textarea"
+                  />
+                </label>
+                <br />
+                <button type="submit" className="submit-review-button">Enviar avaliação</button>
+              </form>
             )}
           </div>
         </div>

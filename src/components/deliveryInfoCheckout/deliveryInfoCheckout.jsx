@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Accordion from '@mui/material/Accordion';
 import AccordionDetails from '@mui/material/AccordionDetails';
@@ -14,6 +15,17 @@ import ShoppingBagProductDetails from '../shoppingBag/shoppingBagProductDetails/
 import "./deliveryInfoCheckout.css"
 
 function DeliveryInfoCheckout({ bag, updateTotalPrice }) {
+    const [deliveryConfirmationMessage, setDeliveryConfirmationMessage] = useState('');
+    const [paymentConfirmationMessage, setPaymentConfirmationMessage] = useState('');
+
+    const handleDeliveryConfirmation = () => {
+        setDeliveryConfirmationMessage('Tipo de entrega confirmado. Por favor, prossiga.');
+    };
+
+    const handlePaymentConfirmation = () => {
+        setPaymentConfirmationMessage('Forma de pagamento confirmada. Por favor, prossiga.');
+    };
+
     return (
         <div className="smaller-container">
             <Accordion>
@@ -32,13 +44,14 @@ function DeliveryInfoCheckout({ bag, updateTotalPrice }) {
                             name="radio-buttons-group"
                             className="radiogroup"
                         >
-                            <FormControlLabel className="address" value="Lucas de Oliveira" control={<Radio />} label="Lucas de Oliveira, av. Mister Hull, s/n - Pici - CEP 60455-760 - Fortaleza - CE" />
+                            <FormControlLabel className="address" value="Lucas de Oliveira" control={<Radio />} label="Maria Silva, R. Inês Brasil, 298 - Mata Galinha, Fortaleza - CE, 60867-54" />
                             <Typography className="addNewAddress" variant="caption">+ Adicionar novo endereço</Typography>
                             <FormLabel id="demo-radio-buttons-group-label">Retirar na loja:</FormLabel>
                             <FormControlLabel className="address" value="Loja1" control={<Radio />} label="Loja Iracema, av. Mister Hull, s/n - Pici - CEP 60455-760 - Fortaleza - CE" />
                         </RadioGroup>
                     </FormControl>
-                    <button>Confirmar tipo de entrega</button>
+                    <button onClick={handleDeliveryConfirmation}>Confirmar tipo de entrega</button>
+                    {deliveryConfirmationMessage && <p className="delivery-confirmation-message">{deliveryConfirmationMessage}</p>}
                 </AccordionDetails>
             </Accordion>
             <Accordion>
@@ -61,7 +74,9 @@ function DeliveryInfoCheckout({ bag, updateTotalPrice }) {
                             <FormControlLabel className="address" value="Cartao" control={<Radio />} label="Cartão de crédito" />
                         </RadioGroup>
                     </FormControl>
-                    <button>Confirmar forma de pagamento</button>
+                    <button onClick={handlePaymentConfirmation}>Confirmar forma de pagamento</button>
+                    {paymentConfirmationMessage && <p className="payment-confirmation-message">{paymentConfirmationMessage}</p>}
+               
                 </AccordionDetails>
             </Accordion>
             <Accordion>

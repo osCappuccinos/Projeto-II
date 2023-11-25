@@ -8,4 +8,9 @@
 
 input{
     height:35px;
+    max-width: 300px;
+}
+
+.cep-message {
+    width: 300px;
 }
