@@ -13,4 +13,9 @@ input{
 
 .cep-message {
     width: 300px;
+    text-align: start;
+}
+
+button {
+    padding: 0 100px;
 }

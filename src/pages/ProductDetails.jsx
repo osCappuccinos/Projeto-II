@@ -172,7 +172,7 @@ function ProductDetails() {
             {
               reviews ? <CommentGroup reviews={reviews} /> : ""
             }
-            <button className="addCart" onClick={handleReviewButtonClick}>
+            <button className="ratingsButton" onClick={handleReviewButtonClick}>
               Escreva uma avaliação
             </button>
 

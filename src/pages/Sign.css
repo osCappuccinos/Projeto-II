@@ -7,7 +7,7 @@
     display: flex; /* Usa Flexbox */
     flex-direction: column; /* Organiza os filhos em coluna */
     align-items: center; /* Centraliza horizontalmente os filhos */
-    color: #184A2c;
+    color: #3B684D;
 }
 
 .modal-content .form-container {
@@ -32,7 +32,7 @@ input[type="password"] {
 /* Estilização do botão */
 button {
     padding: 10px;
-    background-color: #184A2c;
+    background-color: 3B684D;
     color: white;
     border: none;
     border-radius: 30px;
@@ -41,7 +41,7 @@ button {
 }
 
 button:hover {
-    background-color: #184A2c;
+    background-color: #3B684D;
 }
 
 /* Estilo do link de navegação */
@@ -51,7 +51,7 @@ button:hover {
 }
 
 .link a {
-    color: #184A2c;
+    color: #3B684D;
     text-decoration: none;
 }
 

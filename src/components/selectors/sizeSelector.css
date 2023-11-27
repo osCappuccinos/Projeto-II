@@ -1,11 +1,11 @@
 .size-selector {
-  display: inline-block;
+  display: relative;
 }
 
 .size-options {
   display: flex;
   align-items: center;
-  margin: 0 -5px;
+  margin: 0 -8px;
 }
 
 .size-option {

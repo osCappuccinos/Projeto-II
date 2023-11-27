@@ -10,7 +10,7 @@
 .color-option {
   border: 2px solid transparent;
   cursor: pointer; 
-  margin: 5px;
+  margin: 5px 0;
   height: 25px;
   width: 25px;
   border-radius: 50%; 

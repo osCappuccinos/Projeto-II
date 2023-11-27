@@ -25,14 +25,17 @@ function ShippingInfo(props) {
                     onChange={(e) => setCep(e.target.value)}
                 />
                 <div className='cep-message'>
-                {message && <p className="cep-message">{message}</p>}
-                <div>
-                <p>Não sei meu CEP</p>
+                    {message && <p className="cep-message">{message}</p>}
+                    {/* Renderizar o texto "Não sei meu CEP" apenas se a mensagem não estiver presente */}
+                    {!message && (
+                        <div>
+                            <p>Não sei meu CEP</p>
+                        </div>
+                    )}
                 </div>
                 <Link to="/checkout">
                     <button>Confirmar</button>
                 </Link>
-                </div>
             </div>
         </div>
     );
