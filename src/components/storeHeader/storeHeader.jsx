@@ -6,12 +6,16 @@ import { H2, H4 } from '../title/titles';
 import SocialMediaIcons from '../icons/socialmediaicons';
 import Chip from '@mui/material/Chip';
 import Avatar from '@mui/material/Avatar';
+import FacebookIcon from '@mui/icons-material/Facebook';
+import InstagramIcon from '@mui/icons-material/Instagram';
+import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import "./storeheader.css";
 
 const StoreHeader = ({ store }) => {
     const { readStoreReviews } = useFirebaseReviews();
     const { getStoreContent } = contentfulController();
 
+    const [name, setName] = useState([])
     const [content, setContent] = useState([]);
     const [reviews, setReviews] = useState([]);
     const [categories, setCategories] = useState([]);
@@ -35,6 +39,10 @@ const StoreHeader = ({ store }) => {
 
                 if (contentResponse.length > 0 && contentResponse[0].category) {
                     setCategories(contentResponse[0].category);
+                }
+
+                if (contentResponse.length > 0 && contentResponse[0].category) {
+                    setName(contentResponse[0].name);
                 }
 
                 if (contentResponse.length > 0 && contentResponse[0].logo) {
@@ -66,7 +74,13 @@ const StoreHeader = ({ store }) => {
                     {/* <Avatar alt={store.name} src={storeLogo} className="store-avatar" />
                     <H2 text={store.name} className="store-name" /> */}
                     <div className="store-rectangle" style={{ backgroundImage: `url(${bannerImage})` }}>
-                        <div className="store-circle" ></div>
+                        <div className="store-circle" style={{ backgroundImage: `url(${storeLogo})` }}></div>
+                        <div class="icon-container">
+                            <SocialMediaIcons className="social-media-icons" />
+                        </div>
+                    </div>
+                    <div className="store-name">
+                        <H2 text={name}></H2>
                     </div>
                     <div className="rating-container">
                         <H4 text={`⭐ Avaliação geral: ${reviews.totalAverageRating}`} className="store-rating" />
@@ -76,7 +90,6 @@ const StoreHeader = ({ store }) => {
                             <Chip key={index} label={category} className="category-chip" />
                         ))}
                     </div>
-                    <SocialMediaIcons className="social-media-icons" />
                 </div>
             </header>
         );
