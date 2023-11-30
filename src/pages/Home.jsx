@@ -9,6 +9,7 @@ import StarBorderOutlinedIcon from '@mui/icons-material/StarBorderOutlined';
 import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
 import TopRatedProducts from '../components/algorithm/TopRatedProducts';
 import Footer from '../components/footer/Footer';
+import homePhotos from '../components/images/homePhotos.svg';
 
 function Home() {
 
@@ -25,8 +26,8 @@ function Home() {
         </div>
 
         <div className='image-section'>
-          <img src={'https://images.ctfassets.net/kw4ib93qcl5n/5GWlIZIH6a5Io1Sf2FSitJ/b70e7cff5c9282cddf8df6af5c4a2fa6/imagem-cta1.png'} />
-          <img className="image-section-2" src={'https://images.ctfassets.net/kw4ib93qcl5n/1SzcPVKzvewAZII3zkImVm/f290392bdb5b3010171a3193974c05d4/imagem-cta-2.png'} />
+          <img className='homePhotos' src={homePhotos} alt="" />
+          
         </div>
       </div>
       <div className="partners-section">
