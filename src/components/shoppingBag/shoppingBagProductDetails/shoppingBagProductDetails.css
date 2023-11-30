@@ -9,6 +9,7 @@
     margin-right:15px;
     width: 95%;
     border-bottom: 1px solid #CCC;
+    flex-wrap: wrap;
 }
 
 .detailsContainer img{
@@ -42,6 +43,6 @@
 
 .plusMinusContainer input{
     text-align: center;
-    width:20px;
+    width:40px !important;
     height:20px;
 }
