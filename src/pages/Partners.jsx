@@ -21,7 +21,7 @@ function Partners() {
       <div className="partners-main-section">
         <div className="partners-banner">
             <div className="banner-info">
-                <h1 className="partners-title">Ruma é <span className="yellow-highlight">parceria</span></h1>
+                <h1 className="partners-banner-title">Ruma é <span className="yellow-highlight">parceria</span></h1>
                 <p><b>Quer aumentar sua presença online de forma simplificada? Então venha fazer parte da Ruma e venda seus produtos com a primeira plataforma voltada para marcas autorais do estado do Ceará.</b></p>
                 <button className="btn1">
                     <Link to="/produtos">Quero fazer parte!</Link>
