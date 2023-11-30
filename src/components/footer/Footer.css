@@ -96,7 +96,7 @@
   display: block;
   text-align: start;
   font-size: 16px;
-  width: 87%;
+  width: 100%;
   display: block;
 }
 
@@ -109,7 +109,7 @@
 
 .footer-column{
   width:10%;
-  min-width:160px;
+  min-width:120px;
 }
 
 .footer-column h4 {
