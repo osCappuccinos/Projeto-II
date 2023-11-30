@@ -173,4 +173,13 @@
   .footer-logo{
     width:100%;
   }
+
+  .footer-logo img{
+    margin:auto;
+  }
+
+  .footer-end-section{
+    justify-content: center;
+    gap:10px;
+  }
 }
