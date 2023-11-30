@@ -75,7 +75,7 @@ function Products() {
                 isOpen={!isAuthenticated} 
                 onClose={() => setIsAuthenticated(true)} 
                 userName={user ? user.displayName : ''} 
-            />
+                />
                  <div>
                  <Carousel images={carouselData} />
                 </div>

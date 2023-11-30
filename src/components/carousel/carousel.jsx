@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import './carousel.css'
 
 const Carousel = ({ images }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -21,17 +22,8 @@ const Carousel = ({ images }) => {
             className="carousel-image"
           />
          <div
-  className="carousel-caption"
-  style={{
-    position: 'absolute', // Posiciona o caption sobre a imagem
-    top: '15%', 
-    left: '15%',
-    width: '400px',
-    color:'white',
-    fontSize: '2.5em',
-    fontWeight: '700', 
-    textAlign: 'start'}}
->
+            className="carousel-caption"
+          >
             {images[currentIndex].caption}
           </div>
         </div>
