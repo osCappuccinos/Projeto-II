@@ -2,6 +2,8 @@ import React from 'react';
 import "./Ruma.css"
 import CardHomeInfo from '../components/cards/cardHome/cardHomeInfo';
 import CardRuma from '../components/cards/cardRuma/cardRuma';
+import bottomImage from '../components/images/bottomImage.svg';
+import logoRuma from '../components/images/logoRuma.svg';
 
 const Ruma = () => {
     return (
@@ -11,8 +13,9 @@ const Ruma = () => {
             </div>
             <div className="container2">
                 <div className="image">
-                    <img src='https://images.ctfassets.net/kw4ib93qcl5n/3nrZWwrJnRDzfFMEzfjx2V/e2c00913ff32a9f6555ef8b665243f1c/equipe.png' />
-                    <img src='https://images.ctfassets.net/kw4ib93qcl5n/3kzPep6clGXomq0BHGz6DU/91ef1480b8458ce21d2a362125b9b08a/logo_ruma.png' className='imagem-sobreposta' />
+                    <div className="bottomImage" style={{ backgroundImage: `url(${bottomImage})` }}>
+                        <div className="topImage" style={{ backgroundImage: `url(${logoRuma})` }}></div>
+                    </div>
                 </div>
                 <div className="text">
                     <div className='title'><p>Saiba mais sobre a nossa proposta</p></div>
