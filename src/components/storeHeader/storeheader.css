@@ -30,7 +30,7 @@
     margin-left: auto; 
     margin-right: auto; 
     bottom: -90px;
-    background:red;
+    background-size: cover;
 }
 
 .store-rectangle .social-media-icons{
