@@ -63,3 +63,81 @@
 .navbar ul li a:hover {
     color: #3B684D !important;
 }
+
+.menuicon{
+    visibility: hidden;
+}
+
+.dropdown{
+    visibility: hidden;
+}
+@media only screen and (max-width: 768px){
+    .main-nav-li{
+        display: none;
+    }
+
+    .cart-btn, .user-btn{
+        display: none;
+    }
+
+    .menuicon{
+        position: absolute;
+        visibility: visible;
+        right:45px;
+    }
+
+    .navbar{
+        align-items: space-between;
+        padding:10px;
+    }
+
+    .orders-and-cart{
+        display: flex;
+        flex-direction: row;
+        width:fit-content;
+        align-items: center;
+        margin-top: -10px;
+    }
+
+    .dropdown {
+        visibility: visible;
+        position: absolute;
+        top: 80px; 
+        right:45px;
+        background-color: #fff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 4px;
+        display: none; 
+        width:250px;
+        align-items: center;
+        justify-content: center;
+      }
+      
+      .dropdown.visible {
+        display: flex; 
+        flex-direction: column;
+      }
+      
+      .dropdown ul {
+        display:flex;
+        flex-direction: column;
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+      }
+      
+      .dropdown li {
+        padding: 10px;
+      }
+      
+      .dropdown li a {
+        text-decoration: none;
+        color: #383B39;
+        font-weight: bold;
+      }
+      
+      .dropdown li a:hover {
+        color: #3B684D;
+      }
+}
+

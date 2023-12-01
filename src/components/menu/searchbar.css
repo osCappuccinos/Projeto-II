@@ -52,3 +52,18 @@
     text-align: center;
     color: #383B39;
 }
+
+@media only screen and (max-width: 768px){
+    .search-bar{
+        width:100% !important;
+        margin:0;
+    }
+
+    .search-bar input{
+        width:100% !important;
+    }
+    
+    .search-results-dropdown{
+        width:50%;
+    }
+}
